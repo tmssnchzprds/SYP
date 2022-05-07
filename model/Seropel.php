@@ -93,7 +93,7 @@ class Seropel implements Generico{
     //CONSULTAS
     public static function listaactual($tipo){
         $bd = Database::getInstance() ;
-        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN comentario co ON s.idSeropel = co.idSeropel WHERE s.tipo=:tipo GROUP BY s.idSeropel ORDER BY s.idSeropel DESC;" ,
+        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN ususeropel co ON s.idSeropel = co.idSeropel WHERE s.tipo=:tipo GROUP BY s.idSeropel ORDER BY s.idSeropel DESC;" ,
             [ ":tipo" => $tipo ]) ;
         
         $datos = [] ;
@@ -106,7 +106,7 @@ class Seropel implements Generico{
     }
     public static function listamejor($tipo){
         $bd = Database::getInstance() ;
-        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN comentario co ON s.idSeropel = co.idSeropel WHERE s.tipo=:tipo GROUP BY s.idSeropel ORDER BY valoracion DESC;" ,
+        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN ususeropel co ON s.idSeropel = co.idSeropel WHERE s.tipo=:tipo GROUP BY s.idSeropel ORDER BY valoracion DESC;" ,
             [ ":tipo" => $tipo ]) ;
     
         $datos = [] ;
@@ -119,7 +119,7 @@ class Seropel implements Generico{
     }
     public static function categoriaactual($idCat,$tipo){
         $bd = Database::getInstance() ;
-        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN comentario co ON s.idSeropel = co.idSeropel WHERE s.tipo=:tipo AND s.idCat=:idCat GROUP BY s.idSeropel ORDER BY s.idSeropel DESC;" ,
+        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN ususeropel co ON s.idSeropel = co.idSeropel WHERE s.tipo=:tipo AND s.idCat=:idCat GROUP BY s.idSeropel ORDER BY s.idSeropel DESC;" ,
             [ ":idCat" => $idCat,
             ":tipo" => $tipo ]) ;
 
@@ -133,7 +133,7 @@ class Seropel implements Generico{
     }
     public static function categoriamejor($idCat,$tipo){
         $bd = Database::getInstance() ;
-        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN comentario co ON s.idSeropel = co.idSeropel WHERE s.tipo=:tipo AND s.idCat=:idCat GROUP BY s.idSeropel ORDER BY valoracion DESC;" ,
+        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN ususeropel co ON s.idSeropel = co.idSeropel WHERE s.tipo=:tipo AND s.idCat=:idCat GROUP BY s.idSeropel ORDER BY valoracion DESC;" ,
             [ ":idCat" => $idCat,
             ":tipo" => $tipo ]) ;
 
@@ -147,7 +147,7 @@ class Seropel implements Generico{
     }
     public static function detalle($idSeropel){
         $bd = Database::getInstance() ;
-        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN comentario co ON s.idSeropel = co.idSeropel WHERE s.idSeropel=:idSeropel GROUP BY s.idSeropel;" ,
+        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN ususeropel co ON s.idSeropel = co.idSeropel WHERE s.idSeropel=:idSeropel GROUP BY s.idSeropel;" ,
             [ ":idSeropel" => $idSeropel ]) ;
        return $bd->getRow("Seropel") ;
     }
