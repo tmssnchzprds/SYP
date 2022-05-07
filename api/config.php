@@ -1,8 +1,8 @@
 <?php
 $db = [
-    'host' => 'localhost',
-    'username' => 'pruebas',
-    'password' => 'pruebas',
-    'db' => 'pruebas' 
+    'host' => 'dialmaweb.com',
+    'username' => 'u325884627_syp',
+    'password' => 'SYPsyp2022',
+    'db' => 'u325884627_syp' 
 ];
 ?>

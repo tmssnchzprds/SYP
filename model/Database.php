@@ -2,10 +2,10 @@
 	class Database
 	{
 		// Atributos
-		private $dbHost = "localhost" 	 ;
-		private $dbUser = "pruebas"	  	 ;
-		private $dbPass = "pruebas"		  	 ;
-		private $dbName = "pruebas"	 ;
+		private $dbHost = "dialmaweb.com" 	 ;
+		private $dbUser = "u325884627_syp"	  	 ;
+		private $dbPass = "SYPsyp2022"		  	 ;
+		private $dbName = "u325884627_syp"	 ;
 
 		//
 		private static $prp = null	  	 ;
