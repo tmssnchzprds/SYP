@@ -56,7 +56,6 @@
     } else {
         var seropel = "";
     }
-    idCategoria = 
     xmlhttp.open("GET", "index.php?mod=Ajax&ope=" + ope + categoria + seropel + "&pagina=" + pagina, true);
     xmlhttp.send();
   }

@@ -30,14 +30,27 @@ class controllerUsuario implements controllerGenerico{
         if(isset($_POST["name"])&&($_POST["password"])&&($_POST["email"])&&($_POST["type"])) {
             $usuario = new Usuario();
             $usuario->setName($_POST["name"]) ;
-            $usuario->setPassword($_POST["password"]) ;
+            $usuario->setPassword(md5($_POST["password"])) ;
             $usuario->setEmail($_POST["email"]) ;
             $usuario->setType($_POST["type"]) ;
             $usuario->insert() ;
-            $this->success() ;
+            $success = 0;
+            $msg = "Se ha creado el usuario correctamente";
         } else {
-            $this->failure() ;
+             $success = 1;
+             $msg = "No se ha podido crear el usuario se ha producido un error";
         }
+        $caption[0] = "Series Añadidas Recientemente";
+        $seropel[0] = Seropel::listaactual(1);
+        $caption[1] = "Series Mejor Valoradas";
+        $seropel[1] = Seropel::listamejor(1);
+        $caption[2] = "Peliculas Añadidas Recientemente";
+        $seropel[2] = Seropel::listaactual(2);
+        $caption[3] = "Peliculas Mejor Valoradas";
+        $seropel[3] = Seropel::listamejor(2);
+        $categoria = Categoria::getAll();
+        $cantseropel = count($seropel[0]);
+        require_once "view/show.seropel.php";
     }
     public function update(){
 	if (isset($_POST["idUsu"])) {
@@ -48,14 +61,27 @@ class controllerUsuario implements controllerGenerico{
                 $usuario->setEmail($_POST["email"]) ;
                 $usuario->setType($_POST["type"]) ;
                 $usuario->update() ;
-                $this->success() ;
+                $success = 0;
+            $msg = "Se ha modificado el usuario correctamente";
             } else {
-                $this->failure() ;
+               $success = 1;
+               $msg = "No se ha podido modificar el usuario se ha producido un error";
             }
         } else {
-            $this->failure() ;
+            $success = 1;
+             $msg = "No se ha podido modificar el usuario se ha producido un error";
         }
-        
+        $caption[0] = "Series Añadidas Recientemente";
+        $seropel[0] = Seropel::listaactual(1);
+        $caption[1] = "Series Mejor Valoradas";
+        $seropel[1] = Seropel::listamejor(1);
+        $caption[2] = "Peliculas Añadidas Recientemente";
+        $seropel[2] = Seropel::listaactual(2);
+        $caption[3] = "Peliculas Mejor Valoradas";
+        $seropel[3] = Seropel::listamejor(2);
+        $categoria = Categoria::getAll();
+        $cantseropel = count($seropel[0]);
+        require_once "view/show.seropel.php";
     }
     public function delete(){
         if (isset($_POST["idUsu"])) {
@@ -110,10 +136,14 @@ public function signin(){
                 $success=1;
             $msg="No se ha introducido usuario y contraseña";
             }
-        $seropel[0] = Seropel::listaactual(1) ;
-        $seropel[1] = Seropel::listamejor(1) ;
-        $seropel[2] = Seropel::listaactual(2) ;
-        $seropel[3] = Seropel::listamejor(2) ;
+        $caption[0] = "Series Añadidas Recientemente";
+        $seropel[0] = Seropel::listaactual(1);
+        $caption[1] = "Series Mejor Valoradas";
+        $seropel[1] = Seropel::listamejor(1);
+        $caption[2] = "Peliculas Añadidas Recientemente";
+        $seropel[2] = Seropel::listaactual(2);
+        $caption[3] = "Peliculas Mejor Valoradas";
+        $seropel[3] = Seropel::listamejor(2);
         $categoria = Categoria::getAll() ;
         require_once "view/show.seropel.php" ;
         }
@@ -123,10 +153,14 @@ public function signin(){
             session_unset();
             $success=0;
             $msg="Se ha cerrado la sesion correctamente";
-        $seropel[0] = Seropel::listaactual(1) ;
-        $seropel[1] = Seropel::listamejor(1) ;
-        $seropel[2] = Seropel::listaactual(2) ;
-        $seropel[3] = Seropel::listamejor(2) ;
+        $caption[0] = "Series Añadidas Recientemente";
+        $seropel[0] = Seropel::listaactual(1);
+        $caption[1] = "Series Mejor Valoradas";
+        $seropel[1] = Seropel::listamejor(1);
+        $caption[2] = "Peliculas Añadidas Recientemente";
+        $seropel[2] = Seropel::listaactual(2);
+        $caption[3] = "Peliculas Mejor Valoradas";
+        $seropel[3] = Seropel::listamejor(2);
         $categoria = Categoria::getAll() ;
         require_once "view/show.seropel.php" ;
         }

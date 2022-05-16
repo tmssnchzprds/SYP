@@ -38,16 +38,32 @@
             </ul></li>
             <?php } else { ?>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=Usuario&ope=logout">Cerrar Sesión</a>
+            <ul class="dropdown-menu">
+                    <li class="nav-item dropdown"><a class="dropdown-item"  data-toggle="modal" href="#signin">Modificar Datos</a>
             </li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle">Mis Listas</a>
+            </ul></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=Seropel&ope=milista">Mis Listas</a>
               <ul class="dropdown-menu">
-                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=user&ope=showserie&idUsu=<?php echo $_SESSION['idUsu'];?>">Mi Lista de Serie</a></li>
-                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=user&ope=showpelicula&idUsu=<?php echo $_SESSION['idUsu'];?>">Mi Lista de Pelicula</a></li>
+                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=Seropel&ope=milistaser">Mis Listas de Series</a>
+                <ul class="dropdown-menu">
+                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=Seropel&ope=milistaser&estado=1">Mis Listas de Series Pendientes</a></li>
+                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=Seropel&ope=milistaser&estado=2">Mis Listas de Series Siguiendo</a></li>
+                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=Seropel&ope=milistaser&estado=3">Mis Listas de Series Vistas</a></li>
+              </ul>
+                </li>
+                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=Seropel&ope=milistapel">Mis Listas de Peliculas</a>
+              <ul class="dropdown-menu">
+                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=Seropel&ope=milistapel&estado=1">Mis Listas de Peliculas Pendientes</a></li>
+                <li class="nav-item dropdown"><a class="dropdown-item" href="index.php?mod=Seropel&ope=milistapel&estado=3">Mis Listas de Peliculas Vistas</a></li>
+              </ul>
+                </li>
               </ul>
             </li>
             <?php } ?>
-            <li class="nav-item dropdown"><form class="search-form nav-item" style="margin: 7px;" >
-                  <input type="search" class="form-control" >
+            <li class="nav-item dropdown"><form class="search-form nav-item"  action="index.php" method="POST" style="margin: 7px;" >
+                    <input id="mod" name="mod" type="hidden" value="Seropel">
+                    <input id="ope" name="ope" type="hidden" value="buscar">
+                    <input type="search" id="buscar" name="buscar" class="form-control" >
                 <!-- /.form-group -->
               </form></li>
           </ul>        

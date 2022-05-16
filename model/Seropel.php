@@ -62,7 +62,7 @@ class Seropel implements Generico{
 
     public function insert(){
         $bd = Database::getInstance();
-        $bd->doQuery("INSERT INTO seropel (tipo, title, description, cover, date) VALUES (:tipo, :title, :description, :cover, :date);",
+        $bd->doQuery("INSERT INTO seropel (tipo, idCat, title, description, cover, date) VALUES (:tipo, :idCat, :title, :description, :cover, :date);",
             [":tipo"=>$this->tipo,
             ":idCat"=>$this->idCat,
             ":title"=>$this->title,
@@ -74,7 +74,7 @@ class Seropel implements Generico{
     public function update()
     {
         $bd = Database::getInstance() ;
-        $bd->doQuery("UPDATE seropel SET tipo=:tipo, title=:title, description=:description, cover=:cover, date=:date WHERE idSeropel=:idSeropel ;",
+        $bd->doQuery("UPDATE seropel SET tipo=:tipo, idCat=:idCat title=:title, description=:description, cover=:cover, date=:date WHERE idSeropel=:idSeropel ;",
             [":tipo"=>$this->tipo,
             ":idCat"=>$this->idCat,
             ":title"=>$this->title,
@@ -107,7 +107,37 @@ class Seropel implements Generico{
     public static function listamejor($tipo){
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN ususeropel co ON s.idSeropel = co.idSeropel WHERE s.tipo=:tipo GROUP BY s.idSeropel ORDER BY valoracion DESC;" ,
-            [ ":tipo" => $tipo ]) ;
+            [ ":tipo" => $tipo]) ;
+    
+        $datos = [] ;
+
+        while($item = $bd->getRow("Seropel")){
+            array_push($datos,$item);
+        }
+ 
+        return $datos;
+    }
+        public static function milistaactual($tipo,$estado){
+        $bd = Database::getInstance() ;
+        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN ususeropel co ON s.idSeropel = co.idSeropel WHERE s.tipo=:tipo AND co.idUsu=:idUsu AND co.idEstado=:idEstado GROUP BY s.idSeropel ORDER BY s.idSeropel DESC;" ,
+            [ ":tipo" => $tipo,
+            ":idUsu" => $_SESSION["usuario"]->idUsu,
+            ":idEstado" => $estado ]) ;
+        
+        $datos = [] ;
+
+        while($item = $bd->getRow("Seropel")){
+            array_push($datos,$item);
+        }
+ 
+        return $datos;
+    }
+    public static function milistamejor($tipo,$estado){
+        $bd = Database::getInstance() ;
+        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN ususeropel co ON s.idSeropel = co.idSeropel WHERE AND co.idUsu=:idUsu AND co.idEstado=:idEstado s.tipo=:tipo GROUP BY s.idSeropel ORDER BY valoracion DESC;" ,
+            [ ":tipo" => $tipo,
+            ":idUsu" => $_SESSION["usuario"]->idUsu,
+            ":idEstado" => $estado ]) ;
     
         $datos = [] ;
 
@@ -136,6 +166,32 @@ class Seropel implements Generico{
         $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN ususeropel co ON s.idSeropel = co.idSeropel WHERE s.tipo=:tipo AND s.idCat=:idCat GROUP BY s.idSeropel ORDER BY valoracion DESC;" ,
             [ ":idCat" => $idCat,
             ":tipo" => $tipo ]) ;
+
+        $datos = [] ;
+
+        while($item = $bd->getRow("Seropel")){
+            array_push($datos,$item);
+        }
+ 
+        return $datos;
+    }
+        public static function buscaractual($buscar,$tipo){
+        $bd = Database::getInstance() ;
+        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN ususeropel co ON s.idSeropel = co.idSeropel WHERE s.tipo=:tipo AND s.title LIKE \"%".$buscar."%\" GROUP BY s.idSeropel ORDER BY s.idSeropel DESC;" ,
+            [":tipo" => $tipo ]) ;
+
+        $datos = [] ;
+
+        while($item = $bd->getRow("Seropel")){
+            array_push($datos,$item);
+        }
+ 
+        return $datos;
+    }
+    public static function buscarmejor($buscar,$tipo){
+        $bd = Database::getInstance() ;
+        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(co.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN ususeropel co ON s.idSeropel = co.idSeropel WHERE s.tipo=:tipo AND s.title LIKE \"%".$buscar."%\" GROUP BY s.idSeropel ORDER BY valoracion DESC;" ,
+            [":tipo" => $tipo ]) ;
 
         $datos = [] ;
 

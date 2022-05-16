@@ -57,19 +57,23 @@
                 <p class="statusMsg"></p>
             <form class="comment-form" id="login-form" action="index.php" method="POST" role="form" style="display: block;">
                 <input id="mod" name="mod" type="hidden" value="Usuario">
-                <input id="ope" name="ope" type="hidden" value="create">
+                <input id="ope" name="ope" type="hidden" value="<?=!isset($_SESSION["usuario"])?"insert":"update"?>">
+                <?php if (isset($_SESSION["usuario"])){ ?>
+              <input id="idUsu" name="idUsu" type="hidden" value="<?=$_SESSION["usuario"]->idUsu;?>">
+              <?php } ?>
+                <input id="type" name="type" type="hidden"  value="<?=!isset($_SESSION["usuario"])?"1":$_SESSION["usuario"]->type?>">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="name" id="name" required placeholder="Nombre">
+                    <input type="text" class="form-control" name="name" id="name" required value="<?=!isset($_SESSION["usuario"])?"":$_SESSION["usuario"]->name?>" placeholder="Nombre">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="email" id="email" required placeholder="Email">
+                    <input type="text" class="form-control" name="email" id="email" required value="<?=!isset($_SESSION["usuario"])?"":$_SESSION["usuario"]->email?>" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" id="password" class="form-control" required placeholder="Contraseña">
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerar</button>
-                <button type="submit" class="btn btn-primary submitBtn">Registrarse</button>
+                <button type="submit" class="btn btn-primary submitBtn"><?=!isset($_SESSION["usuario"])?"Registrarse":"Modificar Datos"?></button>
             </div>
             </form>
             </div>
@@ -101,7 +105,7 @@ if (!isset($detalle)){
             <!-- Modal Body -->
             <div class="modal-body">
                 <p class="statusMsg"></p>
-<form class="comment-form" id="login-form" action="index.php" method="GET" role="form" style="display: block;">
+<form class="comment-form" id="login-form" action="index.php" method="POST" role="form" style="display: block;">
               <input id="mod" name="mod" type="hidden" value="Seropel">
               <input id="ope" name="ope" type="hidden" value="<?=$detalle==""?"insert":"update"?>">
               <?php if ($detalle!=""){ ?>
