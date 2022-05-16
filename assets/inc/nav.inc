@@ -60,7 +60,7 @@
               </ul>
             </li>
             <?php } ?>
-            <li class="nav-item dropdown"><form class="search-form nav-item"  action="index.php" method="POST" style="margin: 7px;" >
+            <li class="nav-item dropdown"><form class="search-form nav-item"  action="index.php" method="GET" style="margin: 7px;" >
                     <input id="mod" name="mod" type="hidden" value="Seropel">
                     <input id="ope" name="ope" type="hidden" value="buscar">
                     <input type="search" id="buscar" name="buscar" class="form-control" >

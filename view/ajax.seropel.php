@@ -1,6 +1,7 @@
 <?php
 define("PAGINACION", 4);
 $ope = isset($_GET["ope"]) ? $_GET["ope"] : "listaTotal";
+$buscar = isset($_GET["buscar"]) ? $_GET["buscar"] : "";
 $idCat = isset($_GET["idCat"]) ? $_GET["idCat"] : 0;
 $tipo = isset($_GET["tipo"]) ? $_GET["tipo"] : 0;
 for ($i = 0; $i < count($seropel); ++$i)
@@ -16,6 +17,9 @@ for ($i = 0; $i < count($seropel), $i < count($arrayActual); ++$i) {
 }
 ?>
 <div id="cargar">
+    <div id="success" class="post box bg-pastel-green shadow" style="display:none; text-align: center; font-weight: bold; margin: 40px 0px; padding: 20px;"></div>
+    <div id="failure" class="post box bg-pastel-red shadow" style="display:none; text-align: center; font-weight: bold; margin: 40px 0px; padding: 20px;"></div>
+
 <?php
 for ($i = 0; $i < count($seropelPagina); ++$i) {
     $arrayActualAux = $arrayActual;
@@ -34,7 +38,7 @@ for ($i = 0; $i < count($seropelPagina); ++$i) {
             $arrayActualAux[$i] = $arrayActualAux[$i] - 1;
             if (0 != $esPrimera[$i]) {
                 ?>
-                <div class="col-md-0"  onclick="paginacion('<?= $ope; ?>',<?= $idCat; ?>,<?= $tipo; ?>,'<?= implode("-", $arrayActualAux); ?>')">
+                <div class="col-md-0"  onclick="paginacion('<?= $ope; ?>','<?= $buscar; ?>',<?= $idCat; ?>,<?= $tipo; ?>,'<?= implode("-", $arrayActualAux); ?>')">
                         <i class="fa fa-4x fa-angle-left" style="padding: 0px; color: orange;"></i>
                 </div>
                 <?php
@@ -81,7 +85,7 @@ for ($i = 0; $i < count($seropelPagina); ++$i) {
             $arrayActualAux[$i] = $arrayActualAux[$i] + 2;
             if (!$esUltima[$i]) {
                 ?>
-                <div class="col-md-0"  onclick="paginacion('<?= $ope; ?>',<?= $idCat; ?>,<?= $tipo; ?>,'<?= implode("-", $arrayActualAux); ?>')">
+                <div class="col-md-0"  onclick="paginacion('<?= $ope; ?>','<?= $buscar; ?>',<?= $idCat; ?>,<?= $tipo; ?>,'<?= implode("-", $arrayActualAux); ?>')">
                         <i class="fa fa-4x fa-angle-right" style="padding: 0px; color: orange;"></i>
                 </div>
             <?php
@@ -93,3 +97,14 @@ for ($i = 0; $i < count($seropelPagina); ++$i) {
         }
         ?>
 </div>
+ <script type="text/javascript">
+         <?php
+      if (isset($success) && isset($msg)) {?>
+  showMessage(<?=$success?>,'<?=$msg?>');
+      <?php
+      }
+      ?>
+ </script>
+<?php
+    require_once "assets/inc/script.inc";
+?>

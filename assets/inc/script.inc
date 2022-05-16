@@ -5,3 +5,4 @@
   <script src="assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
   <script src="assets/js/plugins.js"></script>
   <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/myscripts.js"></script>

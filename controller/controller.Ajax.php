@@ -56,29 +56,13 @@ class controllerAjax{
             } else {
                 $success = 1;
                 $msg = "No se ha encontrado el Tipo";
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";            }
+                require_once "view/ajax.seropel.php";
+            }
         } else {
             $success = 1;
             $msg = "No se ha encontrado el Tipo";
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";        }
+            require_once "view/ajax.seropel.php";
+        }
     }
     public static function milista() {
         if (isset($_SESSION["usuario"])) {
@@ -115,16 +99,8 @@ class controllerAjax{
         } else {
             $success = 1;
             $msg = "No se ha encontrado el Usuario";
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";        }
+            require_once "view/ajax.seropel.php";
+        }
     }
     public static function milistaser() {
             $categoria = Categoria::getAll();
@@ -181,15 +157,8 @@ class controllerAjax{
         } else {
             $success = 1;
             $msg = "No se ha encontrado el Usuario";
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        require_once "view/show.seropel.php";        }
+            require_once "view/ajax.seropel.php";
+       }
     }
 
     public static function milistapel() {
@@ -234,15 +203,8 @@ class controllerAjax{
         } else {
             $success = 1;
             $msg = "No se ha encontrado el Usuario";
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        require_once "view/show.seropel.php";        }
+            require_once "view/ajax.seropel.php";
+        }
     }
     
     public static function categoria() {
@@ -275,29 +237,39 @@ class controllerAjax{
             } else {
                 $success = 1;
                 $msg = "No se ha encontrado la Categoria o el Tipo";
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";            }
+                require_once "view/ajax.seropel.php";
+            }
         } else {
             $success = 1;
             $msg = "No se ha encontrado la Categoria o el Tipo";
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";        }
+            require_once "view/ajax.seropel.php";
+        }
+    }
+    public static function buscar() {
+        if (isset($_GET["buscar"])) {
+            $categoria = Categoria::getAll();
+                    $caption[0] = "Series Añadidas Recientemente";
+                    $seropel[0] = Seropel::buscaractual($_GET["buscar"],1);
+                    $caption[1] = "Series Mejor Valoradas";
+                    $seropel[1] = Seropel::buscarmejor($_GET["buscar"],1);
+                    $caption[2] = "Peliculas Añadidas Recientemente";
+                    $seropel[2] = Seropel::buscaractual($_GET["buscar"],2);
+                    $caption[3] = "Peliculas Mejor Valoradas";
+                    $seropel[3] = Seropel::buscarmejor($_GET["buscar"],2);
+                $cantseropel = count($seropel[0])+count($seropel[2]);
+                if ($cantseropel != 0) {
+                    $success = 0;
+                    $msg = "Se han encontrado " . $cantseropel . " resultados para la busqueda: ".$_GET["buscar"];
+                } else {
+                    $success = 1;
+                    $msg = "No se han encontrado resultados para la busqueda: ".$_GET["buscar"];
+                }
+                require_once "view/ajax.seropel.php";
+            } else {
+                $success = 1;
+                $msg = "No se ha encontrado la Busqueda";
+                require_once "view/ajax.seropel.php";
+            }
     }
     public static function com() {
         if (isset($_GET["idSeropel"]) && isset($_GET["season"]) && isset($_GET["episode"])) {
@@ -306,16 +278,7 @@ class controllerAjax{
         } else {
             $success = 1;
             $msg = "No se ha encontrado los Comentarios";
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";
+            require_once "view/ajax.seropel.php";
         }
     }
 }

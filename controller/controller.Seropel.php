@@ -405,23 +405,23 @@ class controllerSeropel implements controllerGenerico {
         require_once "view/show.seropel.php";        }
     }
 public static function buscar() {
-        if (isset($_POST["buscar"])) {
+        if (isset($_GET["buscar"])) {
             $categoria = Categoria::getAll();
                     $caption[0] = "Series Añadidas Recientemente";
-                    $seropel[0] = Seropel::buscaractual($_POST["buscar"],1);
+                    $seropel[0] = Seropel::buscaractual($_GET["buscar"],1);
                     $caption[1] = "Series Mejor Valoradas";
-                    $seropel[1] = Seropel::buscarmejor($_POST["buscar"],1);
+                    $seropel[1] = Seropel::buscarmejor($_GET["buscar"],1);
                     $caption[2] = "Peliculas Añadidas Recientemente";
-                    $seropel[2] = Seropel::buscaractual($_POST["buscar"],2);
+                    $seropel[2] = Seropel::buscaractual($_GET["buscar"],2);
                     $caption[3] = "Peliculas Mejor Valoradas";
-                    $seropel[3] = Seropel::buscarmejor($_POST["buscar"],2);
+                    $seropel[3] = Seropel::buscarmejor($_GET["buscar"],2);
                 $cantseropel = count($seropel[0])+count($seropel[2]);
                 if ($cantseropel != 0) {
                     $success = 0;
-                    $msg = "Se han encontrado " . $cantseropel . " resultados para la busqueda: ".$_POST["buscar"];
+                    $msg = "Se han encontrado " . $cantseropel . " resultados para la busqueda: ".$_GET["buscar"];
                 } else {
                     $success = 1;
-                    $msg = "No se han encontrado resultados para la busqueda: ".$_POST["buscar"];
+                    $msg = "No se han encontrado resultados para la busqueda: ".$_GET["buscar"];
                 }
                 require_once "view/show.seropel.php";
             } else {
