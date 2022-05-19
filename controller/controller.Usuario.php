@@ -16,14 +16,14 @@ class controllerUsuario implements controllerGenerico{
     //CRUD
     public static function getAll(){
         $usuario = Usuario::getAll() ;
-        require_once "view/show.Usuario.php" ;
     }
     public static function getId(){
-	if (isset($_POST["idUsu"])) {
-            $usuario = Usuario::getId($_POST["idUsu"]) ;
-            require_once "view/showById.Usuario.php" ;
+	if (isset($_GET["idUsu"])) {
+            $usuario = Usuario::getId($_GET["idUsu"]) ;
+            return $usuario;
 	} else {
-            $this->failure() ;
+            $success = 1;
+            $msg = "No se ha podido obtener el registro se ha producido un error";
 	}
     }
     public function insert(){
@@ -49,7 +49,6 @@ class controllerUsuario implements controllerGenerico{
         $caption[3] = "Peliculas Mejor Valoradas";
         $seropel[3] = Seropel::listamejor(2);
         $categoria = Categoria::getAll();
-        $cantseropel = count($seropel[0]);
         require_once "view/show.seropel.php";
     }
     public function update(){
@@ -57,7 +56,7 @@ class controllerUsuario implements controllerGenerico{
             $usuario = Usuario::getId($_POST["idUsu"]) ;
             if (isset($_POST["name"])&&($_POST["password"])&&($_POST["email"])&&($_POST["type"])) {
                 $usuario->setName($_POST["name"]) ;
-                $usuario->setPassword($_POST["password"]) ;
+                $usuario->setPassword(md5($_POST["password"])) ;
                 $usuario->setEmail($_POST["email"]) ;
                 $usuario->setType($_POST["type"]) ;
                 $usuario->update() ;
@@ -80,20 +79,31 @@ class controllerUsuario implements controllerGenerico{
         $caption[3] = "Peliculas Mejor Valoradas";
         $seropel[3] = Seropel::listamejor(2);
         $categoria = Categoria::getAll();
-        $cantseropel = count($seropel[0]);
         require_once "view/show.seropel.php";
     }
     public function delete(){
         if (isset($_POST["idUsu"])) {
             Usuario::delete($_POST["idUsu"]) ;
-            $this->success() ;
+            $success = 0;
+            $msg = "Se ha eliminado el comentario correctamente";
 	} else {
-            $this->failure() ;
+            $success = 1;
+            $msg = "No se ha podido eliminar el comentario se ha producido un error";
 	}
+        $caption[0] = "Series Añadidas Recientemente";
+        $seropel[0] = Seropel::listaactual(1);
+        $caption[1] = "Series Mejor Valoradas";
+        $seropel[1] = Seropel::listamejor(1);
+        $caption[2] = "Peliculas Añadidas Recientemente";
+        $seropel[2] = Seropel::listaactual(2);
+        $caption[3] = "Peliculas Mejor Valoradas";
+        $seropel[3] = Seropel::listamejor(2);
+        $categoria = Categoria::getAll();
+        require_once "view/show.seropel.php";
     }
 public function signin(){
         
-            if(isset($_SESSION["email"])){
+            if(isset($_SESSION["usuario"])){
             $success=1;
             $msg="Ya tiene iniciada una sesión, cierrela para iniciar otra";
             }
@@ -144,8 +154,8 @@ public function signin(){
         $seropel[2] = Seropel::listaactual(2);
         $caption[3] = "Peliculas Mejor Valoradas";
         $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll() ;
-        require_once "view/show.seropel.php" ;
+        $categoria = Categoria::getAll();
+        require_once "view/show.seropel.php";
         }
         
         public function logout(){

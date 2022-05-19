@@ -7,6 +7,8 @@ class Comentario implements Generico{
     private $idCom ;
     private $idUsu ;
     private $idSeropel ;
+    private $season ;
+    private $episode ;
     private $commentary ;
     private $usuario ;
 
@@ -16,6 +18,8 @@ class Comentario implements Generico{
     public function setIdCom($dta)       {$this->idCom = $dta;}
     public function setIdUsu($dta)       {$this->idUsu = $dta;}
     public function setIdSeropel($dta)       {$this->idSeropel = $dta;}
+    public function setSeason($dta)       {$this->season = $dta;}
+    public function setEpisode($dta)       {$this->episode = $dta;}
     public function setCommentary($dta)  {$this->commentary = $dta;}
     public function setUsuario($dta)  {$this->usuario = $dta;}
     
@@ -23,6 +27,8 @@ class Comentario implements Generico{
     public function getIdCom()       {return $this->idCom;}
     public function getIdUsu()       {return $this->idUsu;}
     public function getIdSeropel()       {return $this->idSeropel;}
+    public function getSeason()       {return $this->season;}
+    public function getEpisode()       {return $this->episode;}
     public function getCommentary()  {return $this->commentary;}
     public function getUsuario()  {return $this->usuario;}
 
@@ -50,18 +56,22 @@ class Comentario implements Generico{
 
     public function insert(){
         $bd = Database::getInstance();
-        $bd->doQuery("INSERT INTO comentario (idUsu, idSeropel, commentary) VALUES (:idUsu, :idSeropel, :commentary);",
+        $bd->doQuery("INSERT INTO comentario (idUsu, idSeropel, season, episode, commentary) VALUES (:idUsu, :idSeropel, :season, :episode, :commentary);",
             [":idUsu"=>$this->idUsu,
             ":idSeropel"=>$this->idSeropel,
+            ":season"=>$this->season,
+            ":episode"=>$this->episode,
             ":commentary"=>$this->commentary]) ;
     }
 
     public function update()
     {
         $bd = Database::getInstance() ;
-        $bd->doQuery("UPDATE comentario SET idUsu=:idUsu, idSeropel=:idSeropel, commentary=:commentary WHERE idCom=:idCom ;",
+        $bd->doQuery("UPDATE comentario SET idUsu=:idUsu, idSeropel=:idSeropel, season=:season, episode=:episode, commentary=:commentary WHERE idCom=:idCom ;",
             [":idUsu"=>$this->idUsu,
             ":idSeropel"=>$this->idSeropel,
+            ":season"=>$this->season,
+            ":episode"=>$this->episode,
             ":commentary"=>$this->commentary,
             ":idCom"=>$this->idCom]) ;
     } 
@@ -73,10 +83,10 @@ class Comentario implements Generico{
     }
  
     //CONSULTAS
-    public static function comentario($idSeropel){
+    public static function comentarioSeropel($idSeropel){
         $bd = Database::getInstance() ;
-        $bd->doQuery("SELECT c.*, u.name as usuario FROM comentario c JOIN usuario u ON s.idUsu = c.idUsu  WHERE idSeropel=:idSeropel ;",
-            [ ":idSeropel" => $idSeropel ]) ;    
+        $bd->doQuery("SELECT c.*, u.name as usuario FROM comentario c JOIN usuario u ON u.idUsu = c.idUsu  WHERE c.idSeropel=:idSeropel ;",
+            [ ":idSeropel" => $idSeropel]) ;    
 
         $datos = [] ;
 
@@ -86,7 +96,34 @@ class Comentario implements Generico{
  
         return $datos;
     }
-  
+        public static function comentarioTemporada($idSeropel, $season){
+        $bd = Database::getInstance() ;
+        $bd->doQuery("SELECT c.*, u.name as usuario FROM comentario c JOIN usuario u ON u.idUsu = c.idUsu  WHERE c.idSeropel=:idSeropel AND c.season=:season ;",
+            [ ":idSeropel" => $idSeropel,
+              ":season"=>$season]) ;    
 
+        $datos = [] ;
+
+        while($item = $bd->getRow("Comentario")){
+            array_push($datos,$item);
+        }
+ 
+        return $datos;
     }
+        public static function comentarioEpisodio($idSeropel, $season, $episode){
+        $bd = Database::getInstance() ;
+        $bd->doQuery("SELECT c.*, u.name as usuario FROM comentario c JOIN usuario u ON u.idUsu = c.idUsu  WHERE c.idSeropel=:idSeropel AND c.season=:season AND c.episode=:episode ;",
+            [ ":idSeropel" => $idSeropel,
+              ":season"=>$season,
+              ":episode"=>$episode]) ;    
+
+        $datos = [] ;
+
+        while($item = $bd->getRow("Comentario")){
+            array_push($datos,$item);
+        }
+ 
+        return $datos;
+    }
+}
 ?>

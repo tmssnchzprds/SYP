@@ -30,7 +30,7 @@ for ($i = 0; $i < count($seropelPagina); ++$i) {
         <?php
         if (isset($_SESSION["usuario"])) { 
             if ($_SESSION["usuario"]->type==2||$_SESSION["usuario"]->type==0) { ?>
-            <a class="col-1 dropdown-item"  data-toggle="modal"  href="#modificar"><i class="fa fa-4x fa-plus-circle" style="padding: 0px; color: orange;"></i></a>
+            <a class="col-1 dropdown-item"  data-toggle="modal"  href="#modificarseropel"><i class="fa fa-4x fa-plus-circle" style="padding: 0px; color: orange;"></i></a>
 <?php } } ?>
         </div>
         <div class="row align-items-center">

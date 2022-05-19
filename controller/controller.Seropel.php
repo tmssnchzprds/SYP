@@ -18,13 +18,12 @@ class controllerSeropel implements controllerGenerico {
     //CRUD
     public static function getAll() {
         $seropel = Seropel::getAll();
-        require_once "view/show.seropel.php";
     }
 
     public static function getId() {
-        if (isset($_POST["idSeropel"])) {
-            $seropel = Seropel::getId($_POST["idSeropel"]);
-            require_once "view/showById.seropel.php";
+        if (isset($_GET["idSeropel"])) {
+            $seropel = Seropel::getId($_GET["idSeropel"]);
+            return $seropel;
         } else {
             $success = 1;
             $msg = "No se ha podido obtener el registro se ha producido un error";
@@ -57,7 +56,6 @@ class controllerSeropel implements controllerGenerico {
         $caption[3] = "Peliculas Mejor Valoradas";
         $seropel[3] = Seropel::listamejor(2);
         $categoria = Categoria::getAll();
-        $cantseropel = count($seropel[0]);
         require_once "view/show.seropel.php";
     }
 
@@ -73,7 +71,7 @@ class controllerSeropel implements controllerGenerico {
                 $seropel->setDate($_POST["date"]);
                 $seropel->update();
                 $success = 0;
-                $msg = "Se ha actualizado el registro correctamente";
+                $msg = "Se ha actualizado el registro correctamente.".$_POST["idSeropel"].$_POST["idCat"].$_POST["tipo"].$_POST["title"].$_POST["description"].$_POST["cover"].$_POST["date"];
             } else {
                 $success = 1;
                 $msg = "No se ha podido actualizar el registro se ha producido un error";
@@ -92,7 +90,6 @@ class controllerSeropel implements controllerGenerico {
         $caption[3] = "Peliculas Mejor Valoradas";
         $seropel[3] = Seropel::listamejor(2);
         $categoria = Categoria::getAll();
-        $cantseropel = count($seropel[0]);
         require_once "view/show.seropel.php";
     }
 
@@ -114,7 +111,6 @@ class controllerSeropel implements controllerGenerico {
         $caption[3] = "Peliculas Mejor Valoradas";
         $seropel[3] = Seropel::listamejor(2);
         $categoria = Categoria::getAll();
-        $cantseropel = count($seropel[0]);
         require_once "view/show.seropel.php";
     }
 
@@ -208,7 +204,7 @@ class controllerSeropel implements controllerGenerico {
                 $seropel[8] = Seropel::milistaactual(2,3);
                 $caption[9] = "Peliculas Visto Mejor Valoradas";
                 $seropel[9] = Seropel::milistamejor(2,3);
-            $cantseropel = count($seropel[0]);
+            $cantseropel = count($seropel[0])+count($seropel[2])+count($seropel[4])+count($seropel[6])+count($seropel[8]);
                 if ($cantseropel != 0) {
                     $success = 0;
                     $msg = "Se han encontrado " . $cantseropel . " resultados";
@@ -253,6 +249,7 @@ class controllerSeropel implements controllerGenerico {
                 $caption[1] = "Series Vistas Mejor Valoradas";
                 $seropel[1] = Seropel::milistamejor(1,3);
                 }
+                $cantseropel = count($seropel[0]);
             } else {
                 $success = 1;
                 $msg = "No se ha encontrado el Estado";
@@ -268,7 +265,8 @@ class controllerSeropel implements controllerGenerico {
                 $seropel[4] = Seropel::milistaactual(1,3);
                 $caption[5] = "Series Vistas Mejor Valoradas";
                 $seropel[5] = Seropel::milistamejor(1,3);
-            }} else {
+                 $cantseropel = count($seropel[0])+count($seropel[2])+count($seropel[4]);
+           }} else {
                 $caption[0] = "Series Pendiente Añadidas Recientemente";
                 $seropel[0] = Seropel::milistaactual(1,1);
                 $caption[1] = "Series Pendiente Mejor Valoradas";
@@ -281,7 +279,15 @@ class controllerSeropel implements controllerGenerico {
                 $seropel[4] = Seropel::milistaactual(1,3);
                 $caption[5] = "Series Vistas Mejor Valoradas";
                 $seropel[5] = Seropel::milistamejor(1,3);
+                $cantseropel = count($seropel[0])+count($seropel[2])+count($seropel[4]);
             }
+                if ($cantseropel != 0) {
+                    $success = 0;
+                    $msg = "Se han encontrado " . $cantseropel . " resultados";
+                } else {
+                    $success = 1;
+                    $msg = "No se han encontrado resultados para la busqueda";
+                }
                 require_once "view/show.seropel.php";
         } else {
             $success = 1;
@@ -314,6 +320,7 @@ class controllerSeropel implements controllerGenerico {
                 $caption[1] = "Peliculas Vistas Mejor Valoradas";
                 $seropel[1] = Seropel::milistamejor(2,3);
                 }
+                $cantseropel = count($seropel[0]);
             } else {
                 $success = 1;
                 $msg = "No se ha encontrado el Estado";
@@ -325,6 +332,7 @@ class controllerSeropel implements controllerGenerico {
                 $seropel[2] = Seropel::milistaactual(2,3);
                 $caption[3] = "Peliculas Vistas Mejor Valoradas";
                 $seropel[3] = Seropel::milistamejor(2,3);
+                $cantseropel = count($seropel[0])+count($seropel[2]);
             }} else {
                 $caption[0] = "Peliculas Pendiente Añadidas Recientemente";
                 $seropel[0] = Seropel::milistaactual(2,1);
@@ -334,7 +342,15 @@ class controllerSeropel implements controllerGenerico {
                 $seropel[2] = Seropel::milistaactual(2,3);
                 $caption[3] = "Peliculas Vistas Mejor Valoradas";
                 $seropel[3] = Seropel::milistamejor(2,3);
+                $cantseropel = count($seropel[0])+count($seropel[2]);
             }
+                if ($cantseropel != 0) {
+                    $success = 0;
+                    $msg = "Se han encontrado " . $cantseropel . " resultados";
+                } else {
+                    $success = 1;
+                    $msg = "No se han encontrado resultados para la busqueda";
+                }
                 require_once "view/show.seropel.php";
         } else {
             $success = 1;
@@ -443,7 +459,14 @@ public static function buscar() {
         if (isset($_GET["idSeropel"])) {
             $detalle = Seropel::detalle($_GET["idSeropel"]);
             $categoria = Categoria::getAll();
-            $comentario = Comentario::comentario($_GET["idSeropel"],0,0);
+            $comentarios = Comentario::comentarioSeropel($_GET["idSeropel"]);
+            $cantcomentario = count($comentarios);
+                if ($cantcomentario != 0) {
+                    $comentarios_title = " Todos los Comentarios";
+
+                } else {
+                    $comentarios_title = " No hay Comentarios";
+                }
             $episodio = Episodio::getSeropel($_GET["idSeropel"]);
             require_once "view/show.detalle.php";
         } else {
@@ -461,15 +484,4 @@ public static function buscar() {
         require_once "view/show.seropel.php";
         }
     }
-
-    public static function cambiar() {
-        if (isset($_GET["idSeropel"])) {
-            $seropel = Seropel::getId($_GET["idSeropel"]);
-        } else {
-            $seropel = "";
-        }
-        $categoria = Categoria::getAll();
-        require_once "view/change.seropel.php";
-    }
-
 }

@@ -271,14 +271,56 @@ class controllerAjax{
                 require_once "view/ajax.seropel.php";
             }
     }
-    public static function com() {
-        if (isset($_GET["idSeropel"]) && isset($_GET["season"]) && isset($_GET["episode"])) {
-            $comentario = Comentario::comentario($_GET["idSeropel"],$_GET["season"],$_GET["episode"]);
+    public static function comentario() {
+        if (isset($_GET["idSeropel"])) {
+            $episodio = Episodio::getSeropel($_GET["idSeropel"]);
+            $comentarios = Comentario::comentarioSeropel($_GET["idSeropel"]);
+            $cantcomentario = count($comentarios);
+                if ($cantcomentario != 0) {
+                    $comentarios_title = " Todos los Comentarios";
+
+                } else {
+                    $comentarios_title = " No hay Comentarios";
+                }
             require_once "view/ajax.comentario.php";
         } else {
             $success = 1;
             $msg = "No se ha encontrado los Comentarios";
-            require_once "view/ajax.seropel.php";
+            require_once "view/ajax.comentario.php";
         }
     }
+    public static function comentariotemporada() {
+        if (isset($_GET["idSeropel"]) && isset($_GET["season"])) {
+            $episodio = Episodio::getSeropel($_GET["idSeropel"]);
+            $comentarios = Comentario::comentarioTemporada($_GET["idSeropel"],$_GET["season"]);
+            $cantcomentario = count($comentarios);
+                if ($cantcomentario != 0) {
+                    $comentarios_title = " Todos los Comentarios de la Temporada ".$_GET["season"];
+                } else {
+                    $comentarios_title = " No Hay Comentarios en la Temporada ".$_GET["season"];
+                }
+            require_once "view/ajax.comentario.php";
+        } else {
+            $success = 1;
+            $msg = "No se ha encontrado los Comentarios";
+            require_once "view/ajax.comentario.php";
+        }
+    }
+    public static function comentarioepisodio() {
+        if (isset($_GET["idSeropel"]) && isset($_GET["season"]) && isset($_GET["episode"])) {
+            $episodio = Episodio::getSeropel($_GET["idSeropel"]);
+            $comentarios = Comentario::comentarioEpisodio($_GET["idSeropel"],$_GET["season"],$_GET["episode"]);
+            $cantcomentario = count($comentarios);
+                if ($cantcomentario != 0) {
+                    $comentarios_title = "Comentarios de la Temporada ".$_GET["season"]." Episodio ".$_GET["episode"];
+                } else {
+                    $comentarios_title = "No Hay Comentarios en la Temporada ".$_GET["season"]." Episodio ".$_GET["episode"];
+                }
+            require_once "view/ajax.comentario.php";
+        } else {
+            $success = 1;
+            $msg = "No se ha encontrado los Comentarios";
+            require_once "view/ajax.comentario.php";
+        }
+    }    
 }
