@@ -1,4 +1,12 @@
- (function() {
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+
+function modal(ope,idSeropel,idCom) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+	document.getElementById("cargarmodal").parentNode.removeChild(document.getElementById("cargarmodal"));
+        document.getElementById("ajaxmodal").innerHTML =this.responseText;
+        (function() {
   'use strict';
   window.addEventListener('load', function() {
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -15,7 +23,7 @@
     });
   }, false);
 })();
-    $(document).ready(function(){
+$(document).ready(function(){
  $('#password, #confirm').on('keyup', function () {
         if ($('#password').val() != '' && $('#confirm').val() != '' && $('#password').val() == $('#confirm').val()) {
           $("#submitBtn").attr("disabled",false);
@@ -31,7 +39,7 @@
           $('.pwds').addClass('is-invalid')
         }
  });
-      let currForm1 = document.getElementById('signin-form');
+      let currForm1 = document.getElementById('form');
         // Validate on submit:
         currForm1.addEventListener('submit', function(event) {
           if (currForm1.checkValidity() === false) {
@@ -55,23 +63,27 @@
           });
         });
  });
- function modal(nombre) {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-	document.getElementById("cargar").parentNode.removeChild(document.getElementById("cargar"));
-        document.getElementById("ajax").innerHTML =this.responseText;
       }
     };
-    xmlhttp.open("GET", "index.php?mod=Ajax&ope=", true);
+        if (idSeropel!=0){
+        var seropel = "&idSeropel=" + idSeropel;
+    } else {
+        var seropel = "";
+    }
+    if (idCom!=0){
+        var com = "&idCom=" + idCom;
+    } else {
+        var com = "";
+    }
+    xmlhttp.open("GET", "index.php?mod=Ajax&ope=" + ope + seropel + com, true);
     xmlhttp.send();
   }
  function paginacion(ope,buscador,idCat,tipo,pagina) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-	document.getElementById("cargar").parentNode.removeChild(document.getElementById("cargar"));
-        document.getElementById("ajax").innerHTML =this.responseText;
+	document.getElementById("cargarseropel").parentNode.removeChild(document.getElementById("cargarseropel"));
+        document.getElementById("ajaxseropel").innerHTML =this.responseText;
       }
     };
     if (idCat!=0){
@@ -96,8 +108,8 @@
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-	document.getElementById("cargar").parentNode.removeChild(document.getElementById("cargar"));
-        document.getElementById("ajax").innerHTML =this.responseText;
+	document.getElementById("cargarcom").parentNode.removeChild(document.getElementById("cargarcom"));
+        document.getElementById("ajaxcom").innerHTML =this.responseText;
       }
     };
     var seropel = "&idSeropel=" + idSeropel;
@@ -123,78 +135,68 @@
         episodes[0]=0;
         for(var i in text)
         episodes[i] = text[i];
-        season = document.commentaryform.season[document.commentaryform.season.selectedIndex].value ;
+        season = document.form.season[document.form.season.selectedIndex].value ;
         if (season != 0) {
         var num_episodes = episodes[season];
       	//marco el número de episodes en el select 
-      	document.commentaryform.episode.length = parseInt(num_episodes)+1 ;
+      	document.form.episode.length = parseInt(num_episodes)+1 ;
       	//para cada episode del array, la introduzco en el select 
       	for(i=1;i<parseInt(num_episodes)+1;i++){ 
-         	document.commentaryform.episode.options[i].value=i ;
-         	document.commentaryform.episode.options[i].text='Episodio '+i ;
+         	document.form.episode.options[i].value=i ;
+         	document.form.episode.options[i].text='Episodio '+i ;
                 if (i==epiact){
-                document.commentaryform.episode.options[i].selected=true;
+                document.form.episode.options[i].selected=true;
             }
       	}	
    	}else{ 
       	//si no había episode seleccionada, elimino las episodes del select 
-      	document.commentaryform.episode.length = 1 ;
+      	document.form.episode.length = 1 ;
       	//coloco un guión en la única opción que he dejado 
-      	document.commentaryform.episode.options[0].value = "0" ;
-      	document.commentaryform.episode.options[0].text = "Todos los Episodios" ;
-        document.commentaryform.episode.options[0].selected=true;
+      	document.form.episode.options[0].value = "0" ;
+      	document.form.episode.options[0].text = "Todos los Episodios" ;
+        document.form.episode.options[0].selected=true;
    	} 
   }
-    function episodechange(epiact,text){
+               function episodechange(epiact,text){
         var season ;
         var episodes = [];
         episodes[0]=0;
         for(var i in text)
         episodes[i] = text[i];
-        season = document.commentaryform.season[document.commentaryform.season.selectedIndex].value ;
-        if (season != 0) {
+        season = document.form.season[document.form.season.selectedIndex].value ;
+         if (season != 0) {
         var num_episodes = episodes[season];
       	//marco el número de episodes en el select 
-      	document.commentaryform.episode.length = parseInt(num_episodes)+1 ;
+      	document.form.episode.length = parseInt(num_episodes)+1 ;
       	//para cada episode del array, la introduzco en el select 
       	for(i=1;i<parseInt(num_episodes)+1;i++){ 
-         	document.commentaryform.episode.options[i].value=i ;
-         	document.commentaryform.episode.options[i].text='Episodio '+i ;
+         	document.form.episode.options[i].value=i ;
+         	document.form.episode.options[i].text='Episodio '+i ;
                 if (i==epiact){
-                document.commentaryform.episode.options[i].selected=true;
+                document.form.episode.options[i].selected=true;
             }
       	}	
    	}else{ 
       	//si no había episode seleccionada, elimino las episodes del select 
-      	document.commentaryform.episode.length = 1 ;
+      	document.form.episode.length = 1 ;
       	//coloco un guión en la única opción que he dejado 
-      	document.commentaryform.episode.options[0].value = "0" ;
-      	document.commentaryform.episode.options[0].text = "Todos los Episodios" ;
-        document.commentaryform.episode.options[0].selected=true;
+      	document.form.episode.options[0].value = "0" ;
+      	document.form.episode.options[0].text = "Todos los Episodios" ;
+        document.form.episode.options[0].selected=true;
    	} 
-}
- function modificaridCom(idCom){
-        var result ="<?php $comentario = Comentario::getId("+idCom+"); ?>"
-        document.write(result);
-}
- function eliminaridCom(idCom){
-        var result ="<?php $idCom="+idCom+"; ?>"
-        document.write(result);
 }
   function showMessage(success,msg){
       if (success==0){
-            document.getElementById("success").textContent = msg;
-             document.getElementById("success").style.display ="block";
-               setTimeout(function(){
-                    document.getElementById("success").style.display = "none";
-                },5000);
+            document.getElementById('success').innerHTML += msg;
+             document.getElementById('success').style.display = "block" ;
          }else{
-             document.getElementById("failure").textContent = msg;
-             document.getElementById("failure").style.display = "block";
-             setTimeout(function(){
-                    document.getElementById("failure").style.display = "none";
-                },5000);
+             document.getElementById('failure').innerHTML += msg;
+             document.getElementById('failure').style.display = "block" ;
          }
+  }
+   function hideMessage(){
+             document.getElementById('success').style.display = "none" ;
+             document.getElementById('failure').style.display = "none" ;
   }
 function sethidden(temporada){
      document.getElementById('temporada_' + temporada).style.display = document.getElementById('temporada_' + temporada).style.display == "none"?"block":"none";

@@ -19,8 +19,14 @@
     <div class="wrapper light-wrapper">
       <div class="container inner pt-60">
             <div class="blog grid grid-view boxed boxed-classic-view">
-                <div id="success" class="post box bg-success shadow" style="display:none; text-align: center; font-weight: bold;"></div>
-                <div id="failure" class="post box bg-warning shadow" style="display:none; text-align: center; font-weight: bold;"></div>
+   <div id="success" class="post box bg-pastel-green shadow" style="display:none; text-align: center; font-weight: bold; margin: 40px 0px; padding: 20px;"><button type="button" class="close" onclick="hideMessage()">
+                    <span class="fa fa-2x fa-close" style="padding: 0px; color: red;" aria-hidden="true"></span>
+                    <span class="sr-only">Cerrar</span>
+                </button></div>
+    <div id="failure" class="post box bg-pastel-red shadow" style="display:none; text-align: center; font-weight: bold; margin: 40px 0px; padding: 20px;"><button type="button" class="close" onclick="hideMessage()">
+                    <span class="fa fa-2x fa-close" style="padding: 0px; color: red;" aria-hidden="true"></span>
+                    <span class="sr-only">Cerrar</span>
+                </button></div>
               <div class="post">
                 <div class="box bg-white shadow">
                     <div class="row" style="width:100%">
@@ -29,14 +35,14 @@
         if (isset($_SESSION["usuario"])) { 
             if ($_SESSION["usuario"]->type==2||$_SESSION["usuario"]->type==0) {
                 $col="-10";?>
-                        <div class="col-1"><a class="dropdown-item" data-toggle="modal"  href="#modificarseropel"><i class="fa fa-4x fa-edit" style="padding: 0px; color: orange;"></i></a></div>
+                        <div class="col-1"><a class="dropdown-item" data-toggle="modal"  href="#modificarseropel" onfocus="modal('modificarseropel',<?php echo $detalle->getIdSeropel();?>,0)"><i class="fa fa-4x fa-edit" style="padding: 0px; color: orange;"></i></a></div>
 <?php } } ?>
             <figure class=" align-content-center col<?=$col?> mb-30 overlay overlay1 rounded"><img  style="    width: 430px;    aspect-ratio: auto 430 / 613;    height: 613px" src="<?=$detalle->getCover();?>">
                       </figure>
                     <?php
         if (isset($_SESSION["usuario"])) { 
             if ($_SESSION["usuario"]->type==2||$_SESSION["usuario"]->type==0) { ?>
-                        <div class="col-1"><a class="align-content-end dropdown-item" data-toggle="modal"  href="#eliminarseropel"><i class="fa fa-4x fa-trash" style="padding: 0px; color: orange;"></i></a></div>
+                        <div class="col-1"><a class="align-content-end dropdown-item" data-toggle="modal"  href="#eliminarseropel" onfocus="modal('eliminarseropel',<?php echo $detalle->getIdSeropel();?>,0)"><i class="fa fa-4x fa-trash" style="padding: 0px; color: orange;"></i></a></div>
 <?php } } ?>
                     </div>
                   <h2 class="post-title"><?=$detalle->getTitle();?></h2>
@@ -87,8 +93,6 @@
                               </td>
                           </tr>
               <?php
-              $temporada=1;
-              $episodes=[];
                 foreach($episodio as $item){
               ?>
                           <tr>
@@ -107,8 +111,7 @@
                           <tr><td colspan="2">
                       <table id="temporada_<?=$item->getSeason();?>" style="display:none; width:100%;">
                  <?php
-                    $episodes[$temporada]=$item->getEpisode();
-                        for($i=1;$i<=$episodes[$temporada];$i++){
+                        for($i=1;$i<=$item->getEpisode();$i++){
                  ?>
                           <tr>
                               <td style="width:100%;">
@@ -128,21 +131,22 @@
                           </td>
                       </tr>
              <?php
-             $temporada++;
                 }
               ?>
                     </table>
                 </div>
                 <!-- /.box -->
               </div>
-                <div id="ajax">             
+                <div id="ajaxcom">
             <?php
                 require_once "view/ajax.comentario.php";
           ?>
-                </div>
-                 <?php
-                require_once "assets/inc/modal.inc";
+                    </div>
+    <div id="ajaxmodal">
+                    <?php
+                require_once "view/modal.login.php";
           ?>
+    </div>
               <!-- /.post -->
             </div>
             <!-- /.blog -->
@@ -155,8 +159,16 @@
     ?>
   </div>
   <!-- /.content-wrapper -->
+
   <?php
         require_once "assets/inc/script.inc";
-  ?>
+  ?> <script type="text/javascript">
+         <?php
+      if (isset($success) && isset($msg)) {?>
+  showMessage(<?php echo $success;?>,'<?php echo $msg;?>');
+      <?php
+      }
+      ?>
+ </script>
 </body>
 </html>

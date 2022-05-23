@@ -322,5 +322,54 @@ class controllerAjax{
             $msg = "No se ha encontrado los Comentarios";
             require_once "view/ajax.comentario.php";
         }
-    }    
+    }
+        public static function login() {
+           require_once "view/modal.login.php";
+        }
+        public static function signin() {
+           require_once "view/modal.signin.php";
+        }
+        public static function modificarseropel() {
+            if (isset($_GET["idSeropel"])) {
+            $detalle = Seropel::detalle($_GET["idSeropel"]);
+            } else {
+            $detalle = "";
+            }
+            $categoria = Categoria::getAll();
+           require_once "view/modal.modificarseropel.php";
+        }
+        public static function eliminarseropel() {
+            if (isset($_GET["idSeropel"])) {
+            $detalle = Seropel::detalle($_GET["idSeropel"]);
+            } else {
+            $detalle = "";
+            }
+           require_once "view/modal.eliminarseropel.php";
+        }
+        public static function modificarcom() {
+            if (isset($_GET["idCom"])) {
+            $comentario = Comentario::getId($_GET["idCom"]);
+            } else {
+            $comentario = "";
+            }
+            if (isset($_GET["idSeropel"])) {
+            $detalle = Seropel::detalle($_GET["idSeropel"]);
+            } else {
+            $detalle = "";
+            }
+            if (isset($_GET["idSeropel"])) {
+            $episodio = Episodio::getSeropel($_GET["idSeropel"]);
+            } else {
+            $episodio = "";
+            }
+           require_once "view/modal.modificarcom.php";
+        }
+        public static function eliminarcom() {
+            if (isset($_GET["idCom"])) {
+            $idCom = $_GET["idCom"];
+            } else {
+            $idCom = "";
+            }
+           require_once "view/modal.eliminarcom.php";
+        }        
 }

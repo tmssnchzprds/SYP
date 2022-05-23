@@ -40,8 +40,8 @@
                     </div>
                     <!-- Modal Footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="submit" class="btn btn-primary submitBtn">Iniciar Sesión</button>
+                <button type="button" class="btn btn-orange btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-orange btn-primary submitBtn">Iniciar Sesión</button>
             </div>
                 </form>
             </div>
@@ -168,8 +168,8 @@ if (!isset($detalle)){
                 <div class="form-group">
                     <label for="tipo" style="width: 24%"><i class="fa fa-asterisk" style="padding: 0px; color: red;"></i>Tipo:</label>
                   <select id="tipo" name="tipo" style="width: 75%">
-                    <option value="1">Serie</option>
-                    <option value="2">Película</option>
+                    <option value="1" <?=$detalle->getType()==1?"selected":"";?>>Serie</option>
+                    <option value="2" <?=$detalle->getType()==2?"selected":"";?>>Película</option>
                 </select>
                     <div class="valid-feedback">
                         <i class="fa fa-2x fa-check" style="padding: 0px; color: green;"></i>
@@ -274,12 +274,13 @@ if (!isset($comentario)){
                   <select id='season' name='season' onchange='episodechange(<?php echo $comentario==""?0:$comentario->getEpisode();?>,<?php echo json_encode($episodes);?>)' required style='width: 75%'>
                         <option value="0" <?=$comentario==""?"selected":"";?>>Todas las temporadas</option>
                    <?php
+                   if ($episodio!=""){
                    foreach($episodio as $item){
                    $seas=$comentario==""?0:$comentario->getSeason()
                    ?>
                         <option value="<?=$item->getSeason();?>" <?=$seas==$item->getSeason()?"selected":"";?>>Temporada <?=$item->getSeason();?></option>
                     <?php
-                   }
+                   } }
                    ?>
                   </select>
                   <div class="valid-feedback">

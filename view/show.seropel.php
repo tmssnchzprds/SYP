@@ -18,14 +18,16 @@
   ?>
     <div class="wrapper light-wrapper">
       <div class="container inner pt-60">
-               <div id="ajax">             
+                             <div id="ajaxseropel">
             <?php
                 require_once "view/ajax.seropel.php";
           ?>
-                </div>
- <?php
-                require_once "assets/inc/modal.inc";
+               </div>
+    <div id="ajaxmodal">
+            <?php
+                require_once "view/modal.login.php";
           ?>
+    </div>
     </div>
       <!-- /.container -->
     </div>
@@ -35,16 +37,17 @@
     ?>
   </div>
   <!-- /.content-wrapper -->
-<script type="text/javascript">
-         <?php
-      if (isset($success) && isset($msg)) {?>
-  showMessage(<?=$success?>,'<?=$msg?>');
-      <?php
-      }
-      ?>
- </script> 
+ 
  <?php
         require_once "assets/inc/script.inc";
   ?>
+  <script type="text/javascript">
+         <?php
+      if (isset($success) && isset($msg)) {?>
+  showMessage(<?php echo $success;?>,'<?php echo $msg;?>');
+      <?php
+      }
+      ?>
+ </script>
 </body>
 </html>

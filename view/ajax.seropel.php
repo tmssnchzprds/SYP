@@ -16,10 +16,15 @@ for ($i = 0; $i < count($seropel), $i < count($arrayActual); ++$i) {
     $esUltima[$i] = ceil($cantseropel[$i] / PAGINACION) == $arrayActual[$i] || ceil($cantseropel[$i] / PAGINACION) == 0;
 }
 ?>
-<div id="cargar">
-    <div id="success" class="post box bg-pastel-green shadow" style="display:none; text-align: center; font-weight: bold; margin: 40px 0px; padding: 20px;"></div>
-    <div id="failure" class="post box bg-pastel-red shadow" style="display:none; text-align: center; font-weight: bold; margin: 40px 0px; padding: 20px;"></div>
-
+<div id="cargarseropel">
+    <div id="success" class="post box bg-pastel-green shadow" style="display:none; text-align: center; font-weight: bold; margin: 40px 0px; padding: 20px;"><button type="button" class="close"  onclick="hideMessage()">
+                    <span class="fa fa-2x fa-close" style="padding: 0px; color: red;" aria-hidden="true"></span>
+                    <span class="sr-only">Cerrar</span>
+                </button></div>
+    <div id="failure" class="post box bg-pastel-red shadow" style="display:none; text-align: center; font-weight: bold; margin: 40px 0px; padding: 20px;"><button type="button" class="close"  onclick="hideMessage()">
+                    <span class="fa fa-2x fa-close" style="padding: 0px; color: red;" aria-hidden="true"></span>
+                    <span class="sr-only">Cerrar</span>
+                </button></div>
 <?php
 for ($i = 0; $i < count($seropelPagina); ++$i) {
     $arrayActualAux = $arrayActual;
@@ -30,7 +35,7 @@ for ($i = 0; $i < count($seropelPagina); ++$i) {
         <?php
         if (isset($_SESSION["usuario"])) { 
             if ($_SESSION["usuario"]->type==2||$_SESSION["usuario"]->type==0) { ?>
-            <a class="col-1 dropdown-item"  data-toggle="modal"  href="#modificarseropel"><i class="fa fa-4x fa-plus-circle" style="padding: 0px; color: orange;"></i></a>
+            <a class="col-1 dropdown-item"  data-toggle="modal"  href="#modificarseropel" onfocus="modal('modificarseropel',0,0)"><i class="fa fa-4x fa-plus-circle" style="padding: 0px; color: orange;"></i></a>
 <?php } } ?>
         </div>
         <div class="row align-items-center">
@@ -97,14 +102,3 @@ for ($i = 0; $i < count($seropelPagina); ++$i) {
         }
         ?>
 </div>
- <script type="text/javascript">
-         <?php
-      if (isset($success) && isset($msg)) {?>
-  showMessage(<?=$success?>,'<?=$msg?>');
-      <?php
-      }
-      ?>
- </script>
-<?php
-    require_once "assets/inc/script.inc";
-?>

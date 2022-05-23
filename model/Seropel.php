@@ -74,7 +74,7 @@ class Seropel implements Generico{
     public function update()
     {
         $bd = Database::getInstance() ;
-        $bd->doQuery("UPDATE seropel SET tipo=:tipo, idCat=:idCat title=:title, description=:description, cover=:cover, date=:date WHERE idSeropel=:idSeropel ;",
+        $bd->doQuery("UPDATE seropel SET tipo=:tipo, idCat=:idCat, title=:title, description=:description, cover=:cover, date=:date WHERE idSeropel=:idSeropel ;",
             [":tipo"=>$this->tipo,
             ":idCat"=>$this->idCat,
             ":title"=>$this->title,

@@ -69,9 +69,10 @@ class controllerSeropel implements controllerGenerico {
                 $seropel->setDescription($_POST["description"]);
                 $seropel->setCover($_POST["cover"]);
                 $seropel->setDate($_POST["date"]);
+                
                 $seropel->update();
                 $success = 0;
-                $msg = "Se ha actualizado el registro correctamente.".$_POST["idSeropel"].$_POST["idCat"].$_POST["tipo"].$_POST["title"].$_POST["description"].$_POST["cover"].$_POST["date"];
+                $msg = "Se ha actualizado el registro correctamente.";
             } else {
                 $success = 1;
                 $msg = "No se ha podido actualizar el registro se ha producido un error";

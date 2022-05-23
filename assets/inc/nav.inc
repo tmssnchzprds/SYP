@@ -31,15 +31,15 @@
                 </ul>
             </li>
            <?php if (!isset($_SESSION["usuario"])) { ?>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="modal"  href="#login">Iniciar Sesión</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="modal"  href="#login" onfocus="modal('login',0,0)">Iniciar Sesión</a>
             <ul class="dropdown-menu">
-                    <li class="nav-item dropdown"><a class="dropdown-item"  data-toggle="modal" href="#signin">Registrarse</a>
+                <li class="nav-item dropdown"><a class="dropdown-item"  data-toggle="modal" href="#signin" onfocus="modal('signin',0,0)">Registrarse</a>
             </li>
             </ul></li>
             <?php } else { ?>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=Usuario&ope=logout">Cerrar Sesión</a>
             <ul class="dropdown-menu">
-                    <li class="nav-item dropdown"><a class="dropdown-item"  data-toggle="modal" href="#signin">Modificar Datos</a>
+                    <li class="nav-item dropdown"><a class="dropdown-item"  data-toggle="modal" href="#signin" onfocus="modal('signin',0,0)">Modificar Datos</a>
             </li>
             </ul></li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=Seropel&ope=milista">Mis Listas</a>
@@ -61,9 +61,9 @@
             </li>
             <?php } ?>
             <li class="nav-item dropdown"><form class="search-form nav-item"  action="index.php" method="GET" style="margin: 7px;" >
-                    <input id="mod" name="mod" type="hidden" value="Seropel">
-                    <input id="ope" name="ope" type="hidden" value="buscar">
-                    <input type="search" id="buscar" name="buscar" class="form-control" >
+                    <input name="mod" type="hidden" value="Seropel">
+                    <input name="ope" type="hidden" value="buscar">
+                    <input type="search" name="buscar" class="form-control" >
                 <!-- /.form-group -->
               </form></li>
           </ul>        
