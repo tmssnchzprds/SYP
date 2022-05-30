@@ -1,6 +1,8 @@
 <?php
 require_once "controller/controller.Generico.php" ;
 require_once "model/Episodio.php" ;
+require_once "model/Seropel.php" ;
+require_once "model/Categoria.php" ;
 require_once "model/Sesion.php" ;
 
 class controllerEpisodio implements controllerGenerico{
@@ -35,7 +37,7 @@ class controllerEpisodio implements controllerGenerico{
             $msg = "Se ha creado el registro correctamente";
         } else {
              $success = 1;
-             $msg = "No se ha podido crear el usuario se ha producido un error";
+             $msg = "No se ha podido insertar el registro se ha producido un error";
         }
         $caption[0] = "Series Añadidas Recientemente";
         $seropel[0] = Seropel::listaactual(1);
@@ -78,13 +80,14 @@ class controllerEpisodio implements controllerGenerico{
         require_once "view/show.seropel.php";
     }
     public function delete(){
-        if (isset($_POST["idEpi"])) {
-            Episodio::delete($_POST["idEpi"]) ;
+        if (isset($_POST["idSeropel"]) && ($_POST["season"])) {
+            $episodio = Episodio::getbySeason($_POST["idSeropel"] , $_POST["season"]);
+            Episodio::delete($episodio->getIdEpi());
             $success = 0;
-            $msg = "Se ha eliminado el comentario correctamente";
+            $msg = "Se ha eliminado el registro correctamente";
 	} else {
             $success = 1;
-            $msg = "No se ha podido eliminar el comentario se ha producido un error";
+            $msg = "No se ha podido eliminar el registro se ha producido un error";
 	}
         $caption[0] = "Series Añadidas Recientemente";
         $seropel[0] = Seropel::listaactual(1);

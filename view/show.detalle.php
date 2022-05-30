@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,6 +10,30 @@
   <?php
         require_once "assets/inc/stylesheet.inc";
   ?>
+  <style>
+      
+.botones input[type="radio"] {
+  display: none !important;
+}
+
+.botones label {
+  color: grey;
+}
+
+.clasificado {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+.botones label:hover,
+label:hover ~ label {
+  color: orange !important;
+}
+
+.botones input[type="radio"]:checked ~ label {
+  color: orange !important;
+}
+  </style>
 </head>
 <body>
   <div class="content-wrapper">
@@ -35,14 +60,14 @@
         if (isset($_SESSION["usuario"])) { 
             if ($_SESSION["usuario"]->type==2||$_SESSION["usuario"]->type==0) {
                 $col="-10";?>
-                        <div class="col-1"><a class="dropdown-item" data-toggle="modal"  href="#modificarseropel" onfocus="modal('modificarseropel',<?php echo $detalle->getIdSeropel();?>,0)"><i class="fa fa-4x fa-edit" style="padding: 0px; color: orange;"></i></a></div>
+                        <div class="col-1"><a class="dropdown-item"  href="#" onclick="modal('modificarseropel',<?php echo $detalle->getIdSeropel();?>,0)"><i class="fa fa-4x fa-edit" style="padding: 0px; color: orange;"></i></a></div>
 <?php } } ?>
             <figure class=" align-content-center col<?=$col?> mb-30 overlay overlay1 rounded"><img  style="    width: 430px;    aspect-ratio: auto 430 / 613;    height: 613px" src="<?=$detalle->getCover();?>">
                       </figure>
                     <?php
         if (isset($_SESSION["usuario"])) { 
             if ($_SESSION["usuario"]->type==2||$_SESSION["usuario"]->type==0) { ?>
-                        <div class="col-1"><a class="align-content-end dropdown-item" data-toggle="modal"  href="#eliminarseropel" onfocus="modal('eliminarseropel',<?php echo $detalle->getIdSeropel();?>,0)"><i class="fa fa-4x fa-trash" style="padding: 0px; color: orange;"></i></a></div>
+                        <div class="col-1"><a class="align-content-end dropdown-item" href="#" onclick="modal('eliminarseropel',<?php echo $detalle->getIdSeropel();?>,0)"><i class="fa fa-4x fa-trash" style="padding: 0px; color: orange;"></i></a></div>
 <?php } } ?>
                     </div>
                   <h2 class="post-title"><?=$detalle->getTitle();?></h2>
@@ -52,38 +77,83 @@
                   <!-- /.post-content -->
                   <hr />
                   <div class="meta meta-footer d-flex mb-0">
-                      <span style="width: 25%"><?=$detalle->getTipo()==1?"Serie":"";?></span>
+                      <span style="width: 30%"><?=$detalle->getTipo()==1?"Serie":"Pelicula";?></span>
                       <span style="width: 30%"> <?=$detalle->getCategoria();?> </span>
-                      <div style="width: 25%;">
-                                            <div class="row">
+                      <div style="width: 20%;">
                                                 <?php
+                                                 if (isset($_SESSION["usuario"])) {
+                                                     ?>
+                                                <form class="comment-form needs-validation botones" id="clasificacion" action="index.php" method="POST" role="form" style="display: block;">
+                                                    <input name="mod" type="hidden" value="Puntuacion">
+                                                    <input name="ope" type="hidden" value="<?=$puntuacion==false?"insert":"update"?>">
+                                                    <input name="idUsu" type="hidden" value="<?=$_SESSION["usuario"]->idUsu?>">
+                                                    <input name="idSeropel" type="hidden" value="<?=$detalle->getIdSeropel();?>">
+                                                    <input name="season" type="hidden" value="<?=$puntuacion==false?"0":$puntuacion->getSeason()?>">
+                                                    <input name="episode" type="hidden" value="<?=$puntuacion==false?"0":$puntuacion->getEpisode()?>">
+                                                    <input name="idEst" type="hidden" value="<?=$puntuacion==false?"0":$puntuacion->getIdEst()?>">
+                                                    <input name="idScore" type="hidden" value="<?=$puntuacion==false?"":$puntuacion->getIdScore()?>">
+                                                    <p class="clasificado">
+                                                         <?php
+                                                     for ($j = 5; $j >= 1; --$j){ 
+                                                         ?>
+                                                      <input id="radio<?=$j?>" type="radio" name="score" value="<?=$j?>" <?=$puntuacion==false?"":($puntuacion->getScore()>$j&&$puntuacion->getScore()<$j+1?"selected":"")?> onchange="actualizar('clasificacion')">
+                                                      <label for="radio<?=$j?>"><i class="fa fa-2x fa-star" style="padding: 0px;"></i></label>
+                                                      <?php
+                                                     }
+                                                     ?>
+                                                    </p>
+           
+                                                </form>
+                                                <?php } else {
                                                 for ($j = 1; $j <= 5; ++$j){
                                                     if ($j>$detalle->getValoracion()) {
                                                 ?>
-                                                <i class="col fa fa-2x fa-star" aria-hidden="true" style="padding: 0px;"></i>
+                                                <i class="fa fa-2x fa-star" style="padding: 0px;"></i>
                                                     <?php
                                                     } else {
                                                     ?>
-                                                <i class="col fa fa-2x fa-star" aria-hidden="true" style="padding: 0px; color: orange;"></i>
+                                                <i class="fa fa-2x fa-star" style="padding: 0px; color: orange;"></i>
                                                 <?php
                                                     }
-                                                }
-                                               if (isset($_SESSION["usuario"])) { 
-                                                ?>
-                                                <div class="col"><i class="fa fa-2x fa-clock-o" style="padding: 0px; color: orange;"></i>
-                                                <i class="fa fa-2x fa-eye" style="padding: 0px; color: orange;"></i>
-                                                <i class="fa fa-2x fa-check-circle-o" style="padding: 0px; color: orange;"></i></div>
-                                                <?php } ?>
+                                                }    } ?>
                                             </div>
-                                        </div>
+                      <div style="width: 20%;">
+                      <?php
+                                                 if (isset($_SESSION["usuario"])) {
+                                                     ?>
+                                                <form class="comment-form needs-validation botones" id="estado" action="index.php" method="POST" role="form" style="display: block;">
+                                                    <input name="mod" type="hidden" value="Puntuacion">
+                                                    <input name="ope" type="hidden" value="<?=$puntuacion==false?"insert":"update"?>">
+                                                    <input name="idUsu" type="hidden" value="<?=$_SESSION["usuario"]->idUsu?>">
+                                                    <input name="idSeropel" type="hidden" value="<?=$detalle->getIdSeropel();?>">
+                                                    <input name="season" type="hidden" value="<?=$puntuacion==false?"0":$puntuacion->getSeason()?>">
+                                                    <input name="episode" type="hidden" value="<?=$puntuacion==false?"0":$puntuacion->getEpisode()?>">
+                                                    <input name="score" type="hidden" value="<?=$puntuacion==false?"0":$puntuacion->getScore()?>">
+                                                    <input name="idScore" type="hidden" value="<?=$puntuacion==false?"":$puntuacion->getIdScore()?>">
+                                                    <p class="clasificado">
+                                                      <input id="radio9" type="radio" name="idEst" value="3" <?=$puntuacion==false?"":($puntuacion->getIdEst()==3?"selected":"");?> onchange="actualizar('estado')">
+                                                      <label for="radio9" ><i class="fa fa-2x fa-check-circle-o" style="padding: 0px;"></i></label>
+                                                      <input id="radio8" type="radio" name="idEst" value="2" <?=$puntuacion==false?"":($puntuacion->getIdEst()==2?"selected":"");?> onchange="actualizar('estado')">
+                                                      <label for="radio8"><i class="fa fa-2x fa-eye" style="padding: 0px;"></i></label>
+                                                      <input id="radio7" type="radio" name="idEst" value="1" <?=$puntuacion==false?"":($puntuacion->getIdEst()==1?"selected":"");?> onchange="actualizar('estado')">
+                                                      <label for="radio7"><i class="fa fa-2x fa-clock-o" style="padding: 0px;"></i></label>
+                                                      <?php if ($puntuacion!=false) {?>
+                                                      <input id="radio6" type="radio" name="idEst" value="0" <?=$puntuacion==false?"":($puntuacion->getIdEst()==0?"selected":"");?> onchange="actualizar('estado')">
+                                                      <label for="radio6"><i class="fa fa-2x fa-close" style="padding: 0px; color: orange;"></i></label>
+                                                              <?php } ?>
+                                                    </p>
+                                                </form>
+                                                 <?php } ?>
+                      </div>
                    </div>
                 </div>
               </div>
+                <?php if ($detalle->getTipo()==1){?>
                                 <div class="post">
                 <div class="box bg-white shadow">
                     <table style="width: 100%">
                         <tr>
-                              <td style="width:100%">
+                            <td colspan="3" style="width:100%">
                                   <h2 class="post-title">Capítulos</h2>
                               </td>
                               <td>
@@ -93,37 +163,142 @@
                               </td>
                           </tr>
               <?php
+              $e=0;
                 foreach($episodio as $item){
+                    $e++;
               ?>
                           <tr>
-                              <td colspan="2" style=" width:100%;">
+                              <td colspan="4" style=" width:100%;">
                                  <hr/>
                               </td>
                           </tr>
                           <tr>
-                              <td style="width:100%;" onclick="sethidden(<?=$item->getSeason();?>)"><div class="meta meta-footer d-flex mb-0"><span id="span_<?=$item->getSeason();?>" class="fa fa-2x fa-arrow-circle-o-down" style="padding:8px; color: orange;"></span> Temporada <?=$item->getSeason();?></div></td>
-                              <td>
-                                  <div class="col-md-0"  onclick="comentarios(<?=$detalle->getIdSeropel();?>,<?=$item->getSeason();?>,0)">
+                              <td style="width:50%;" onclick="sethidden(<?=$item->getSeason();?>)"><div class="meta meta-footer d-flex mb-0"><span id="span_<?=$item->getSeason();?>" class="fa fa-2x fa-arrow-circle-o-down" style="padding:8px; color: orange;"></span> Temporada <?=$item->getSeason();?></div></td>
+                              <td style="width:25%;">
+                                                <?php
+                                                 if (isset($_SESSION["usuario"])) {
+                                                     $puntuacions = Puntuacion::getPuntuacions($detalle->getIdSeropel(),$_SESSION["usuario"]->idUsu,$item->getSeason());
+                                                     ?>
+                                                <form class="comment-form needs-validation botones" id="clasificacions<?=$item->getSeason();?>" action="index.php" method="POST" role="form" style="display: block;">
+                                                    <input name="mod" type="hidden" value="Puntuacion">
+                                                    <input name="ope" type="hidden" value="<?=$puntuacions==false?"insert":"update"?>">
+                                                    <input name="idUsu" type="hidden" value="<?=$_SESSION["usuario"]->idUsu?>">
+                                                    <input name="idSeropel" type="hidden" value="<?=$detalle->getIdSeropel();?>">
+                                                    <input name="season" type="hidden" value="<?=$puntuacions==false?$item->getSeason():$puntuacions->getSeason()?>">
+                                                    <input name="episode" type="hidden" value="<?=$puntuacions==false?"0":$puntuacions->getEpisode()?>">
+                                                    <input name="idEst" type="hidden" value="<?=$puntuacions==false?"0":$puntuacions->getIdEst()?>">
+                                                    <input name="idScore" type="hidden" value="<?=$puntuacions==false?"":$puntuacions->getIdScore()?>">
+                                                    <p class="clasificado">
+                                                         <?php
+                                                     for ($j = 5; $j >= 1; --$j){ 
+                                                         ?>
+                                                      <input id="radio<?=$j?>" type="radio" name="score" value="<?=$j?>" <?=$puntuacions==false?"":($puntuacions->getScore()>$j&&$puntuacions->getScore()<$j+1?"selected":"")?> onchange="actualizar('clasificacions<?=$item->getSeason();?>')">
+                                                      <label for="radio<?=$j?>"><i class="fa fa-2x fa-star" style="padding: 0px;"></i></label>
+                                                      <?php
+                                                     }
+                                                     ?>
+                                                    </p>
+           
+                                                </form>
+                                                <?php } ?>
+                              </td><td  style="width:10%;">
+                      <?php
+                                                 if (isset($_SESSION["usuario"])) {
+                                                     ?>
+                                                <form class="comment-form needs-validation botones" id="estados<?=$item->getSeason();?>" action="index.php" method="POST" role="form" style="display: block;">
+                                                    <input name="mod" type="hidden" value="Puntuacion">
+                                                    <input name="ope" type="hidden" value="<?=$puntuacions==false?"insert":"update"?>">
+                                                    <input name="idUsu" type="hidden" value="<?=$_SESSION["usuario"]->idUsu?>">
+                                                    <input name="idSeropel" type="hidden" value="<?=$detalle->getIdSeropel();?>">
+                                                    <input name="season" type="hidden" value="<?=$puntuacions==false?$item->getSeason():$puntuacions->getSeason()?>">
+                                                    <input name="episode" type="hidden" value="<?=$puntuacions==false?"0":$puntuacions->getEpisode()?>">
+                                                    <input name="score" type="hidden" value="<?=$puntuacions==false?"0":$puntuacions->getScore()?>">
+                                                    <input name="idScore" type="hidden" value="<?=$puntuacions==false?"":$puntuacions->getIdScore()?>">
+                                                    <p class="clasificado">
+                                                      <input id="radio9" type="radio" name="idEst" value="4" <?=$puntuacions==false?"":($puntuacions->getIdEst()==4?"selected":"");?> onchange="actualizar('estados<?=$item->getSeason();?>')">
+                                                      <label for="radio9" ><i class="fa fa-2x fa-check" style="padding: 0px;"></i></label>
+                                                   <?php if ($puntuacions!=false) {?>
+                                                      <input id="radio6" type="radio" name="idEst" value="0" <?=$puntuacions==false?"":($puntuacions->getIdEst()==0?"selected":"");?> onchange="actualizar('estados<?=$item->getSeason();?>')">
+                                                      <label for="radio6"><i class="fa fa-2x fa-close" style="padding: 0px; color: orange;"></i></label>
+                                                              <?php } ?>
+                                                    </p>
+                                                </form>
+                                                 <?php } ?>
+                              </td>
+                              <td style="width:5%;">
+                                  <div  onclick="comentarios(<?=$detalle->getIdSeropel();?>,<?=$item->getSeason();?>,0)">
                                     <i class="fa fa-2x fa-comment" style="padding: 0px; color: orange;"></i>
                                   </div>
                                </td>
                           </tr>
-                          <tr><td colspan="2">
+                          <tr><td colspan="4" style="width:100%;">
                       <table id="temporada_<?=$item->getSeason();?>" style="display:none; width:100%;">
                  <?php
                         for($i=1;$i<=$item->getEpisode();$i++){
                  ?>
                           <tr>
-                              <td style="width:100%;">
+                              <td colspan="4" style="width:100%;">
                                  <hr style="padding: 0;margin: 0;" />
                               </td><td></td>
                           </tr>
-                          <tr><td style="width:100%;"><div class="meta meta-footer d-flex mb-0">&nbsp;&nbsp;&nbsp;&nbsp; Episodio <?=$i;?></div></td>
-                              <td>
-                                  <div class="col-md-0"  onclick="comentarios(<?=$detalle->getIdSeropel();?>,<?=$item->getSeason();?>,<?=$i;?>)">
+                          <tr><td style="width:60%;"><div class="meta meta-footer d-flex mb-0">&nbsp;&nbsp;&nbsp;&nbsp; Episodio <?=$i;?></div></td>
+                              <td style="width:25%;">
+                                                <?php
+                                                 if (isset($_SESSION["usuario"])) {
+                                                     $puntuacione = Puntuacion::getPuntuacione($detalle->getIdSeropel(),$_SESSION["usuario"]->idUsu,$item->getSeason(),$i);
+                                                     ?>
+                                                <form class="comment-form needs-validation botones" id="clasificacions<?=$item->getSeason();?>e<?=$i?>" action="index.php" method="POST" role="form" style="display: block;">
+                                                    <input name="mod" type="hidden" value="Puntuacion">
+                                                    <input name="ope" type="hidden" value="<?=$puntuacione==false?"insert":"update"?>">
+                                                    <input name="idUsu" type="hidden" value="<?=$_SESSION["usuario"]->idUsu?>">
+                                                    <input name="idSeropel" type="hidden" value="<?=$detalle->getIdSeropel();?>">
+                                                    <input name="season" type="hidden" value="<?=$puntuacione==false?$item->getSeason():$puntuacione->getSeason()?>">
+                                                    <input name="episode" type="hidden" value="<?=$puntuacione==false?$i:$puntuacione->getEpisode()?>">
+                                                    <input name="idEst" type="hidden" value="<?=$puntuacione==false?"0":$puntuacione->getIdEst()?>">
+                                                    <input name="idScore" type="hidden" value="<?=$puntuacione==false?"":$puntuacione->getIdScore()?>">
+                                                    <p class="clasificado">
+                                                         <?php
+                                                     for ($j = 5; $j >= 1; --$j){ 
+                                                         ?>
+                                                      <input id="radio<?=$j?>" type="radio" name="score" value="<?=$j?>" <?=$puntuacione==false?"":($puntuacione->getScore()>$j&&$puntuacione->getScore()<$j+1?"selected":"")?> onchange="actualizar('clasificacions<?=$item->getSeason();?>e<?=$i?>')">
+                                                      <label for="radio<?=$j?>"><i class="fa  fa-star" style="padding: 0px;"></i></label>
+                                                      <?php
+                                                     }
+                                                     ?>
+                                                    </p>
+           
+                                                </form>
+                                                <?php } ?>
+                              </td>
+                              <td style="width:10%;">
+                      <?php
+                                                 if (isset($_SESSION["usuario"])) {
+                                                     ?>
+                                                <form class="comment-form needs-validation botones" id="estados<?=$item->getSeason();?>e<?=$i?>" action="index.php" method="POST" role="form" style="display: block;">
+                                                    <input name="mod" type="hidden" value="Puntuacion">
+                                                    <input name="ope" type="hidden" value="<?=$puntuacione==false?"insert":"update"?>">
+                                                    <input name="idUsu" type="hidden" value="<?=$_SESSION["usuario"]->idUsu?>">
+                                                    <input name="idSeropel" type="hidden" value="<?=$detalle->getIdSeropel();?>">
+                                                    <input name="season" type="hidden" value="<?=$puntuacione==false?$item->getSeason():$puntuacione->getSeason()?>">
+                                                    <input name="episode" type="hidden" value="<?=$puntuacione==false?$i:$puntuacione->getEpisode()?>">
+                                                    <input name="score" type="hidden" value="<?=$puntuacione==false?"0":$puntuacione->getScore()?>">
+                                                    <input name="idScore" type="hidden" value="<?=$puntuacione==false?"":$puntuacione->getIdScore()?>">
+                                                    <p class="clasificado">
+                                                      <input id="radio9" type="radio" name="idEst" value="4" <?=$puntuacione==false?"":($puntuacione->getIdEst()==4?"selected":"");?> onchange="actualizar('estados<?=$item->getSeason();?>e<?=$i?>'))">
+                                                      <label for="radio9" ><i class="fa  fa-check" style="padding: 0px;"></i></label>
+                                                      <?php if ($puntuacion!=false) {?>
+                                                      <input id="radio6" type="radio" name="idEst" value="0" <?=$puntuacione==false?"":($puntuacione->getIdEst()==0?"selected":"");?> onchange="actualizar('estados<?=$item->getSeason();?>e<?=$i?>')">
+                                                      <label for="radio6"><i class="fa  fa-close" style="padding: 0px; color: orange;"></i></label>
+                                                              <?php } ?>
+                                                    </p>
+                                                </form>
+                                                 <?php } ?>
+                              </td>
+                              <td style="width:5%;">
+                                  <div onclick="comentarios(<?=$detalle->getIdSeropel();?>,<?=$item->getSeason();?>,<?=$i;?>)">
                                      <i class="fa fa-comment" style="padding: 0px; color: orange;"></i>
                                   </div>
-                              </td></tr>
+                              </td><td></td></tr>
                 <?php
                 }
                 ?>
@@ -132,11 +307,66 @@
                       </tr>
              <?php
                 }
+                if (isset($_SESSION["usuario"])){
+                if($_SESSION["usuario"]->type==2||$_SESSION["usuario"]->type==0){
               ?>
+                                                <tr>
+                              <td colspan="4" style=" width:100%;">
+                                 <hr/>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td style="width:50%;"><div class="meta meta-footer d-flex mb-0">Eliminar Ultima Temporada</div></td>
+                              <td colspan="3" style="width:50%;">
+                                   <form class="comment-form needs-validation botones" id="añadirepisodio" action="index.php" method="POST" role="form" style="display: block;">
+                                       <div class="row">
+                                       <input name="mod" type="hidden" value="Episodio">
+                                                    <input name="ope" type="hidden" value="delete">
+                                                    <input name="idSeropel" type="hidden" value="<?=$detalle->getIdSeropel();?>">
+                                                    <input name="season" type="hidden" value="<?=$e?>">
+                                                    <div class="col-md-2">
+                                                        <i class="fa fa-3x fa-trash" onclick="actualizar('añadirepisodio')" style="padding: 0px; color: orange;"></i>
+                                                    </div></div>
+                                   </form>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td colspan="4" style=" width:100%;">
+                                 <hr/>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td style="width:50%;"><div class="meta meta-footer d-flex mb-0">Añadir Temporada <?=$e+1;?></div></td>
+                              <td colspan="3" style="width:50%;">
+                                   <form class="comment-form needs-validation botones" id="eliminarepisodio" action="index.php" method="POST" role="form" style="display: block;">
+                                       <div class="row">
+                                       <input name="mod" type="hidden" value="Episodio">
+                                                    <input name="ope" type="hidden" value="insert">
+                                                    <input name="idSeropel" type="hidden" value="<?=$detalle->getIdSeropel();?>">
+                                                    <input name="season" type="hidden" value="<?=$e+1?>">
+                                                        <div class="col-md-4">
+                                                    <label for="episode"><i class="fa fa-asterisk" style="padding: 0px; color: red;"></i>Nº de Episodios:</label>
+                                                        </div><div class="col-md-6">
+                                                            <input name="episode" type="number" id="episode" class="form-control" min="1" step="1" pattern="^[0-9]+" required>
+                                                    <div class="valid-feedback">
+                        <i class="fa fa-2x fa-check" style="padding: 0px; color: green;"></i>
+                        </div>
+                        <div class="invalid-feedback">
+                        <i class="fa fa-2x fa-close" style="padding: 0px; color: red;"></i>Debe introducir un valor
+                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <i class="fa fa-3x fa-plus-circle" onclick="eliminar('eliminarepisodio')" style="padding: 0px; color: orange;"></i>
+                                                    </div></div>
+                                   </form>
+                              </td>
+                          </tr>
+                <?php } } ?>
                     </table>
                 </div>
                 <!-- /.box -->
               </div>
+                <?php } ?>
                 <div id="ajaxcom">
             <?php
                 require_once "view/ajax.comentario.php";
@@ -162,7 +392,8 @@
 
   <?php
         require_once "assets/inc/script.inc";
-  ?> <script type="text/javascript">
+  ?>
+  <script type="text/javascript">
          <?php
       if (isset($success) && isset($msg)) {?>
   showMessage(<?php echo $success;?>,'<?php echo $msg;?>');

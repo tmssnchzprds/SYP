@@ -5,6 +5,7 @@ require_once "model/Seropel.php";
 require_once "model/Categoria.php";
 require_once "model/Episodio.php";
 require_once "model/Comentario.php";
+require_once "model/Puntuacion.php";
 require_once "model/Sesion.php";
 
 class controllerSeropel implements controllerGenerico {
@@ -459,12 +460,15 @@ public static function buscar() {
     public static function detalle() {
         if (isset($_GET["idSeropel"])) {
             $detalle = Seropel::detalle($_GET["idSeropel"]);
+            if (isset($_SESSION["usuario"])){
+                
+               $puntuacion = Puntuacion::getPuntuacion($_GET["idSeropel"],$_SESSION["usuario"]->idUsu);
+            }
             $categoria = Categoria::getAll();
             $comentarios = Comentario::comentarioSeropel($_GET["idSeropel"]);
             $cantcomentario = count($comentarios);
                 if ($cantcomentario != 0) {
                     $comentarios_title = " Todos los Comentarios";
-
                 } else {
                     $comentarios_title = " No hay Comentarios";
                 }

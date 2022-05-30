@@ -7,7 +7,7 @@ foreach($episodio as $item){
 }
 ?>
 <div id="cargarmodal">
-<div class="modal fade" id="modificarcom" role="dialog">
+<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
@@ -32,10 +32,12 @@ foreach($episodio as $item){
                     <?php } ?>
                     <?php if ($detalle!=""){ ?>
                     <input id="idSeropel" name="idSeropel" type="hidden" value="<?=$comentario==""?$detalle->getIdSeropel():$comentario->getIdSeropel();?>">
-                    <?php }?>
+                    <?php }
+                    if($detalle->getTipo()==1) {
+                    ?>
                     <div class="form-group">
                   <label for="season" style="width: 24%"><i class="fa fa-asterisk" style="padding: 0px; color: red;"></i>Temporada:</label>
-                  <select id='season' name='season' onchange='episodechange(<?php echo $comentario==""?0:$comentario->getEpisode();?>,<?php echo json_encode($episodes);?>)' required style='width: 75%'>
+                  <select id='season'  class="pwds pwds1" name='season' onchange='episodechange(<?php echo $comentario==""?0:$comentario->getEpisode();?>,<?php echo json_encode($episodes);?>)' required style='width: 75%'>
                         <option value="0" <?=$comentario==""?"selected":"";?>>Todas las temporadas</option>
                    <?php
                    foreach($episodio as $item){
@@ -46,25 +48,26 @@ foreach($episodio as $item){
                    }
                    ?>
                   </select>
-                  <div class="valid-feedback">
+                  <div id="seasonValid" class="valid-feedback">
                         <i class="fa fa-2x fa-check" style="padding: 0px; color: green;"></i>
                         </div>
-                        <div class="invalid-feedback">
+                        <div id="seasonInvalid" class="invalid-feedback">
                         <i class="fa fa-2x fa-close" style="padding: 0px; color: red;"></i>Debe elegir una Temporada
                         </div>
                     </div>
                     <div class="form-group">
                   <label for="episode" style="width: 24%"><i class="fa fa-asterisk" style="padding: 0px; color: red;"></i>Capítulo:</label>
-                  <select id="episode" name="episode" required style="width: 75%">
+                  <select id="episode"  class="pwds pwds2" name="episode" required style="width: 75%">
                       <option value="0" <?=$comentario==""?"selected":"";?>>Todos los episodios</option>
                 </select>
-                  <div class="valid-feedback">
+                  <div id="episodeValid" class="valid-feedback">
                         <i class="fa fa-2x fa-check" style="padding: 0px; color: green;"></i>
                         </div>
-                        <div class="invalid-feedback">
+                        <div id="episodeInvalid" class="invalid-feedback">
                         <i class="fa fa-2x fa-close" style="padding: 0px; color: red;"></i>Debe elegir un Capítulo
                         </div>
                     </div>
+                    <?php } ?>
                     <div class="form-group">
                         <label for="description" style="width: 24%"><i class="fa fa-asterisk" style="padding: 0px; color: red;"></i>Comentario:</label>
                         <textarea name="commentary" class="form-control" style="width: 75%" id="commentary" rows="5" required placeholder="Escribe aquí el comentario ..."><?=$comentario==""?"":$comentario->getCommentary();?></textarea>
@@ -78,7 +81,7 @@ foreach($episodio as $item){
                     <!-- Modal Footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary submitBtn"><?=$comentario==""?"Añadir":"Modificar"?></button>
+                <button type="submit"  id="submitBtn2" class="btn btn-primary submitBtn"><?=$comentario==""?"Añadir":"Modificar"?></button>
             </div>
                 </form>
             </div>

@@ -62,6 +62,7 @@ $(document).ready(function(){
             $("#submitBtn").attr("disabled", !is_valid);
           });
         });
+        $ ('#myModal').modal('show');
  });
       }
     };
@@ -129,34 +130,6 @@ $(document).ready(function(){
     xmlhttp.open("GET", "index.php?mod=Ajax"+ operacion + seropel + temporada + episodio, true);
     xmlhttp.send();
   }
-  function episodeclick(epiact,text){
-        var season ;
-        var episodes = [];
-        episodes[0]=0;
-        for(var i in text)
-        episodes[i] = text[i];
-        season = document.form.season[document.form.season.selectedIndex].value ;
-        if (season != 0) {
-        var num_episodes = episodes[season];
-      	//marco el número de episodes en el select 
-      	document.form.episode.length = parseInt(num_episodes)+1 ;
-      	//para cada episode del array, la introduzco en el select 
-      	for(i=1;i<parseInt(num_episodes)+1;i++){ 
-         	document.form.episode.options[i].value=i ;
-         	document.form.episode.options[i].text='Episodio '+i ;
-                if (i==epiact){
-                document.form.episode.options[i].selected=true;
-            }
-      	}	
-   	}else{ 
-      	//si no había episode seleccionada, elimino las episodes del select 
-      	document.form.episode.length = 1 ;
-      	//coloco un guión en la única opción que he dejado 
-      	document.form.episode.options[0].value = "0" ;
-      	document.form.episode.options[0].text = "Todos los Episodios" ;
-        document.form.episode.options[0].selected=true;
-   	} 
-  }
                function episodechange(epiact,text){
         var season ;
         var episodes = [];
@@ -201,4 +174,23 @@ $(document).ready(function(){
 function sethidden(temporada){
      document.getElementById('temporada_' + temporada).style.display = document.getElementById('temporada_' + temporada).style.display == "none"?"block":"none";
      document.getElementById('span_' + temporada).className = document.getElementById('span_' + temporada).className == "fa fa-2x fa-arrow-circle-o-down"?"fa fa-2x fa-arrow-circle-o-up":"fa fa-2x fa-arrow-circle-o-down";
+}
+function actualizar(formulario)
+{
+  //obtengo mi formulario por ID
+   form = document.getElementById(formulario); 
+    //hago el submit
+    form.submit();
+}
+function eliminar(formulario)
+{
+  //obtengo mi formulario por ID
+   form = document.getElementById(formulario);
+  //MUESTRO CONFIRMACION PARA HACER EL SUBMIT
+  confirm = confirm('Esta operación no de puede desacer está seguro de que desea eliminar los datos?');
+  if(confirm == true)
+  { 
+    //hago el submit
+    form.submit();
+  }
 }

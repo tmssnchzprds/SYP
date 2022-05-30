@@ -1,6 +1,6 @@
 <div id="cargarmodal">
 <!-- Modal -->
-<div class="modal fade" id="modificarseropel" role="dialog">
+<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->

@@ -1,6 +1,6 @@
 <div id="cargarmodal">
 <!-- Modal -->
-<div class="modal fade" id="eliminarseropel" role="dialog">
+<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
@@ -17,8 +17,8 @@
                 <form class="comment-form" id="form" action="index.php" method="POST" role="form" style="display: block;">
                     <input id="mod" name="mod" type="hidden" value="Seropel">
                     <input id="ope" name="ope" type="hidden" value="delete">
-                    <?php if ($detalle!="") { ?>
-                     <input id="idSeropel" name="idSeropel" type="hidden" value="<?=$detalle->getIdSeropel();?>">
+                    <?php if ($idSeropel!="") { ?>
+                     <input id="idSeropel" name="idSeropel" type="hidden" value="<?=$idSeropel;?>">
                     <?php } ?>
                     <p> Esta operación no se puede desacer, ¿Está Seguro?</p>
                     <!-- Modal Footer -->

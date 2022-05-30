@@ -370,6 +370,11 @@ class controllerAjax{
             } else {
             $idCom = "";
             }
+            if (isset($_GET["idSeropel"])) {
+            $idSeropel = $_GET["idSeropel"];
+            } else {
+            $idSeropel = "";
+            }
            require_once "view/modal.eliminarcom.php";
         }        
 }

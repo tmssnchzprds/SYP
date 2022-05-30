@@ -35,7 +35,7 @@ for ($i = 0; $i < count($seropelPagina); ++$i) {
         <?php
         if (isset($_SESSION["usuario"])) { 
             if ($_SESSION["usuario"]->type==2||$_SESSION["usuario"]->type==0) { ?>
-            <a class="col-1 dropdown-item"  data-toggle="modal"  href="#modificarseropel" onfocus="modal('modificarseropel',0,0)"><i class="fa fa-4x fa-plus-circle" style="padding: 0px; color: orange;"></i></a>
+            <a class="col-1 dropdown-item"  href="#" onclick="modal('modificarseropel',0,0)"><i class="fa fa-4x fa-plus-circle" style="padding: 0px; color: orange;"></i></a>
 <?php } } ?>
         </div>
         <div class="row align-items-center">
@@ -72,13 +72,7 @@ for ($i = 0; $i < count($seropelPagina); ++$i) {
                                                 <div class="col-2"><i class="fa fa-2x fa-star" style="padding: 0px; color: orange;"></i></div>
                                                 <?php
                                                     }
-                                                }
-                                                if (isset($_SESSION["usuario"])) {
-                                                ?>
-                                                <div class="col-2"><i class="fa fa-2x fa-clock-o" style="padding: 0px; color: orange;"></i>
-                                                <i class="fa fa-2x fa-eye" style="padding: 0px; color: orange;"></i>
-                                                <i class="fa fa-2x fa-check-circle-o" style="padding: 0px; color: orange;"></i></div>
-                                                <?php } ?>
+                                                } ?>
                                             </div>
                                 </div>
                             </div></a>

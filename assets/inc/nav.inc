@@ -31,15 +31,15 @@
                 </ul>
             </li>
            <?php if (!isset($_SESSION["usuario"])) { ?>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="modal"  href="#login" onfocus="modal('login',0,0)">Iniciar Sesión</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" onclick="modal('login',0,0)">Iniciar Sesión</a>
             <ul class="dropdown-menu">
-                <li class="nav-item dropdown"><a class="dropdown-item"  data-toggle="modal" href="#signin" onfocus="modal('signin',0,0)">Registrarse</a>
+                <li class="nav-item dropdown"><a class="dropdown-item" href="#" onclick="modal('signin',0,0)">Registrarse</a>
             </li>
             </ul></li>
             <?php } else { ?>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=Usuario&ope=logout">Cerrar Sesión</a>
             <ul class="dropdown-menu">
-                    <li class="nav-item dropdown"><a class="dropdown-item"  data-toggle="modal" href="#signin" onfocus="modal('signin',0,0)">Modificar Datos</a>
+                    <li class="nav-item dropdown"><a class="dropdown-item" href="#" onclick="modal('signin',0,0)">Modificar Datos</a>
             </li>
             </ul></li>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="index.php?mod=Seropel&ope=milista">Mis Listas</a>
