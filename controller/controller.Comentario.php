@@ -42,6 +42,10 @@ class controllerComentario implements controllerGenerico{
             $success = 0;
             $msg = "Se ha creado el comentario correctamente";
              $detalle = Seropel::detalle($_POST["idSeropel"]);
+                         if (isset($_SESSION["usuario"])){
+                
+               $puntuacion = Puntuacion::getPuntuacion($_GET["idSeropel"],$_SESSION["usuario"]->idUsu);
+            }
             $categoria = Categoria::getAll();
             $comentarios = Comentario::comentarioSeropel($_POST["idSeropel"]);
             $cantcomentario = count($comentarios);
@@ -81,6 +85,10 @@ class controllerComentario implements controllerGenerico{
                 $success = 0;
             $msg = "Se ha actualizado el comentario correctamente";
              $detalle = Seropel::detalle($_POST["idSeropel"]);
+                         if (isset($_SESSION["usuario"])){
+                
+               $puntuacion = Puntuacion::getPuntuacion($_GET["idSeropel"],$_SESSION["usuario"]->idUsu);
+            }
             $categoria = Categoria::getAll();
             $comentarios = Comentario::comentarioSeropel($_POST["idSeropel"]);
             $cantcomentario = count($comentarios);
