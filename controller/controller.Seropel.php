@@ -371,7 +371,7 @@ class controllerSeropel implements controllerGenerico {
     public static function categoria() {
         if (isset($_GET["idCat"]) && isset($_GET["tipo"])) {
             $categoria = Categoria::getAll();
-            if ($_GET["idCat"] < count($categoria) && $_GET["tipo"] == 1 || $_GET["tipo"] == 2) {
+            if ($_GET["idCat"] <= count($categoria) && $_GET["tipo"] == 1 || $_GET["tipo"] == 2) {
                 $categoriaactual = Categoria::getId($_GET["idCat"]);
                 if ($_GET["tipo"] == 1){
                     $logo = "serie.png";
