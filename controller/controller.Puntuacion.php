@@ -29,7 +29,7 @@ class controllerPuntuacion implements controllerGenerico{
 	}
     }
     public function insert(){
-        if(isset($_POST["idUsu"])&&($_POST["idSeropel"])&&($_POST["score"])&&($_POST["season"])&&($_POST["episode"])&&($_POST["idEst"])) {
+        if(isset($_POST["idUsu"])&& isset($_POST["idSeropel"])&& isset($_POST["score"])&& isset($_POST["season"])&& isset($_POST["episode"])&& isset($_POST["idEst"])) {
             $puntuacion = new Puntuacion();
             $puntuacion->setIdUsu($_POST["idUsu"]) ;
             $puntuacion->setIdSeropel($_POST["idSeropel"]) ;
@@ -78,7 +78,7 @@ if (isset($_POST["idSeropel"])) {
     public function update(){
 	if (isset($_POST["idScore"])) {
             $puntuacion = Puntuacion::getId($_POST["idScore"]) ;
-            if (isset($_POST["idUsu"])&&($_POST["idSeropel"])&&($_POST["score"])&&($_POST["season"])&&($_POST["episode"])&&($_POST["idEst"])) {
+            if (isset($_POST["idUsu"])&& isset($_POST["idSeropel"])&& isset($_POST["score"])&& isset($_POST["season"])&& isset($_POST["episode"])&& isset($_POST["idEst"])) {
                 $puntuacion->setIdUsu($_POST["idUsu"]) ;
                 $puntuacion->setIdSeropel($_POST["idSeropel"]) ;
                 $puntuacion->setScore($_POST["score"]) ;

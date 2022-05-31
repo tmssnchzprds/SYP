@@ -96,8 +96,8 @@ label:hover ~ label {
                                                          <?php
                                                      for ($j = 5; $j >= 1; --$j){ 
                                                          ?>
-                                                      <input id="radio<?=$j?>" type="radio" name="score" value="<?=$j?>" <?=$puntuacion==false?"":($puntuacion->getScore()>$j&&$puntuacion->getScore()<$j+1?"selected":"")?> onchange="actualizar('clasificacion')">
-                                                      <label for="radio<?=$j?>"><i class="fa fa-2x fa-star" style="padding: 0px;"></i></label>
+                                                      <input id="radio<?=$j?>" type="radio" name="score" value="<?=$j?>" <?=$puntuacion==false?"":($puntuacion->getScore()==$j?"selected":"")?> onchange="actualizar('clasificacion')">
+                                                      <label for="radio<?=$j?>"><i class="fa fa-2x fa-star" style="padding: 0px; <?=$puntuacion==false?"":($puntuacion->getScore()>=$j?"color: orange;":"")?>"></i></label>
                                                       <?php
                                                      }
                                                      ?>
@@ -132,14 +132,14 @@ label:hover ~ label {
                                                     <input name="idScore" type="hidden" value="<?=$puntuacion==false?"":$puntuacion->getIdScore()?>">
                                                     <p class="clasificado">
                                                       <input id="radio9" type="radio" name="idEst" value="3" <?=$puntuacion==false?"":($puntuacion->getIdEst()==3?"selected":"");?> onchange="actualizar('estado')">
-                                                      <label for="radio9" ><i class="fa fa-2x fa-check-circle-o" style="padding: 0px;"></i></label>
+                                                      <label for="radio9" ><i class="fa fa-2x fa-check-circle-o" style="padding: 0px; <?=$puntuacion==false?"":($puntuacion->getIdEst()==3?"color: orange;":"");?>"></i></label>
                                                       <input id="radio8" type="radio" name="idEst" value="2" <?=$puntuacion==false?"":($puntuacion->getIdEst()==2?"selected":"");?> onchange="actualizar('estado')">
-                                                      <label for="radio8"><i class="fa fa-2x fa-eye" style="padding: 0px;"></i></label>
+                                                      <label for="radio8"><i class="fa fa-2x fa-eye" style="padding: 0px; <?=$puntuacion==false?"":($puntuacion->getIdEst()==2?"color: orange;":"");?>"></i></label>
                                                       <input id="radio7" type="radio" name="idEst" value="1" <?=$puntuacion==false?"":($puntuacion->getIdEst()==1?"selected":"");?> onchange="actualizar('estado')">
-                                                      <label for="radio7"><i class="fa fa-2x fa-clock-o" style="padding: 0px;"></i></label>
+                                                      <label for="radio7"><i class="fa fa-2x fa-clock-o" style="padding: 0px; <?=$puntuacion==false?"":($puntuacion->getIdEst()==1?"color: orange;":"");?>"></i></label>
                                                       <?php if ($puntuacion!=false) {?>
                                                       <input id="radio6" type="radio" name="idEst" value="0" <?=$puntuacion==false?"":($puntuacion->getIdEst()==0?"selected":"");?> onchange="actualizar('estado')">
-                                                      <label for="radio6"><i class="fa fa-2x fa-close" style="padding: 0px; color: orange;"></i></label>
+                                                      <label for="radio6"><i class="fa fa-2x fa-close" style="padding: 0px; <?=$puntuacion==false?"":($puntuacion->getIdEst()==0?"color: orange;":"");?>"></i></label>
                                                               <?php } ?>
                                                     </p>
                                                 </form>
@@ -192,8 +192,8 @@ label:hover ~ label {
                                                          <?php
                                                      for ($j = 5; $j >= 1; --$j){ 
                                                          ?>
-                                                      <input id="radio<?=$j?>" type="radio" name="score" value="<?=$j?>" <?=$puntuacions==false?"":($puntuacions->getScore()>$j&&$puntuacions->getScore()<$j+1?"selected":"")?> onchange="actualizar('clasificacions<?=$item->getSeason();?>')">
-                                                      <label for="radio<?=$j?>"><i class="fa fa-2x fa-star" style="padding: 0px;"></i></label>
+                                                      <input id="radio<?=$j?>s<?=$item->getSeason();?>" type="radio" name="score" value="<?=$j?>" <?=$puntuacions==false?"":($puntuacions->getScore()==$j?"selected":"")?> onchange="actualizar('clasificacions<?=$item->getSeason();?>')">
+                                                      <label for="radio<?=$j?>s<?=$item->getSeason();?>"><i class="fa fa-2x fa-star" style="padding: 0px; <?=$puntuacions==false?"":($puntuacions->getScore()>=$j?"color: orange;":"")?>"></i></label>
                                                       <?php
                                                      }
                                                      ?>
@@ -215,11 +215,11 @@ label:hover ~ label {
                                                     <input name="score" type="hidden" value="<?=$puntuacions==false?"0":$puntuacions->getScore()?>">
                                                     <input name="idScore" type="hidden" value="<?=$puntuacions==false?"":$puntuacions->getIdScore()?>">
                                                     <p class="clasificado">
-                                                      <input id="radio9" type="radio" name="idEst" value="4" <?=$puntuacions==false?"":($puntuacions->getIdEst()==4?"selected":"");?> onchange="actualizar('estados<?=$item->getSeason();?>')">
-                                                      <label for="radio9" ><i class="fa fa-2x fa-check" style="padding: 0px;"></i></label>
+                                                      <input id="radio7s<?=$item->getSeason();?>" type="radio" name="idEst" value="4" <?=$puntuacions==false?"":($puntuacions->getIdEst()==4?"selected":"");?> onchange="actualizar('estados<?=$item->getSeason();?>')">
+                                                      <label for="radio7s<?=$item->getSeason();?>" ><i class="fa fa-2x fa-check" style="padding: 0px; <?=$puntuacions==false?"":($puntuacions->getIdEst()==4?"color: orange;":"");?>"></i></label>
                                                    <?php if ($puntuacions!=false) {?>
-                                                      <input id="radio6" type="radio" name="idEst" value="0" <?=$puntuacions==false?"":($puntuacions->getIdEst()==0?"selected":"");?> onchange="actualizar('estados<?=$item->getSeason();?>')">
-                                                      <label for="radio6"><i class="fa fa-2x fa-close" style="padding: 0px; color: orange;"></i></label>
+                                                      <input id="radio6s<?=$item->getSeason();?>" type="radio" name="idEst" value="0" <?=$puntuacions==false?"":($puntuacions->getIdEst()==0?"selected":"");?> onchange="actualizar('estados<?=$item->getSeason();?>')">
+                                                      <label for="radio6s<?=$item->getSeason();?>"><i class="fa fa-2x fa-close" style="padding: 0px; <?=$puntuacions==false?"":($puntuacions->getIdEst()==0?"color: orange;":"");?>"></i></label>
                                                               <?php } ?>
                                                     </p>
                                                 </form>
@@ -260,8 +260,8 @@ label:hover ~ label {
                                                          <?php
                                                      for ($j = 5; $j >= 1; --$j){ 
                                                          ?>
-                                                      <input id="radio<?=$j?>" type="radio" name="score" value="<?=$j?>" <?=$puntuacione==false?"":($puntuacione->getScore()>$j&&$puntuacione->getScore()<$j+1?"selected":"")?> onchange="actualizar('clasificacions<?=$item->getSeason();?>e<?=$i?>')">
-                                                      <label for="radio<?=$j?>"><i class="fa  fa-star" style="padding: 0px;"></i></label>
+                                                      <input id="radio<?=$j?>s<?=$item->getSeason();?>e<?=$i?>" type="radio" name="score" value="<?=$j?>" <?=$puntuacione==false?"":($puntuacione->getScore()==$j?"selected":"")?> onchange="actualizar('clasificacions<?=$item->getSeason();?>e<?=$i?>')">
+                                                      <label for="radio<?=$j?>s<?=$item->getSeason();?>e<?=$i?>"><i class="fa  fa-star" style="padding: 0px; <?=$puntuacione==false?"":($puntuacione->getScore()>=$j?"color: orange;":"")?>"></i></label>
                                                       <?php
                                                      }
                                                      ?>
@@ -284,11 +284,11 @@ label:hover ~ label {
                                                     <input name="score" type="hidden" value="<?=$puntuacione==false?"0":$puntuacione->getScore()?>">
                                                     <input name="idScore" type="hidden" value="<?=$puntuacione==false?"":$puntuacione->getIdScore()?>">
                                                     <p class="clasificado">
-                                                      <input id="radio9" type="radio" name="idEst" value="4" <?=$puntuacione==false?"":($puntuacione->getIdEst()==4?"selected":"");?> onchange="actualizar('estados<?=$item->getSeason();?>e<?=$i?>'))">
-                                                      <label for="radio9" ><i class="fa  fa-check" style="padding: 0px;"></i></label>
-                                                      <?php if ($puntuacion!=false) {?>
-                                                      <input id="radio6" type="radio" name="idEst" value="0" <?=$puntuacione==false?"":($puntuacione->getIdEst()==0?"selected":"");?> onchange="actualizar('estados<?=$item->getSeason();?>e<?=$i?>')">
-                                                      <label for="radio6"><i class="fa  fa-close" style="padding: 0px; color: orange;"></i></label>
+                                                      <input id="radio7s<?=$item->getSeason();?>e<?=$i?>" type="radio" name="idEst" value="4" <?=$puntuacione==false?"":($puntuacione->getIdEst()==4?"selected":"");?> onchange="actualizar('estados<?=$item->getSeason();?>e<?=$i?>')">
+                                                      <label for="radio7s<?=$item->getSeason();?>e<?=$i?>" ><i class="fa  fa-check" style="padding: 0px; <?=$puntuacione==false?"":($puntuacione->getIdEst()==4?"color: orange;":"");?>"></i></label>
+                                                      <?php if ($puntuacione!=false) {?>
+                                                      <input id="radio6s<?=$item->getSeason();?>e<?=$i?>" type="radio" name="idEst" value="0" <?=$puntuacione==false?"":($puntuacione->getIdEst()==0?"selected":"");?> onchange="actualizar('estados<?=$item->getSeason();?>e<?=$i?>')">
+                                                      <label for="radio6s<?=$item->getSeason();?>e<?=$i?>"><i class="fa  fa-close" style="padding: 0px;  <?=$puntuacione==false?"":($puntuacione->getIdEst()==0?"color: orange;":"");?>"></i></label>
                                                               <?php } ?>
                                                     </p>
                                                 </form>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 07-05-2022 a las 11:15:58
+-- Tiempo de generación: 31-05-2022 a las 14:38:40
 -- Versión del servidor: 5.7.34
 -- Versión de PHP: 7.4.21
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `pruebas`
+-- Base de datos: `u325884627_syp`
 --
 
 -- --------------------------------------------------------
@@ -57,9 +57,20 @@ CREATE TABLE `comentario` (
   `idSeropel` int(11) NOT NULL,
   `season` int(11) NOT NULL,
   `episode` int(11) NOT NULL,
-  `commentary` text NOT NULL,
-  `score` int(11) NOT NULL
+  `commentary` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`idCom`, `idUsu`, `idSeropel`, `season`, `episode`, `commentary`) VALUES
+(1, 2, 18, 0, 0, 'Buena Serie mejor +'),
+(2, 4, 18, 1, 0, 'Buena Temporada'),
+(5, 3, 18, 1, 2, 'Buena Serie'),
+(7, 5, 17, 2, 3, 'as'),
+(8, 5, 15, 3, 2, 'asa'),
+(10, 5, 33, 0, 0, 'Buena');
 
 -- --------------------------------------------------------
 
@@ -195,22 +206,32 @@ INSERT INTO `episodio` (`idEpi`, `idSeropel`, `season`, `episode`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estado`
+-- Estructura de tabla para la tabla `puntuacion`
 --
 
-CREATE TABLE `estado` (
-  `idEst` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL
+CREATE TABLE `puntuacion` (
+  `idScore` int(11) NOT NULL,
+  `idUsu` int(11) NOT NULL,
+  `idSeropel` int(11) NOT NULL,
+  `season` int(11) NOT NULL,
+  `episode` int(11) NOT NULL,
+  `score` int(11) NOT NULL,
+  `idEst` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `estado`
+-- Volcado de datos para la tabla `puntuacion`
 --
 
-INSERT INTO `estado` (`idEst`, `name`) VALUES
-(1, 'Pendiente'),
-(2, 'Siguiendo'),
-(3, 'Visto');
+INSERT INTO `puntuacion` (`idScore`, `idUsu`, `idSeropel`, `season`, `episode`, `score`, `idEst`) VALUES
+(1, 2, 18, 0, 0, 4, 2),
+(2, 2, 16, 0, 0, 3, 1),
+(3, 2, 8, 0, 0, 4, 3),
+(4, 2, 17, 0, 0, 3, 0),
+(11, 2, 15, 0, 0, 2, 2),
+(15, 2, 15, 1, 0, 3, 4),
+(16, 2, 18, 1, 0, 4, 0),
+(17, 2, 18, 2, 0, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -249,7 +270,19 @@ INSERT INTO `seropel` (`idSeropel`, `idCat`, `tipo`, `title`, `description`, `co
 (15, 5, 1, 'Las reglas del juego\r\n', 'Cuando Nate Ford, un investigador de seguros, descubre un día las injusticias que comete la empresa para la que trabaja, es despedido. Entonces, como un Robin Hood moderno, decide unirse a un grupo de hackers, ladrones y timadores que se enfrentan a quienes usan dinero y poder para esclavizar a los demás.', 'https://img.tviso.com/ES/poster/w430/70/83/70836f258786b88e8aa29db593ff5bc3.jpg', NULL),
 (16, 6, 1, 'El mentalista', 'Patrick Jane es un hombre que trabaja como médium televisivo hasta que sufre un duro golpe cuando su mujer e hija son asesinadas. A partir de entonces, decide usar sus habilidades para ayudar a resolver casos de asesinato, trabajando como detective en el Departamento de Investigación de Crímenes de California. El agente Jane será capaz de ver aquello que los demás no pueden y sus poderes de observación y deducción le darán excelentes resultados.', 'https://img.tviso.com/ES/poster/w430/ae/14/ae142d02147980d1677cccbd824323b2.jpg', NULL),
 (17, 7, 1, 'Los protegidos', 'Un grupo de personas se hacen pasar por una familia, los Castillo Rey, con el objetivo de huir de una extraña organización que les busca llamada el Clan del Elefante. El motivo no es otro que los poderes sobrenaturales de muchos de sus miembros. Bajo el cuidado de Mario (Antonio Garrido), padre viudo con ciertas inseguridades, y Jimena (Angie Cepeda), una madre que ha sufrido el secuestro de su hija Blanca a manos del Clan del Elefante, se encuentran: el rebelde Culebra (Luis Fernández), dotado del don de la invisibilidad; Sandra (Ana Fernández), poseedora de un poder eléctrico; Carlos (Daniel Avilés), hijo de Mario y que domina la telequinesia; Lucía (Priscilla Delgado), una huérfana capaz de leer los pensamientos ajenos y transmitir los suyos propios; y Lucas (Mario Marzo), un adolescente que puede transformarse en otras personas. Ahora deben convivir cómo si fueran una verdadera familia, ocultando además su secreto, mientras buscan un modo de rescatar a Blanca.', 'https://img.tviso.com/ES/poster/w430/25/0c/250c26d47ceab5f5bb191ae5cea5fbfa.jpg', NULL),
-(18, 6, 1, 'Ladrón de guante blanco', 'La probable alianza entre encantador estafador Neal Caffrey y straightman FBI agente Peter Burke. Caffrey ofrece su experiencia para ayudar a Burke a capturar a otros delincuentes esquivos a cambio de su libertad, y juntos demuestran que para resolver los crímenes más difíciles, se debe contratar al penal más inteligente.\r\n', 'https://img.tviso.com/ES/poster/w430/40/c3/40c36b45ae3a055c1b28f9c13c2904f6.jpg', NULL);
+(18, 6, 1, 'Ladrón de guante blanco', 'La probable alianza entre encantador estafador Neal Caffrey y straightman FBI agente Peter Burke. Caffrey ofrece su experiencia para ayudar a Burke a capturar a otros delincuentes esquivos a cambio de su libertad, y juntos demuestran que para resolver los crímenes más difíciles, se debe contratar al penal más inteligente.\r\n', 'https://img.tviso.com/ES/poster/w430/40/c3/40c36b45ae3a055c1b28f9c13c2904f6.jpg', '2022-05-17'),
+(22, 2, 2, 'Licencia para matar', 'Agentes de la DEA (división del departamento de justicia estadounidense que lucha contra el narcotráfico) recogen a James Bond (Timothy Dalton) y a su colega Felix Leiter, ahora agente de la DEA, de camino a la boda de este último para formar parte del dispositivo que ayude a capturar a Franz Sanchez (Robert Davi). Ambos salen exitosos de la hazaña y logran llegar a tiempo para la ceremonia. Poco después, Sanchez consigue escaparse gracias a los sobornos realizados a otro agente del cuerpo. Mientras tanto, miembros de la banda de Sanchez atacan a Leiter y a su mujer tendiéndoles una emboscada. Ella es violada y asesinada y el agente queda mutilado. Bond jura venganza en cuanto se entera.', 'https://img.tviso.com/ES/poster/w430/6c/dc/6cdcdb92a48bdbc3c77a6ac85c566b4f.jpg', '1989-05-26'),
+(23, 1, 2, 'Avatar', 'Jake Sully, un ex-marine confinado en una silla de ruedas, es reclutado para viajar al planeta Pandora, donde un consorcio corporativo está extrayendo un mineral que será clave en la solución de la crisis energética de la Tierra. Debido a que la atmósfera de Pandora es tóxica, han creado el Programa Avatar, en el que \'conductores\' humanos tienen sus conciencias unidas a un avatar,... un cuerpo biológico controlado de manera remota que puede sobrevivir en ese entorno. Estos avatares han sido creados genéticamente como híbridos combinando ADN humano con el de los nativos de Pandora… los Na’vi. Convertido en un avatar, Jake puede volver a caminar. Se le asigna la misión de infiltrarse entre los Na’vi, que se han convertido en un obstáculo importante para la extracción del preciado mineral. Pero Neytiri, una hermosa mujer Na’vi, le salvará la vida, y esto lo cambiará todo...', 'https://img.tviso.com/ES/poster/w430/45/14/4514e59569f11dd906bd4f074b03a79f.jpg', '2009-12-18'),
+(24, 1, 2, 'Harry Potter y la piedra filosofal', 'Harry Potter es un huérfano que vive con sus desagradables tíos, los Dursley, y su repelente primo Dudley. Se acerca su undécimo cumpleaños y tiene pocas esperanzas de recibir algún regalo, ya que nunca nadie se acuerda de él. Sin embargo, pocos días antes de su cumpleaños, una serie de misteriosas cartas dirigidas a él y escritas con una estridente tinta verde rompen la monotonía de su vida: Harry es un mago y sus padres también lo eran.', 'https://img.tviso.com/ES/poster/w430/30/40/30407c966db47132562caf706754398d.jpg', '2001-11-30'),
+(25, 7, 2, 'Ouija', 'Un grupo de jóvenes utiliza una Ouija para contactar con un amigo que ha muerto recientemente. Los problemas surgen cuando sin querer convocan a una presencia oscura. Adaptación del juego de tablero de Hasbro.', 'https://img.tviso.com/ES/poster/w430/22/0a/220a07db3d3ac570db593dfcc68f9863.jpg', '2014-12-05'),
+(26, 7, 2, 'Me ha caído el muerto', 'Bertram Pincus (Ricky Gervais), un dentista antipático, muere durante unos instantes durante una intervención médica rutinaria. A partir de ese momento adquiere el don de ver personas muertas que le piden ayuda para ponerse en contacto con los vivos.', 'https://img.tviso.com/ES/poster/w430/58/d5/58d528f21c3790f882ca431ff415ebb3.jpg', '2008-05-01'),
+(27, 6, 2, 'Los ángeles de Charlie', 'Una peculiar agencia de detectives dirigida por el multimillonario Charlie tiene en sus filas a Natalie (Cameron Diaz), Dylan (Drew Barrymore) y Alex (Lucy Liu), tres expertas en artes marciales, en disfraces y en la más avanzada tecnología. Juntas tendrán que ocuparse de un caso muy importante: el secuestro del genio de la informática Eric Knox (Sam Rockwell) por su rival Roger Corwin (Tim Curry). Si no consiguen liberarlo, quedaría destruida la intimidad de todo el mundo, incluido Charlie, su misterioso jefe.', 'https://img.tviso.com/ES/poster/w430/25/78/25783623aca91c10cd42003001fc415c.jpg', '2000-05-01'),
+(28, 5, 2, 'La chica del tren', 'Rachel Watson (Emily Blunt) es una mujer recién divorciada, y con ciertos problemas con la bebida. Cada día, ella toma el tren para ir trabajar a Nueva York, y cada día el tren pasa por su antigua casa. En esa casa ahora vive su marido con su nueva esposa y su hijo. Para no ahogarse en sus propias penas, Rachel decide concentrarse en mirar a una pareja, Megan (Haley Bennett) y Scott Hipwell (Luke Evans), que viven unas casas más abajo de la que era la suya. Comienza entonces a crear en su cabeza una maravillosa vida de ensueño sobre esta familia aparentemente perfecta. Todo cambia cuando una mañana Rachel, desde la ventana del tren, es testigo de un impactante suceso. Será entonces cuando se vea envuelta en un misterioso y desconcertante caso.', 'https://img.tviso.com/ES/poster/w430/54/35/54357a8d5c13c22bed94b175424286bf.jpg', '2016-10-21'),
+(29, 2, 2, 'Matrix', 'Thomas Anderson lleva una doble vida: por el día es programador en una importante empresa de software, y por la noche un hacker informático llamado Neo. Su vida no volverá a ser igual cuando unos misteriosos personajes le inviten a descubrir la pregunta que no le deja dormir, ¿Qué es Matrix?', 'https://img.tviso.com/ES/poster/w430/1b/83/1b83c436646d80ccb8147719c8717ef6.jpg', '1999-06-23'),
+(30, 6, 2, 'Sherlock Holmes', 'En un nuevo y dinámico retrato de los personajes más famosos de Arthur Conan Doyle, Sherlock Holmes envía a Holmes y a Watson, su incondicional compañero, a enfrentarse a un nuevo reto. Mostrando unas habilidades para luchar tan letales como su legendaria agudeza intelectual, Holmes peleará como nunca para acabar con un nuevo enemigo y desenmarañar así un complot mortal que podría destruir el país. Adaptación del cómic de Lionel Wigram, que reinventaba los personajes de Arthur Conan Doyle, convirtiendo a Sherlock Holmes (Robert Downey Jr.) y al Doctor John Watson (Jude Law) en detectives con habilidades para el boxeo y el uso de la espada, respectivamente.\r\nREPARTO', 'https://img.tviso.com/ES/poster/w430/47/ed/47eddf1c1e271600ab9f4b04f1df58f2.jpg', '2010-01-15'),
+(31, 1, 2, 'Spider-Man', 'Peter Parker es un joven y tímido estudiante que vive con su tía May y su tío Ben desde la muerte de sus padres, siendo él muy pequeño. Peter está enamorado de su guapa vecina, pero su escaso carisma no le hace ser precisamente muy popular en el instituto. Un día es mordido por una araña que ha sido modificada genéticamente, descubriendo al día siguiente que posee unos poderes poco habituales: tiene la fuerza y agilidad de una araña. Las aventuras del hombre araña, basadas en el famoso cómic de Stan Lee y Steve Ditko, arrasó en las taquillas americanas y pulverizó los récords de recaudación en su primer fin de semana: 114 millones de dólares, la primera vez en la historia que se consiguió pasar de la barrera de los 100 millones en un fin de semana normal.', 'https://img.tviso.com/ES/poster/w430/76/0c/760c36484db8f6706cfe125e44e85b19.jpg', '2002-06-21'),
+(32, 1, 2, 'El planeta de los simios', 'Año 2029. En una misión rutinaria, el astronauta Leo Davidson (Mark Wahlberg) pierde el control de su nave y aterriza en un extraño planeta, habitado por una raza de simios de inteligencia similar a la de los humanos y que tratan a éstos como a animales. Con la ayuda de una chimpancé llamada Ari (Helena Bonham-Carter) y de una pequeña banda de humanos rebeldes, Leo encabeza el enfrentamineto contra el terrible ejército dirigido por el general Thade (Tim Roth) y su hombre de confianza, el guerrero Attar (Michael Clarke Duncan). La clave es llegar a un templo sagrado que se encuentra en la zona prohibida del planeta, en el que podrán descubrir los sorprendentes secretos del pasado de la humanidad y la clave para su futuro.\r\n', 'https://img.tviso.com/ES/poster/w430/18/a8/18a8bd1ea021fd0cf5b4fc1f2b0b318f.jpg', '2001-05-26'),
+(33, 6, 2, 'Men in Black (Hombres de negro)', 'Durante muchos años los extraterrestres han vivido en la Tierra, mezclados con los humanos, sin que nadie lo supiese. Los Hombres de Negro son unos agentes, pertenecientes a una asociación altamente secreta del gobierno, encargados de controlar a los alienígenas. Ahora dos de estos agentes, uno veterano y otro recién incorporado, y que tienen como misión vigilar a los alienígenas que habitan en la ciudad de Nueva York, descubren a un terrorista galáctico que pretende acabar con la humanidad.', 'https://img.tviso.com/ES/poster/w430/40/a5/40a55f13791769c62ca0a64b17238edb.jpg', '1997-07-11');
 
 -- --------------------------------------------------------
 
@@ -274,22 +307,7 @@ INSERT INTO `usuario` (`idUsu`, `name`, `password`, `email`, `type`) VALUES
 (2, 'usuario', 'f8032d5cae3de20fcec887f395ec9a6a', 'usuario@usuario.com', 1),
 (3, 'editor', '5aee9dbd2a188839105073571bee1b1f', 'editor@editor.com', 2),
 (4, 'usuario2', '2fb6c8d2f3842a5ceaa9bf320e649ff0', 'usuario2@usuario2.com', 1),
-(5, 'usuario3', '5a54c609c08a0ab3f7f8eef1365bfda6', 'usuario3@usuario3.com', 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `ususeropel`
---
-
-CREATE TABLE `ususeropel` (
-  `idUsuSeropel` int(11) NOT NULL,
-  `idUsu` int(11) NOT NULL,
-  `idSeropel` int(11) NOT NULL,
-  `season` int(11) NOT NULL,
-  `episode` int(11) NOT NULL,
-  `idEst` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+(5, 'moderador', '100a452278bbd0fb2a448df97de0ffd1', 'moderador@moderador.com', 3);
 
 --
 -- Índices para tablas volcadas
@@ -319,10 +337,12 @@ ALTER TABLE `episodio`
   ADD KEY `fk_episodio_seropel` (`idSeropel`);
 
 --
--- Indices de la tabla `estado`
+-- Indices de la tabla `puntuacion`
 --
-ALTER TABLE `estado`
-  ADD PRIMARY KEY (`idEst`);
+ALTER TABLE `puntuacion`
+  ADD PRIMARY KEY (`idScore`),
+  ADD KEY `fk_usu_seropel` (`idSeropel`),
+  ADD KEY `fk_usu_usuario` (`idUsu`);
 
 --
 -- Indices de la tabla `seropel`
@@ -339,16 +359,6 @@ ALTER TABLE `usuario`
   ADD UNIQUE KEY `unq_email` (`email`);
 
 --
--- Indices de la tabla `ususeropel`
---
-ALTER TABLE `ususeropel`
-  ADD PRIMARY KEY (`idUsuSeropel`),
-  ADD UNIQUE KEY `unq_idUsu_idSer` (`idUsu`,`idSeropel`),
-  ADD KEY `fk_usu_seropel` (`idSeropel`),
-  ADD KEY `fk_usu_estado` (`idEst`),
-  ADD KEY `fk_usu_usuario` (`idUsu`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -362,7 +372,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `episodio`
@@ -371,28 +381,22 @@ ALTER TABLE `episodio`
   MODIFY `idEpi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
--- AUTO_INCREMENT de la tabla `estado`
+-- AUTO_INCREMENT de la tabla `puntuacion`
 --
-ALTER TABLE `estado`
-  MODIFY `idEst` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `puntuacion`
+  MODIFY `idScore` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `seropel`
 --
 ALTER TABLE `seropel`
-  MODIFY `idSeropel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `idSeropel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   MODIFY `idUsu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `ususeropel`
---
-ALTER TABLE `ususeropel`
-  MODIFY `idUsuSeropel` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -412,18 +416,17 @@ ALTER TABLE `episodio`
   ADD CONSTRAINT `fk_episodio_serie` FOREIGN KEY (`idSeropel`) REFERENCES `seropel` (`idSeropel`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `puntuacion`
+--
+ALTER TABLE `puntuacion`
+  ADD CONSTRAINT `fk_usu_ser_serie` FOREIGN KEY (`idSeropel`) REFERENCES `seropel` (`idSeropel`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_usu_ser_usuario` FOREIGN KEY (`idUsu`) REFERENCES `usuario` (`idUsu`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `seropel`
 --
 ALTER TABLE `seropel`
   ADD CONSTRAINT `fk_seropel_idCat` FOREIGN KEY (`idCat`) REFERENCES `categoria` (`idCat`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `ususeropel`
---
-ALTER TABLE `ususeropel`
-  ADD CONSTRAINT `fk_usu_ser_estado` FOREIGN KEY (`idEst`) REFERENCES `estado` (`idEst`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_usu_ser_serie` FOREIGN KEY (`idSeropel`) REFERENCES `seropel` (`idSeropel`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_usu_ser_usuario` FOREIGN KEY (`idUsu`) REFERENCES `usuario` (`idUsu`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
