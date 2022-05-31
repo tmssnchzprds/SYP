@@ -44,7 +44,7 @@ class controllerComentario implements controllerGenerico{
              $detalle = Seropel::detalle($_POST["idSeropel"]);
                          if (isset($_SESSION["usuario"])){
                 
-               $puntuacion = Puntuacion::getPuntuacion($_GET["idSeropel"],$_SESSION["usuario"]->idUsu);
+               $puntuacion = Puntuacion::getPuntuacion($_POST["idSeropel"],$_SESSION["usuario"]->idUsu);
             }
             $categoria = Categoria::getAll();
             $comentarios = Comentario::comentarioSeropel($_POST["idSeropel"]);
@@ -87,7 +87,7 @@ class controllerComentario implements controllerGenerico{
              $detalle = Seropel::detalle($_POST["idSeropel"]);
                          if (isset($_SESSION["usuario"])){
                 
-               $puntuacion = Puntuacion::getPuntuacion($_GET["idSeropel"],$_SESSION["usuario"]->idUsu);
+               $puntuacion = Puntuacion::getPuntuacion($_POST["idSeropel"],$_SESSION["usuario"]->idUsu);
             }
             $categoria = Categoria::getAll();
             $comentarios = Comentario::comentarioSeropel($_POST["idSeropel"]);
