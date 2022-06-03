@@ -1,9 +1,5 @@
 <?php
-require_once "controller/controller.Generico.php" ;
-require_once "model/Usuario.php" ;
-require_once "model/Seropel.php" ;
-require_once "model/Categoria.php" ;
-require_once "model/Sesion.php" ;
+require_once "assets/inc/controller.init.inc";
 
 class controllerUsuario implements controllerGenerico{
 
@@ -37,19 +33,10 @@ class controllerUsuario implements controllerGenerico{
             $success = 0;
             $msg = "Se ha creado el usuario correctamente";
         } else {
-             $success = 1;
-             $msg = "No se ha podido crear el usuario se ha producido un error";
+            $success = 1;
+            $msg = "No se ha podido crear el usuario se ha producido un error";
         }
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";
+        require_once "assets/inc/controller.listatotal.inc";
     }
     public function update(){
 	if (isset($_POST["idUsu"])) {
@@ -61,25 +48,16 @@ class controllerUsuario implements controllerGenerico{
                 $usuario->setType($_POST["type"]) ;
                 $usuario->update() ;
                 $success = 0;
-            $msg = "Se ha modificado el usuario correctamente";
+                $msg = "Se ha modificado el usuario correctamente";
             } else {
                $success = 1;
                $msg = "No se ha podido modificar el usuario se ha producido un error";
             }
         } else {
             $success = 1;
-             $msg = "No se ha podido modificar el usuario se ha producido un error";
+            $msg = "No se ha podido modificar el usuario se ha producido un error";
         }
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";
+        require_once "assets/inc/controller.listatotal.inc";
     }
     public function delete(){
         if (isset($_POST["idUsu"])) {
@@ -90,88 +68,54 @@ class controllerUsuario implements controllerGenerico{
             $success = 1;
             $msg = "No se ha podido eliminar el comentario se ha producido un error";
 	}
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";
+        require_once "assets/inc/controller.listatotal.inc";
     }
-public function signin(){
-        
-            if(isset($_SESSION["usuario"])){
+    public function signin(){
+        if(isset($_SESSION["usuario"])){
             $success=1;
             $msg="Ya tiene iniciada una sesión, cierrela para iniciar otra";
+        }
+        if($_SERVER["REQUEST_METHOD"] == "GET" || $_SERVER["REQUEST_METHOD"] == "POST") {
+            if(isset($_GET["email"]) && isset($_GET["password"])){
+                $email   = $_GET["email"];
+                $password = md5($_GET["password"]);
             }
-            
-            if($_SERVER["REQUEST_METHOD"] == "GET" || $_SERVER["REQUEST_METHOD"] == "POST") {
+            if(isset($_POST["email"]) && isset($_POST["password"])){
+                $email   = $_POST["email"];
+                $password = md5($_POST["password"]);
+            }
+            if(isset($_GET["email"]) && isset($_GET["password"])||isset($_POST["email"]) && isset($_POST["password"])){
+                $db = Database::getInstance();
+                $db->doQuery("SELECT * FROM usuario WHERE email=:email AND password=:password",
+                    [":email" => $email,
+                    ":password" => $password]);
 
-                if(isset($_GET["email"]) && isset($_GET["password"])){
-                    $email   = $_GET["email"];
-                    $password = md5($_GET["password"]);
+                $resultado = $db->getRow();
+                $this->sesion->init();
+
+                if ($resultado) { 
+                    $_SESSION["usuario"]=$resultado;
+                    $success=0;
+                    $msg="Ha iniciado sesion correctamente con el usuario: ".$_SESSION["usuario"]->name;
+                }else {
+                    $success=1;
+                    $msg="El nombre o la contraseña no es correcta";
                 }
-                if(isset($_POST["email"]) && isset($_POST["password"])){
-                    $email   = $_POST["email"];
-                    $password = md5($_POST["password"]);
-                }
-                if(isset($_GET["email"]) && isset($_GET["password"])||isset($_POST["email"]) && isset($_POST["password"])){
-                    $db = Database::getInstance();
-
-                    $db->doQuery("SELECT * FROM usuario WHERE email=:email AND password=:password",
-                        [":email" => $email,
-                        ":password" => $password]);
-            
-                    $resultado = $db->getRow();
-                    $this->sesion->init();
-                    
-                    if ($resultado) { 
-                        $_SESSION["usuario"]=$resultado;
-                        $success=0;
-            $msg="Ha iniciado sesion correctamente con el usuario: ".$_SESSION["usuario"]->name;
-
-                    }else{
-            $success=1;
-            $msg="El nombre o la contraseña no es correcta";
-
-                    }
-                } else{
-            $success=1;
-            $msg="No se ha introducido usuario y contraseña";
-              }
             } else {
                 $success=1;
-            $msg="No se ha introducido usuario y contraseña";
+                $msg="No se ha introducido usuario y contraseña";
             }
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";
+        } else {
+            $success=1;
+            $msg="No se ha introducido usuario y contraseña";
         }
-        
-        public function logout(){
-            session_start();
-            session_unset();
-            $success=0;
-            $msg="Se ha cerrado la sesion correctamente";
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll() ;
-        require_once "view/show.seropel.php" ;
-        }
+        require_once "assets/inc/controller.listatotal.inc";
+    }
+    public function logout(){
+        session_start();
+        session_unset();
+        $success=0;
+        $msg="Se ha cerrado la sesion correctamente";
+        require_once "assets/inc/controller.listatotal.inc";
+    }
 }

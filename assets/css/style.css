@@ -362,7 +362,12 @@ footer .inner {
     background: #fff;
 }
 .light-wrapper {
-    background: #f6f7fa;
+    background-image: url("../img/fondo.jpeg");
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-color: #f6f7fa;
+    
 }
 .gray-wrapper {
     background: #eef1f5;
@@ -499,6 +504,8 @@ figure.main.rounded img,
 .box {
     padding: 40px 40px 20px;
     border-radius: 4px;
+    background-color: #f6f7fa;
+    margin-bottom: 50px;
 }
 .box.p-30 {
     padding: 30px 30px 20px;

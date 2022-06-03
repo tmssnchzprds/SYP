@@ -1,5 +1,5 @@
   <nav class="navbar center navbar-expand-lg">
-      <div class="container flex-lg-column">
+      <div class=" container-fluid flex-lg-column" style="padding-left: 0px; padding-right: 0px;">
         <div class="navbar-header">
             <div class="navbar-brand"><img srcset="assets/img/<?=isset($logo)?$logo:"logo.png"?>" alt="" /></div>
           <div class="navbar-hamburger ml-auto d-lg-none d-xl-none"><button class="hamburger animate" data-toggle="collapse" data-target=".navbar-collapse"><span></span></button></div>

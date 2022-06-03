@@ -2,7 +2,6 @@
 require_once "model/Database.php" ;
 require_once "model/Generico.php" ;
 
-
 class Categoria implements Generico{
 
     private $idCat ;
@@ -33,7 +32,7 @@ class Categoria implements Generico{
         return $datos;
     }
     
-    public static function getId($idCat) {
+    public static function getId($idCat){
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT * FROM categoria WHERE idCat=:idCat ;",
             [ ":idCat" => $idCat ]) ;
@@ -47,8 +46,7 @@ class Categoria implements Generico{
             [":name"=>$this->name]) ;
     }
 
-    public function update()
-    {
+    public function update(){
         $bd = Database::getInstance() ;
         $bd->doQuery("UPDATE categoria SET name=:name WHERE idCat=:idCat ;",
             [":name"=>$this->name,
@@ -59,8 +57,6 @@ class Categoria implements Generico{
         $bd = Database::getInstance() ;
         $bd->doQuery("DELETE FROM categoria WHERE idCat=:idCat ;",
             [ ":idCat" => $idCat ]) ;
-    }
- 
-    //CONSULTAS
+    } 
 }
 ?>

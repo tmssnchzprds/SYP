@@ -46,7 +46,7 @@ class Puntuacion implements Generico{
         return $datos;
     }
     
-    public static function getId($idScore) {
+    public static function getId($idScore){
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT * FROM puntuacion WHERE idScore=:idScore ;",
             [ ":idScore" => $idScore ]) ;
@@ -65,8 +65,7 @@ class Puntuacion implements Generico{
             ":idEst"=>$this->idEst]) ;
     }
 
-    public function update()
-    {
+    public function update(){
         $bd = Database::getInstance() ;
         $bd->doQuery("UPDATE puntuacion SET idUsu=:idUsu, idSeropel=:idSeropel, score=:score, season=:season, episode=:episode, idEst=:idEst WHERE idScore=:idScore ;",
             [":idUsu"=>$this->idUsu,
@@ -85,8 +84,7 @@ class Puntuacion implements Generico{
     }
  
     //CONSULTAS
-    
-    public static function getPuntuacion($idSeropel,$idUsu) {
+    public static function getPuntuacion($idSeropel,$idUsu){
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT * FROM puntuacion WHERE idSeropel=:idSeropel AND idUsu=:idUsu AND season=0 AND episode=0;",
             [ ":idSeropel" => $idSeropel,
@@ -94,7 +92,8 @@ class Puntuacion implements Generico{
 
         return $bd->getRow("Puntuacion") ;
     }
-   public static function getPuntuacions($idSeropel,$idUsu,$season) {
+    
+   public static function getPuntuacions($idSeropel,$idUsu,$season){
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT * FROM puntuacion WHERE idSeropel=:idSeropel AND idUsu=:idUsu AND season=:season AND episode=0 ;",
             [ ":idSeropel" => $idSeropel,
@@ -103,7 +102,8 @@ class Puntuacion implements Generico{
 
         return $bd->getRow("Puntuacion") ;
     }
-    public static function getPuntuacione($idSeropel,$idUsu,$season,$episode) {
+    
+    public static function getPuntuacione($idSeropel,$idUsu,$season,$episode){
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT * FROM puntuacion WHERE idSeropel=:idSeropel AND idUsu=:idUsu AND season=:season AND episode=:episode ;",
             [ ":idSeropel" => $idSeropel,

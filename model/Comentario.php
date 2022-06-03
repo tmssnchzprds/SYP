@@ -46,7 +46,7 @@ class Comentario implements Generico{
         return $datos;
     }
     
-    public static function getId($idCom) {
+    public static function getId($idCom){
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT * FROM comentario WHERE idCom=:idCom ;",
             [ ":idCom" => $idCom ]) ;
@@ -64,8 +64,7 @@ class Comentario implements Generico{
             ":commentary"=>$this->commentary]) ;
     }
 
-    public function update()
-    {
+    public function update(){
         $bd = Database::getInstance() ;
         $bd->doQuery("UPDATE comentario SET idUsu=:idUsu, idSeropel=:idSeropel, season=:season, episode=:episode, commentary=:commentary WHERE idCom=:idCom ;",
             [":idUsu"=>$this->idUsu,
@@ -96,7 +95,8 @@ class Comentario implements Generico{
  
         return $datos;
     }
-        public static function comentarioTemporada($idSeropel, $season){
+    
+    public static function comentarioTemporada($idSeropel, $season){
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT c.*, u.name as usuario FROM comentario c JOIN usuario u ON u.idUsu = c.idUsu  WHERE c.idSeropel=:idSeropel AND c.season=:season ;",
             [ ":idSeropel" => $idSeropel,
@@ -110,7 +110,8 @@ class Comentario implements Generico{
  
         return $datos;
     }
-        public static function comentarioEpisodio($idSeropel, $season, $episode){
+    
+    public static function comentarioEpisodio($idSeropel, $season, $episode){
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT c.*, u.name as usuario FROM comentario c JOIN usuario u ON u.idUsu = c.idUsu  WHERE c.idSeropel=:idSeropel AND c.season=:season AND c.episode=:episode ;",
             [ ":idSeropel" => $idSeropel,

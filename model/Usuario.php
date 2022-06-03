@@ -1,32 +1,30 @@
 <?php
-
 require_once "model/Database.php" ;
 require_once "model/Generico.php" ;
 
+class Usuario implements Generico{
 
-    class Usuario implements Generico{
+    private $idUsu    ;
+    private $name     ;
+    private $password ;
+    private $email    ;
+    private $type     ;
 
-        private $idUsu    ;
-        private $name     ;
-        private $password ;
-        private $email    ;
-        private $type     ;
+    public function __construct(){}
 
-        public function __construct(){}
+    //SETTER
+    public function setIdUsu($dta)     {$this->idUsu = $dta;}
+    public function setName($dta)    {$this->name = $dta;}
+    public function setPassword($dta)  {$this->password = $dta;}
+    public function setEmail($dta)     {$this->email = $dta;}
+    public function setType($dta)     {$this->type = $dta;}
 
-        //SETTER
-        public function setIdUsu($dta)     {$this->idUsu = $dta;}
-        public function setName($dta)    {$this->name = $dta;}
-        public function setPassword($dta)  {$this->password = $dta;}
-        public function setEmail($dta)     {$this->email = $dta;}
-        public function setType($dta)     {$this->type = $dta;}
-
-        //GETTER
-        public function getIdUsu()      {return $this->idUsu;}
-        public function getName()     {return $this->name;}
-        public function getPassword()   {return $this->password;}
-        public function getEmail()      {return $this->email;}
-        public function getType()      {return $this->type;}
+    //GETTER
+    public function getIdUsu()      {return $this->idUsu;}
+    public function getName()     {return $this->name;}
+    public function getPassword()   {return $this->password;}
+    public function getEmail()      {return $this->email;}
+    public function getType()      {return $this->type;}
 
     //CRUD
     public static function getAll(){
@@ -42,7 +40,7 @@ require_once "model/Generico.php" ;
         return $datos;
     }
     
-    public static function getId($idUsu) {
+    public static function getId($idUsu){
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT * FROM usuario WHERE idUsu=:idUsu ;",
             [ ":idUsu" => $idUsu ]) ;
@@ -59,8 +57,7 @@ require_once "model/Generico.php" ;
             ":type"=>$this->type]) ;
     }
 
-    public function update()
-    {
+    public function update(){
         $bd = Database::getInstance() ;
         $bd->doQuery("UPDATE usuario SET name=:name, password=:password, email=:email, type=:type WHERE idUsu=:idUsu ;",
             [":name"=>$this->name,
@@ -76,6 +73,5 @@ require_once "model/Generico.php" ;
             [ ":idUsu" => $idUsu ]) ;
     }
  
-    //CONSULTAS
 }
 ?>

@@ -318,16 +318,7 @@ label:hover ~ label {
                           <tr>
                               <td style="width:50%;"><div class="meta meta-footer d-flex mb-0">Eliminar Ultima Temporada</div></td>
                               <td colspan="3" style="width:50%;">
-                                   <form class="comment-form needs-validation botones" id="añadirepisodio" action="index.php" method="POST" role="form" style="display: block;">
-                                       <div class="row">
-                                       <input name="mod" type="hidden" value="Episodio">
-                                                    <input name="ope" type="hidden" value="delete">
-                                                    <input name="idSeropel" type="hidden" value="<?=$detalle->getIdSeropel();?>">
-                                                    <input name="season" type="hidden" value="<?=$e?>">
-                                                    <div class="col-md-2">
-                                                        <i class="fa fa-3x fa-trash" onclick="actualizar('añadirepisodio')" style="padding: 0px; color: orange;"></i>
-                                                    </div></div>
-                                   </form>
+                                       <a class="align-content-end dropdown-item" href="#" onclick="modal('eliminarepi',<?php echo $detalle->getIdSeropel();?>,<?=$e?>)"><i class="fa fa-4x fa-trash" style="padding: 0px; color: orange;"></i></a>
                               </td>
                           </tr>
                           <tr>
@@ -338,7 +329,7 @@ label:hover ~ label {
                           <tr>
                               <td style="width:50%;"><div class="meta meta-footer d-flex mb-0">Añadir Temporada <?=$e+1;?></div></td>
                               <td colspan="3" style="width:50%;">
-                                   <form class="comment-form needs-validation botones" id="eliminarepisodio" action="index.php" method="POST" role="form" style="display: block;">
+                                   <form class="comment-form needs-validation botones" id="añadirepisodio" action="index.php" method="POST" role="form" style="display: block;">
                                        <div class="row">
                                        <input name="mod" type="hidden" value="Episodio">
                                                     <input name="ope" type="hidden" value="insert">
@@ -356,7 +347,7 @@ label:hover ~ label {
                         </div>
                                                     </div>
                                                     <div class="col-md-2">
-                                                        <i class="fa fa-3x fa-plus-circle" onclick="eliminar('eliminarepisodio')" style="padding: 0px; color: orange;"></i>
+                                                        <i class="fa fa-3x fa-plus-circle" onclick="actualizar('añadirepisodio')" style="padding: 0px; color: orange;"></i>
                                                     </div></div>
                                    </form>
                               </td>

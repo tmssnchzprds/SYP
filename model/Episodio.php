@@ -37,7 +37,7 @@ class Episodio implements Generico{
         return $datos;
     }
     
-    public static function getId($idEpi) {
+    public static function getId($idEpi){
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT * FROM episodio WHERE idEpi=:idEpi ;",
             [ ":idEpi" => $idEpi ]) ;
@@ -53,8 +53,7 @@ class Episodio implements Generico{
             ":episode"=>$this->episode]) ;
     }
 
-    public function update()
-    {
+    public function update(){
         $bd = Database::getInstance() ;
         $bd->doQuery("UPDATE episodio SET idSeropel=:idSeropel, season=:season, episode=:episode WHERE idEpi=:idEpi ;",
             [":idSeropel"=>$this->idSeropel,
@@ -71,7 +70,7 @@ class Episodio implements Generico{
  
     //CONSULTAS
     
-      public static function getSeropel($idSeropel){
+    public static function getSeropel($idSeropel){
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT * FROM episodio WHERE idSeropel=:idSeropel ORDER BY season, episode;",
             [":idSeropel"=>$idSeropel]    ) ;
@@ -85,7 +84,7 @@ class Episodio implements Generico{
         return $datos;
     }
     
-    public static function getbySeason($idSeropel, $season) {
+    public static function getbySeason($idSeropel, $season){
         $bd = Database::getInstance() ;
         $bd->doQuery("SELECT * FROM episodio WHERE idSeropel=:idSeropel AND season=:season ;",
             [ ":idSeropel" => $idSeropel,

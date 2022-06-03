@@ -1,11 +1,5 @@
 <?php
-require_once "controller/controller.Generico.php" ;
-require_once "model/Seropel.php";
-require_once "model/Categoria.php";
-require_once "model/Episodio.php";
-require_once "model/Comentario.php";
-require_once "model/Puntuacion.php";
-require_once "model/Sesion.php" ;
+require_once "assets/inc/controller.init.inc";
 
 class controllerPuntuacion implements controllerGenerico{
 
@@ -40,39 +34,11 @@ class controllerPuntuacion implements controllerGenerico{
             $puntuacion->insert() ;
             $success = 0;
             $msg = "Se ha guadado correctamente";
-        } else {
-             $success = 1;
-             $msg = "No se ha podido guardar se ha producido un error".$_POST["idUsu"].$_POST["idSeropel"].$_POST["score"].$_POST["idEst"].$_POST["season"].($_POST["episode"]);
-        }
-if (isset($_POST["idSeropel"])) {
-            $detalle = Seropel::detalle($_POST["idSeropel"]);
-            if (isset($_SESSION["usuario"])){
-                
-               $puntuacion = Puntuacion::getPuntuacion($_POST["idSeropel"],$_SESSION["usuario"]->idUsu);
-            }
-            $categoria = Categoria::getAll();
-            $comentarios = Comentario::comentarioSeropel($_POST["idSeropel"]);
-            $cantcomentario = count($comentarios);
-                if ($cantcomentario != 0) {
-                    $comentarios_title = " Todos los Comentarios";
-                } else {
-                    $comentarios_title = " No hay Comentarios";
-                }
-            $episodio = Episodio::getSeropel($_POST["idSeropel"]);
-            require_once "view/show.detalle.php";
+            require_once "assets/inc/controller.detalle.inc";
         } else {
             $success = 1;
-            $msg = $msg."<br>No se ha encontrado la Serie o Pelicula";
-         $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";
+            $msg = "No se ha podido guardar se ha producido un error";
+            require_once "assets/inc/controller.listatotal.inc";
         }
     }
     public function update(){
@@ -88,55 +54,17 @@ if (isset($_POST["idSeropel"])) {
 		$puntuacion->update() ;
                 $success = 0;
                 $msg = "Se ha actualizado el registro correctamente";
+                require_once "assets/inc/controller.detalle.inc";
             } else {
                 $success = 1;
                 $msg = "No se ha podido actualizar el registro se ha producido un error";
+                require_once "assets/inc/controller.listatotal.inc";
             }
-            if (isset($_POST["idSeropel"])) {
-            $detalle = Seropel::detalle($_POST["idSeropel"]);
-            if (isset($_SESSION["usuario"])){
-                
-               $puntuacion = Puntuacion::getPuntuacion($_POST["idSeropel"],$_SESSION["usuario"]->idUsu);
-            }
-            $categoria = Categoria::getAll();
-            $comentarios = Comentario::comentarioSeropel($_POST["idSeropel"]);
-            $cantcomentario = count($comentarios);
-                if ($cantcomentario != 0) {
-                    $comentarios_title = " Todos los Comentarios";
-                } else {
-                    $comentarios_title = " No hay Comentarios";
-                }
-            $episodio = Episodio::getSeropel($_POST["idSeropel"]);
-            require_once "view/show.detalle.php";
-        } else {
-            $success = 1;
-            $msg = $msg."<br>No se ha encontrado la Serie o Pelicula";
-         $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";
-        }
         } else {
             $success = 1;
             $msg = "No se ha podido actualizar el registro se ha producido un error";
-            $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";
+            require_once "assets/inc/controller.listatotal.inc";
         }
-
     }
     public function delete(){
         if (isset($_POST["idScore"])) {
@@ -147,16 +75,6 @@ if (isset($_POST["idSeropel"])) {
             $success = 1;
             $msg = "No se ha podido eliminar el comentario se ha producido un error";
 	}
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";
+        require_once "assets/inc/controller.listatotal.inc";
     }
-
 }

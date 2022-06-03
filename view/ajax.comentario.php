@@ -7,7 +7,7 @@ foreach($episodio as $item){
 }
 ?>
                     <div id="cargarcom">
-                <div class="post">
+                <div class="post box">
                     <table style="width: 100%">
                         <tr>
                               <td style="width:100%">
@@ -25,7 +25,7 @@ foreach($episodio as $item){
             <?php
                 foreach($comentarios as $blug){
               ?>
-                <div class="box bg-white shadow">
+                    <div class="box bg-white shadow" style="margin-bottom: 20px;">
                     <table style="width: 100%">
                         <tr>
                               <td style="width:100%">

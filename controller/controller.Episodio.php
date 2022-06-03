@@ -1,9 +1,5 @@
 <?php
-require_once "controller/controller.Generico.php" ;
-require_once "model/Episodio.php" ;
-require_once "model/Seropel.php" ;
-require_once "model/Categoria.php" ;
-require_once "model/Sesion.php" ;
+require_once "assets/inc/controller.init.inc";
 
 class controllerEpisodio implements controllerGenerico{
 
@@ -35,20 +31,12 @@ class controllerEpisodio implements controllerGenerico{
             $episodio->insert() ;
             $success = 0;
             $msg = "Se ha creado el registro correctamente";
+            require_once "assets/inc/controller.detalle.inc";
         } else {
-             $success = 1;
-             $msg = "No se ha podido insertar el registro se ha producido un error";
+            $success = 1;
+            $msg = "No se ha podido insertar el registro se ha producido un error";
+            require_once "assets/inc/controller.listatotal.inc";
         }
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";
     }
     public function update(){
 	if (isset($_POST["idEpi"])) {
@@ -60,24 +48,17 @@ class controllerEpisodio implements controllerGenerico{
 		$episodio->update() ;
                 $success = 0;
                 $msg = "Se ha actualizado el registro correctamente";
+                require_once "assets/inc/controller.detalle.inc";
             } else {
                 $success = 1;
                 $msg = "No se ha podido actualizar el registro se ha producido un error";
+                require_once "assets/inc/controller.listatotal.inc";
             }
         } else {
             $success = 1;
             $msg = "No se ha podido actualizar el registro se ha producido un error";
+            require_once "assets/inc/controller.listatotal.inc";
         }
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";
     }
     public function delete(){
         if (isset($_POST["idSeropel"]) && ($_POST["season"])) {
@@ -85,20 +66,11 @@ class controllerEpisodio implements controllerGenerico{
             Episodio::delete($episodio->getIdEpi());
             $success = 0;
             $msg = "Se ha eliminado el registro correctamente";
+            require_once "assets/inc/controller.detalle.inc";
 	} else {
             $success = 1;
             $msg = "No se ha podido eliminar el registro se ha producido un error";
+            require_once "assets/inc/controller.listatotal.inc";
 	}
-        $caption[0] = "Series Añadidas Recientemente";
-        $seropel[0] = Seropel::listaactual(1);
-        $caption[1] = "Series Mejor Valoradas";
-        $seropel[1] = Seropel::listamejor(1);
-        $caption[2] = "Peliculas Añadidas Recientemente";
-        $seropel[2] = Seropel::listaactual(2);
-        $caption[3] = "Peliculas Mejor Valoradas";
-        $seropel[3] = Seropel::listamejor(2);
-        $categoria = Categoria::getAll();
-        require_once "view/show.seropel.php";
     }
-   
 }
