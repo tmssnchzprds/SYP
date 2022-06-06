@@ -1,83 +1,79 @@
 <?php
-class Database
-{
+
+class Database {
+
     // Atributos
-    private $dbHost = "localhost" 	 ;
-    private $dbUser = "u325884627_syp"	 ;
-    private $dbPass = "SYPsyp2022"		 ;
-    private $dbName = "u325884627_syp"	 ;
-
+    private $dbHost = "localhost";
+    private $dbUser = "u325884627_syp";
+    private $dbPass = "SYPsyp2022";
+    private $dbName = "u325884627_syp";
     //
-    private static $prp = null	  	 ;
-    private static $pdo = null 		 ;
-
+    private static $prp = null;
+    private static $pdo = null;
     //
-    private static $instancia = null ;
+    private static $instancia = null;
 
     // Constructor
-    public function __construct()
-    {
-        $this->connect() ;
+    public function __construct() {
+        $this->connect();
     }
 
     //
-    private function __clone() {}
+    private function __clone() {
+        
+    }
 
     //
     // Obtener Instancia
-    public static function getInstance()
-    {
+    public static function getInstance() {
         if (is_null(self::$instancia)) {
-            self::$instancia = new Database() ;
+            self::$instancia = new Database();
         }
-        return self::$instancia ;
+        return self::$instancia;
     }
 
 //
     // Conectar a BBDD
 
-    public function connect()
-    {
+    public function connect() {
         try {
             //$options=[PDO::ATTR_ERRMODE=>FDO::ERRMODE_EXCEPTION];
             self::$pdo = new PDO("mysql:host={$this->dbHost};dbname={$this->dbName};charset=utf8;",
-            $this->dbUser,
-            $this->dbPass) ;
+                    $this->dbUser,
+                    $this->dbPass);
         } catch (Exception $e) {
-            die ("Error en conectar la BBDD; ".$e) ;
+            die("Error en conectar la BBDD; " . $e);
         }
     }
 
     //
     // Realizar consulta a la BBDD
-    public function doQuery($sql, $params = [])
-    {
-        self::$prp = self::$pdo->prepare($sql) ;
+    public function doQuery($sql, $params = []) {
+        self::$prp = self::$pdo->prepare($sql);
 
-        $flg = self::$prp->execute($params) ;
+        $flg = self::$prp->execute($params);
 
-        if ( ($flg) && (self::$prp->rowCount() > 0) ) {
-            return true  ;
+        if (($flg) && (self::$prp->rowCount() > 0)) {
+            return true;
         } else {
-            return false ;
+            return false;
         }
     }
 
     //
     // Obtener nueva entrada de la BBDD de la clase dada (Por defecto será la StdClass si no se especifica otra)
-    public function getRow($class="StdClass")
-    {
+    public function getRow($class = "StdClass") {
         if (self::$prp) {
-            return self::$prp->fetchObject($class) ;
+            return self::$prp->fetchObject($class);
         }
     }
 
     //
     // Obtener el ID dé la última entrada de la BBDD
-    public function getLastId()
-    {
-        return self::$pdo->lastInsertId() ;
+    public function getLastId() {
+        return self::$pdo->lastInsertId();
     }
 
 }
+
 ?>

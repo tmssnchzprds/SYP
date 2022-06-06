@@ -15,10 +15,10 @@
                 <div class="modal-body">
                     <p class="statusMsg"></p>
                     <form class="comment-form" id="form" action="index.php" method="POST" role="form" style="display: block;">
-                        <input id="mod" name="mod" type="hidden" value="Seropel">
+                        <input id="mod" name="mod" type="hidden" value="Usuario">
                         <input id="ope" name="ope" type="hidden" value="delete">
-                        <?php if ($detalle != "") { ?>
-                            <input id="idSeropel" name="idSeropel" type="hidden" value="<?= $detalle->getIdSeropel(); ?>">
+                        <?php if ($idUsu != "") { ?>
+                            <input id="idSeropel" name="idSeropel" type="hidden" value="<?= $idUsu ?>">
                         <?php } ?>
                         <p> Esta operación no se puede desacer, ¿Está Seguro?</p>
                         <!-- Modal Footer -->

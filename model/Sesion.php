@@ -1,21 +1,22 @@
 <?php
 
-class Sesion{
-    
-    public function init(){
+class Sesion {
+
+    public function init() {
         session_start();
     }
 
-    public function get($key){
-        return !empty($_SESSION[$key]) ? $_SESSION[$key] : null ;
+    public function get($key) {
+        return !empty($_SESSION[$key]) ? $_SESSION[$key] : null;
     }
 
-    public function close(){
+    public function close() {
         session_unset();
-        session_destroy() ;
+        session_destroy();
     }
 
-    public function getStatus(){
+    public function getStatus() {
         return session_status();
     }
+
 }

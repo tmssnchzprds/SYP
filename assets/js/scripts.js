@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
     'use strict';
     /*-----------------------------------------------------------------------------------*/
     /*	STICKY HEADER
-    /*-----------------------------------------------------------------------------------*/
+     /*-----------------------------------------------------------------------------------*/
     if ($(".navbar").length) {
         var options = {
             offset: 350,
@@ -12,10 +12,10 @@ $(document).ready(function() {
                 stick: 'banner--stick',
                 unstick: 'banner--unstick'
             },
-            onStick: function() {
+            onStick: function () {
                 $($.SmartMenus.Bootstrap.init);
             },
-            onUnstick: function() {
+            onUnstick: function () {
                 $('.navbar .btn-group').removeClass('open');
             }
         };
@@ -23,78 +23,78 @@ $(document).ready(function() {
     }
     /*-----------------------------------------------------------------------------------*/
     /*	HAMBURGER MENU ICON
-    /*-----------------------------------------------------------------------------------*/
-	$(".hamburger.animate").on( "click", function() {
+     /*-----------------------------------------------------------------------------------*/
+    $(".hamburger.animate").on("click", function () {
         $(".hamburger.animate").toggleClass("active");
     });
-    $('.onepage .navbar li a').on('click', function() {
+    $('.onepage .navbar li a').on('click', function () {
         $('.navbar .navbar-collapse.show').collapse('hide');
         $('.hamburger.animate').removeClass('active');
     });
     /*-----------------------------------------------------------------------------------*/
     /*	IMAGE ICON HOVER
-    /*-----------------------------------------------------------------------------------*/
+     /*-----------------------------------------------------------------------------------*/
     $('.overlay:not(.caption) > a, .overlay:not(.caption) > span, .overlay.caption-overlay > a, .overlay.caption-overlay > span').prepend('<span class="bg"></span>');
     /*-----------------------------------------------------------------------------------*/
     /*	FLICKITY
-    /*-----------------------------------------------------------------------------------*/
-	function enableFlickitySlider(){
-		$('.flickity-slider-container').each( function( i, container ) {
-		    var $container = $( container );
-		    var $sliderMain = $container.find('.flickity-slider-main').flickity({
-		      imagesLoaded: true,
-			  percentPosition: false,
-			  wrapAround: true,
-			  pageDots: false,
-			  prevNextButtons: false,
-			  fullscreen: $container.hasClass('fullscreen') ? true : false
-		    });
-		    $container.find('.flickity-slider-nav').flickity({
-		      asNavFor: $sliderMain[0],
-		      imagesLoaded: true,
-			  percentPosition: false,
-			  pageDots: false,
-			  contain: true,
-			  prevNextButtons: false
-		    });
-		    $container.find('.flickity-slider-main').css({ opacity: 1 });
-		    $container.find('.flickity-slider-nav').css({ opacity: 1 });
-		});
-	}
-	enableFlickitySlider();
-	function enableFlickityCarousel(){
-		$('.flickity-carousel-container').each( function( i, container ) {
-		    var $container = $( container );
-		    var $carousel = $container.find('.flickity-carousel').flickity({
-		      imagesLoaded: true,
-			  percentPosition: false,
-			  wrapAround: true,
-			  pageDots: false,
-			  fullscreen: $container.hasClass('fullscreen') ? true : false
-		    });
-		    $carousel.css({ opacity: 1 });
-			var flkty = $carousel.data('flickity');
-			var $status = $container.find('.flickity-status');
-				$carousel.on( 'change.flickity', updateStatus );
-			function updateStatus() {
-				var slideNumber = ("0" + (flkty.selectedIndex + 1)).slice(-2);
-				var flktyLength = ("0" + flkty.slides.length).slice(-2);
-				$status.html( '<span>' + slideNumber + '</span>/<span>' + flktyLength + '</span>' );
-			}
-			updateStatus();
-			var $caption = $container.find('.flickity-caption');
-				$carousel.on( 'select.flickity', function() {
-				var captionalt = $(flkty.selectedElement).find('img').attr('alt')
-				$caption.text( captionalt )
-			});
-		});
-	}
-	enableFlickityCarousel();
+     /*-----------------------------------------------------------------------------------*/
+    function enableFlickitySlider() {
+        $('.flickity-slider-container').each(function (i, container) {
+            var $container = $(container);
+            var $sliderMain = $container.find('.flickity-slider-main').flickity({
+                imagesLoaded: true,
+                percentPosition: false,
+                wrapAround: true,
+                pageDots: false,
+                prevNextButtons: false,
+                fullscreen: $container.hasClass('fullscreen') ? true : false
+            });
+            $container.find('.flickity-slider-nav').flickity({
+                asNavFor: $sliderMain[0],
+                imagesLoaded: true,
+                percentPosition: false,
+                pageDots: false,
+                contain: true,
+                prevNextButtons: false
+            });
+            $container.find('.flickity-slider-main').css({opacity: 1});
+            $container.find('.flickity-slider-nav').css({opacity: 1});
+        });
+    }
+    enableFlickitySlider();
+    function enableFlickityCarousel() {
+        $('.flickity-carousel-container').each(function (i, container) {
+            var $container = $(container);
+            var $carousel = $container.find('.flickity-carousel').flickity({
+                imagesLoaded: true,
+                percentPosition: false,
+                wrapAround: true,
+                pageDots: false,
+                fullscreen: $container.hasClass('fullscreen') ? true : false
+            });
+            $carousel.css({opacity: 1});
+            var flkty = $carousel.data('flickity');
+            var $status = $container.find('.flickity-status');
+            $carousel.on('change.flickity', updateStatus);
+            function updateStatus() {
+                var slideNumber = ("0" + (flkty.selectedIndex + 1)).slice(-2);
+                var flktyLength = ("0" + flkty.slides.length).slice(-2);
+                $status.html('<span>' + slideNumber + '</span>/<span>' + flktyLength + '</span>');
+            }
+            updateStatus();
+            var $caption = $container.find('.flickity-caption');
+            $carousel.on('select.flickity', function () {
+                var captionalt = $(flkty.selectedElement).find('img').attr('alt')
+                $caption.text(captionalt)
+            });
+        });
+    }
+    enableFlickityCarousel();
     /*-----------------------------------------------------------------------------------*/
     /*	CUBE PORTFOLIO
-    /*-----------------------------------------------------------------------------------*/
+     /*-----------------------------------------------------------------------------------*/
     var $cubeinline = $('#cube-inline');
-	$cubeinline.cubeportfolio({
+    $cubeinline.cubeportfolio({
         filters: '#cube-inline-filter',
         layoutMode: 'grid',
         mediaQueries: [{width: 1680, cols: 1}, {width: 1440, cols: 1}, {width: 1024, cols: 1}, {width: 768, cols: 1}, {width: 575, cols: 1}, {width: 480, cols: 1}],
@@ -111,22 +111,22 @@ $(document).ready(function() {
         singlePageInlineDelegate: '.cbp-singlePageInline',
         singlePageInlinePosition: 'below',
         singlePageInlineInFocus: true,
-        singlePageInlineCallback: function(url, element) {
+        singlePageInlineCallback: function (url, element) {
             // to update singlePageInline content use the following method: this.updateSinglePageInline(yourContent)
             var t = this;
             $.ajax({
-                    url: url,
-                    type: 'GET',
-                    dataType: 'html',
-                    timeout: 30000
-                })
-                .done(function(result) {
-                    t.updateSinglePageInline(result);
-                    $('.image-tooltip').tooltip('hide')
-                })
-                .fail(function() {
-                    t.updateSinglePageInline('AJAX Error! Please refresh the page!');
-                });
+                url: url,
+                type: 'GET',
+                dataType: 'html',
+                timeout: 30000
+            })
+                    .done(function (result) {
+                        t.updateSinglePageInline(result);
+                        $('.image-tooltip').tooltip('hide')
+                    })
+                    .fail(function () {
+                        t.updateSinglePageInline('AJAX Error! Please refresh the page!');
+                    });
         },
         plugins: {
             loadMore: {
@@ -135,17 +135,17 @@ $(document).ready(function() {
                 loadItems: 3,
             },
             singlePageInline: {
-                offset: 200
-            }
+                                offset: 200
+                        }
         },
     });
-    $cubeinline.on('updateSinglePageInlineStart.cbp', function() {
-    	enableFlickityCarousel();
-    	enableVanillaForm();
-    	enableFlickitySlider();
-	});
-	var $cubeinline5 = $('#cube-inline-5');
-	$cubeinline5.cubeportfolio({
+    $cubeinline.on('updateSinglePageInlineStart.cbp', function () {
+        enableFlickityCarousel();
+        enableVanillaForm();
+        enableFlickitySlider();
+    });
+    var $cubeinline5 = $('#cube-inline-5');
+    $cubeinline5.cubeportfolio({
         filters: '#cube-inline-5-filter',
         layoutMode: 'grid',
         mediaQueries: [{width: 1680, cols: 2}, {width: 1440, cols: 2}, {width: 1024, cols: 2}, {width: 768, cols: 2}, {width: 575, cols: 1}, {width: 480, cols: 1}],
@@ -162,21 +162,21 @@ $(document).ready(function() {
         singlePageInlineDelegate: '.cbp-singlePageInline',
         singlePageInlinePosition: 'above',
         singlePageInlineInFocus: true,
-        singlePageInlineCallback: function(url, element) {
+        singlePageInlineCallback: function (url, element) {
             // to update singlePageInline content use the following method: this.updateSinglePageInline(yourContent)
             var t = this;
             $.ajax({
-                    url: url,
-                    type: 'GET',
-                    dataType: 'html',
-                    timeout: 30000
-                })
-                .done(function(result) {
-                    t.updateSinglePageInline(result);
-                })
-                .fail(function() {
-                    t.updateSinglePageInline('AJAX Error! Please refresh the page!');
-                });
+                url: url,
+                type: 'GET',
+                dataType: 'html',
+                timeout: 30000
+            })
+                    .done(function (result) {
+                        t.updateSinglePageInline(result);
+                    })
+                    .fail(function () {
+                        t.updateSinglePageInline('AJAX Error! Please refresh the page!');
+                    });
         },
         plugins: {
             loadMore: {
@@ -185,15 +185,15 @@ $(document).ready(function() {
                 loadItems: 3,
             },
             singlePageInline: {
-                offset: 58
-            }
+                                offset: 58
+                        }
         },
     });
-    $cubeinline5.on('updateSinglePageInlineStart.cbp', function() {
-    	enableFlickityCarousel();
-	});
-	var $cubeinline6 = $('#cube-inline-6');
-	$cubeinline6.cubeportfolio({
+    $cubeinline5.on('updateSinglePageInlineStart.cbp', function () {
+        enableFlickityCarousel();
+    });
+    var $cubeinline6 = $('#cube-inline-6');
+    $cubeinline6.cubeportfolio({
         filters: '#cube-inline-6-filter',
         layoutMode: 'grid',
         mediaQueries: [{width: 1680, cols: 3}, {width: 1440, cols: 3}, {width: 1000, cols: 3}, {width: 740, cols: 2}, {width: 575, cols: 1}, {width: 480, cols: 1}],
@@ -210,21 +210,21 @@ $(document).ready(function() {
         singlePageInlineDelegate: '.cbp-singlePageInline',
         singlePageInlinePosition: 'above',
         singlePageInlineInFocus: true,
-        singlePageInlineCallback: function(url, element) {
+        singlePageInlineCallback: function (url, element) {
             // to update singlePageInline content use the following method: this.updateSinglePageInline(yourContent)
             var t = this;
             $.ajax({
-                    url: url,
-                    type: 'GET',
-                    dataType: 'html',
-                    timeout: 30000
-                })
-                .done(function(result) {
-                    t.updateSinglePageInline(result);
-                })
-                .fail(function() {
-                    t.updateSinglePageInline('AJAX Error! Please refresh the page!');
-                });
+                url: url,
+                type: 'GET',
+                dataType: 'html',
+                timeout: 30000
+            })
+                    .done(function (result) {
+                        t.updateSinglePageInline(result);
+                    })
+                    .fail(function () {
+                        t.updateSinglePageInline('AJAX Error! Please refresh the page!');
+                    });
         },
         plugins: {
             loadMore: {
@@ -233,15 +233,15 @@ $(document).ready(function() {
                 loadItems: 3,
             },
             singlePageInline: {
-                offset: 58
-            }
+                                offset: 58
+                        }
         },
     });
-    $cubeinline6.on('updateSinglePageInlineStart.cbp', function() {
-    	enableFlickityCarousel();
-	});
-	var $cubeinline7 = $('#cube-inline-7');
-	$cubeinline7.cubeportfolio({
+    $cubeinline6.on('updateSinglePageInlineStart.cbp', function () {
+        enableFlickityCarousel();
+    });
+    var $cubeinline7 = $('#cube-inline-7');
+    $cubeinline7.cubeportfolio({
         filters: '#cube-inline-7-filter',
         layoutMode: 'grid',
         mediaQueries: [{width: 1680, cols: 3}, {width: 1440, cols: 3}, {width: 960, cols: 3}, {width: 720, cols: 2}, {width: 575, cols: 1}, {width: 480, cols: 1}],
@@ -258,21 +258,21 @@ $(document).ready(function() {
         singlePageInlineDelegate: '.cbp-singlePageInline',
         singlePageInlinePosition: 'top',
         singlePageInlineInFocus: true,
-        singlePageInlineCallback: function(url, element) {
+        singlePageInlineCallback: function (url, element) {
             // to update singlePageInline content use the following method: this.updateSinglePageInline(yourContent)
             var t = this;
             $.ajax({
-                    url: url,
-                    type: 'GET',
-                    dataType: 'html',
-                    timeout: 30000
-                })
-                .done(function(result) {
-                    t.updateSinglePageInline(result);
-                })
-                .fail(function() {
-                    t.updateSinglePageInline('AJAX Error! Please refresh the page!');
-                });
+                url: url,
+                type: 'GET',
+                dataType: 'html',
+                timeout: 30000
+            })
+                    .done(function (result) {
+                        t.updateSinglePageInline(result);
+                    })
+                    .fail(function () {
+                        t.updateSinglePageInline('AJAX Error! Please refresh the page!');
+                    });
         },
         plugins: {
             loadMore: {
@@ -281,15 +281,15 @@ $(document).ready(function() {
                 loadItems: 3,
             },
             singlePageInline: {
-                offset: 150
-            }
+                                offset: 150
+                        }
         },
     });
-    $cubeinline7.on('updateSinglePageInlineStart.cbp', function() {
-    	const players = Plyr.setup('.player'); 
-	});
-	var $cubeinline8 = $('#cube-inline-8');
-	$cubeinline8.cubeportfolio({
+    $cubeinline7.on('updateSinglePageInlineStart.cbp', function () {
+        const players = Plyr.setup('.player');
+    });
+    var $cubeinline8 = $('#cube-inline-8');
+    $cubeinline8.cubeportfolio({
         filters: '#cube-inline-8-filter',
         layoutMode: 'grid',
         mediaQueries: [{width: 1680, cols: 3}, {width: 1440, cols: 3}, {width: 960, cols: 3}, {width: 720, cols: 2}, {width: 575, cols: 1}, {width: 480, cols: 1}],
@@ -306,21 +306,21 @@ $(document).ready(function() {
         singlePageInlineDelegate: '.cbp-singlePageInline',
         singlePageInlinePosition: 'top',
         singlePageInlineInFocus: true,
-        singlePageInlineCallback: function(url, element) {
+        singlePageInlineCallback: function (url, element) {
             // to update singlePageInline content use the following method: this.updateSinglePageInline(yourContent)
             var t = this;
             $.ajax({
-                    url: url,
-                    type: 'GET',
-                    dataType: 'html',
-                    timeout: 30000
-                })
-                .done(function(result) {
-                    t.updateSinglePageInline(result);
-                })
-                .fail(function() {
-                    t.updateSinglePageInline('AJAX Error! Please refresh the page!');
-                });
+                url: url,
+                type: 'GET',
+                dataType: 'html',
+                timeout: 30000
+            })
+                    .done(function (result) {
+                        t.updateSinglePageInline(result);
+                    })
+                    .fail(function () {
+                        t.updateSinglePageInline('AJAX Error! Please refresh the page!');
+                    });
         },
         plugins: {
             loadMore: {
@@ -329,14 +329,14 @@ $(document).ready(function() {
                 loadItems: 3,
             },
             singlePageInline: {
-                offset: 150
-            }
+                                offset: 150
+                        }
         },
     });
-    $cubeinline8.on('updateSinglePageInlineStart.cbp', function() {
-    	enableFlickitySlider();
-	});
-	var $cubegrid = $('#cube-grid');
+    $cubeinline8.on('updateSinglePageInlineStart.cbp', function () {
+        enableFlickitySlider();
+    });
+    var $cubegrid = $('#cube-grid');
     $cubegrid.cubeportfolio({
         filters: '#cube-grid-filter',
         loadMore: '#cube-grid-more',
@@ -357,10 +357,10 @@ $(document).ready(function() {
             }
         }
     });
-    $cubegrid.on('onAfterLoadMore.cbp', function(event, newItemsAddedToGrid) {
+    $cubegrid.on('onAfterLoadMore.cbp', function (event, newItemsAddedToGrid) {
         $('.cbp-item-load-more .overlay > a, .cbp-item-load-more .overlay > span').prepend('<span class="bg"></span>');
         $lg.data('lightGallery').destroy(true);
-        enablelightGallery();  
+        enablelightGallery();
     });
     var $cubegridfull = $('#cube-grid-full');
     $cubegridfull.cubeportfolio({
@@ -383,10 +383,10 @@ $(document).ready(function() {
             }
         }
     });
-    $cubegridfull.on('onAfterLoadMore.cbp', function(event, newItemsAddedToGrid) {
+    $cubegridfull.on('onAfterLoadMore.cbp', function (event, newItemsAddedToGrid) {
         $('.cbp-item-load-more .overlay > a, .cbp-item-load-more .overlay > span').prepend('<span class="bg"></span>');
         $lg.data('lightGallery').destroy(true);
-        enablelightGallery();  
+        enablelightGallery();
     });
     var $cubegridlarge = $('#cube-grid-large');
     $cubegridlarge.cubeportfolio({
@@ -409,10 +409,10 @@ $(document).ready(function() {
             }
         }
     });
-    $cubegridlarge.on('onAfterLoadMore.cbp', function(event, newItemsAddedToGrid) {
+    $cubegridlarge.on('onAfterLoadMore.cbp', function (event, newItemsAddedToGrid) {
         $('.cbp-item-load-more .overlay > a, .cbp-item-load-more .overlay > span').prepend('<span class="bg"></span>');
         $lg.data('lightGallery').destroy(true);
-        enablelightGallery();  
+        enablelightGallery();
     });
     var $cubemosaic = $('#cube-grid-mosaic');
     $cubemosaic.cubeportfolio({
@@ -456,7 +456,7 @@ $(document).ready(function() {
             }
         }
     });
-	$('.cube-slider').cubeportfolio({
+    $('.cube-slider').cubeportfolio({
         layoutMode: 'slider',
         drag: true,
         auto: false,
@@ -472,8 +472,8 @@ $(document).ready(function() {
         gapVertical: 0,
         caption: '',
         displayType: 'default',
-    }); 
-	$('.cube-carousel').cubeportfolio({
+    });
+    $('.cube-carousel').cubeportfolio({
         layoutMode: 'slider',
         drag: true,
         auto: false,
@@ -491,48 +491,48 @@ $(document).ready(function() {
         displayType: 'fadeIn',
         displayTypeSpeed: 100,
     });
-	/*-----------------------------------------------------------------------------------*/
-    /*	LIGHTGALLERY
-    /*-----------------------------------------------------------------------------------*/   
-    function enablelightGallery(){
-		var $lg = $('.light-gallery');
-	    $lg.lightGallery({
-	        thumbnail: false,
-	        selector: 'a',
-	        mode: 'lg-fade',
-	        download: false,
-	        autoplayControls: false,
-	        zoom: false,
-	        fullScreen: false,
-	        videoMaxWidth: '1000px',
-	        loop: false,
-	        hash: false,
-	        mousewheel: true,
-	        videojs: true,
-	        share: false
-	    });
-	}
-	enablelightGallery();  
-	/*-----------------------------------------------------------------------------------*/
-    /*	COUNTER UP
     /*-----------------------------------------------------------------------------------*/
+    /*	LIGHTGALLERY
+     /*-----------------------------------------------------------------------------------*/
+    function enablelightGallery() {
+        var $lg = $('.light-gallery');
+        $lg.lightGallery({
+            thumbnail: false,
+            selector: 'a',
+            mode: 'lg-fade',
+            download: false,
+            autoplayControls: false,
+            zoom: false,
+            fullScreen: false,
+            videoMaxWidth: '1000px',
+            loop: false,
+            hash: false,
+            mousewheel: true,
+            videojs: true,
+            share: false
+        });
+    }
+    enablelightGallery();
+    /*-----------------------------------------------------------------------------------*/
+    /*	COUNTER UP
+     /*-----------------------------------------------------------------------------------*/
     $('.counter .value').counterUp({
         delay: 50,
         time: 1000
     });
-	/*-----------------------------------------------------------------------------------*/
+    /*-----------------------------------------------------------------------------------*/
     /*	COUNTDOWN
-	/*-----------------------------------------------------------------------------------*/
-    $(".countdown").countdown();	
+     /*-----------------------------------------------------------------------------------*/
+    $(".countdown").countdown();
     /*-----------------------------------------------------------------------------------*/
     /*	PLYR
-    /*-----------------------------------------------------------------------------------*/
-    const players = Plyr.setup('.player'); 
+     /*-----------------------------------------------------------------------------------*/
+    const players = Plyr.setup('.player');
     /*-----------------------------------------------------------------------------------*/
     /*	PROGRESSBAR
-	/*-----------------------------------------------------------------------------------*/
+     /*-----------------------------------------------------------------------------------*/
     var $pline = $('.progressbar.line');
-    $pline.each(function(i) {
+    $pline.each(function (i) {
         var line = new ProgressBar.Line(this, {
             strokeWidth: 3,
             trailWidth: 3,
@@ -550,12 +550,12 @@ $(document).ready(function() {
                 },
                 autoStyleContainer: false
             },
-            step: function(state, line, attachment) {
+            step: function (state, line, attachment) {
                 line.setText(Math.round(line.value() * 100) + ' %');
             }
         });
         var value = ($(this).attr('data-value') / 100);
-        $pline.waypoint(function() {
+        $pline.waypoint(function () {
             line.animate(value);
         }, {
             offset: "100%"
@@ -563,7 +563,7 @@ $(document).ready(function() {
     });
     /*-----------------------------------------------------------------------------------*/
     /*	AOS
-    /*-----------------------------------------------------------------------------------*/
+     /*-----------------------------------------------------------------------------------*/
     AOS.init({
         easing: 'ease-in-out-sine',
         duration: 800,
@@ -571,11 +571,11 @@ $(document).ready(function() {
     });
     /*-----------------------------------------------------------------------------------*/
     /*	PRETTIFY
-    /*-----------------------------------------------------------------------------------*/
+     /*-----------------------------------------------------------------------------------*/
     window.prettyPrint && prettyPrint();
     /*-----------------------------------------------------------------------------------*/
     /*	ISOTOPE GRID
-	/*-----------------------------------------------------------------------------------*/
+     /*-----------------------------------------------------------------------------------*/
     var $isogrid = $('.grid .isotope');
     $isogrid.isotope({
         itemSelector: '.item',
@@ -586,46 +586,46 @@ $(document).ready(function() {
         },
         layoutMode: 'masonry'
     });
-    $(window).resize(function() {
+    $(window).resize(function () {
         $isogrid.isotope({
             masonry: {
                 columnWidth: $isogrid.width() / 12
             }
         });
     });
-    $(window).on("load", function() {
+    $(window).on("load", function () {
         $isogrid.isotope({
             masonry: {
                 columnWidth: $isogrid.width() / 12
             }
         });
     });
-    $isogrid.imagesLoaded(function() {
+    $isogrid.imagesLoaded(function () {
         $isogrid.isotope('layout');
     });
     /*-----------------------------------------------------------------------------------*/
     /*	BACKGROUND IMAGE
-    /*-----------------------------------------------------------------------------------*/
-    $(".bg-image").css('background-image', function() {
+     /*-----------------------------------------------------------------------------------*/
+    $(".bg-image").css('background-image', function () {
         var bg = ('url(' + $(this).data("image-src") + ')');
         return bg;
     });
     /*-----------------------------------------------------------------------------------*/
     /*	TOOLTIP
-    /*-----------------------------------------------------------------------------------*/
+     /*-----------------------------------------------------------------------------------*/
     $('.has-tooltip').tooltip();
     $('.image-tooltip').tooltip({
-	    html: true,
-	    container: 'body',
-	    trigger: 'hover',
-	    template: '<div class="image-tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+        html: true,
+        container: 'body',
+        trigger: 'hover',
+        template: '<div class="image-tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
     });
     $('.has-popover').popover({
         trigger: 'focus',
     });
     /*-----------------------------------------------------------------------------------*/
     /*	VIDEO WRAPPER
-    /*-----------------------------------------------------------------------------------*/
+     /*-----------------------------------------------------------------------------------*/
     $('.video-wrapper video').backgroundVideo({
         $outerWrap: $('.video-wrapper'),
         pauseVideoOnViewLoss: false,
@@ -635,13 +635,13 @@ $(document).ready(function() {
     });
     /*-----------------------------------------------------------------------------------*/
     /*	PARALLAX MOBILE
-    /*-----------------------------------------------------------------------------------*/
+     /*-----------------------------------------------------------------------------------*/
     if (navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i)) {
         $('.image-wrapper').addClass('mobile');
     }
     /*-----------------------------------------------------------------------------------*/
     /*	INSTAGRAM
-    /*-----------------------------------------------------------------------------------*/
+     /*-----------------------------------------------------------------------------------*/
     var instagramFeed = new Instafeed({
         target: 'instafeed',
         get: 'user',
@@ -650,11 +650,11 @@ $(document).ready(function() {
         accessToken: '1215763826.f1627ea.512d3a9b334a4c91ac2e83d4f4d9b291',
         resolution: 'low_resolution',
         template: '<div class="item col-6 col-sm-4 col-md-2"><figure class="overlay overlay4 rounded"><a href="{{link}}" target="_blank"><img src="{{image}}" /><figcaption class="d-flex"><div class="align-self-center mx-auto"><i class="fa fa-instagram"></i></div></figcaption></figure></div>',
-        after: function() {
+        after: function () {
             $('#instafeed figure.overlay a').prepend('<span class="bg"></span>');
         }
     });
-    $('#instafeed').each(function() {
+    $('#instafeed').each(function () {
         instagramFeed.run();
     });
     var instagramFeed2 = new Instafeed({
@@ -665,11 +665,11 @@ $(document).ready(function() {
         accessToken: '1215763826.f1627ea.512d3a9b334a4c91ac2e83d4f4d9b291',
         resolution: 'low_resolution',
         template: '<div class="item col-6 col-md-3"><figure class="overlay overlay4 rounded"><a href="{{link}}" target="_blank"><img src="{{image}}" /><figcaption class="d-flex"><div class="align-self-center mx-auto"><i class="fa fa-instagram"></i></div></figcaption></figure></div>',
-        after: function() {
+        after: function () {
             $('#instafeed2 figure.overlay a').prepend('<span class="bg"></span>');
         }
     });
-    $('#instafeed2').each(function() {
+    $('#instafeed2').each(function () {
         instagramFeed2.run();
     });
     var instagramFeed3 = new Instafeed({
@@ -680,11 +680,11 @@ $(document).ready(function() {
         accessToken: '1215763826.f1627ea.512d3a9b334a4c91ac2e83d4f4d9b291',
         resolution: 'low_resolution',
         template: '<div class="item col-6 col-md-6 col-lg-4"><figure class="overlay overlay4 rounded"><a href="{{link}}" target="_blank"><img src="{{image}}" /><figcaption class="d-flex"><div class="align-self-center mx-auto"><i class="fa fa-instagram"></i></div></figcaption></figure></div>',
-        after: function() {
+        after: function () {
             $('#instafeed-widget figure.overlay a').prepend('<span class="bg"></span>');
         }
     });
-    $('#instafeed-widget').each(function() {
+    $('#instafeed-widget').each(function () {
         instagramFeed3.run();
     });
     var instagramFeed4 = new Instafeed({
@@ -695,11 +695,11 @@ $(document).ready(function() {
         accessToken: '8496407961.17f53f4.5e0a8ef3ccd84de5ace5caca71882827',
         resolution: 'low_resolution',
         template: '<div class="item col-6 col-sm-4 col-md-2"><figure class="overlay overlay4 rounded"><a href="{{link}}" target="_blank"><img src="{{image}}" /><figcaption class="d-flex"><div class="align-self-center mx-auto"><i class="fa fa-instagram"></i></div></figcaption></figure></div>',
-        after: function() {
+        after: function () {
             $('#instafeed-wedding figure.overlay a').prepend('<span class="bg"></span>');
         }
     });
-    $('#instafeed-wedding').each(function() {
+    $('#instafeed-wedding').each(function () {
         instagramFeed4.run();
     });
     var instagramFeed5 = new Instafeed({
@@ -710,11 +710,11 @@ $(document).ready(function() {
         accessToken: '8499296840.a5f34eb.fac290a263ac482189f8b74db310ac33',
         resolution: 'low_resolution',
         template: '<div class="item col-6 col-sm-4 col-md-2"><figure class="overlay overlay4 rounded"><a href="{{link}}" target="_blank"><img src="{{image}}" /><figcaption class="d-flex"><div class="align-self-center mx-auto"><i class="fa fa-instagram"></i></div></figcaption></figure></div>',
-        after: function() {
+        after: function () {
             $('#instafeed-portrait figure.overlay a').prepend('<span class="bg"></span>');
         }
     });
-    $('#instafeed-portrait').each(function() {
+    $('#instafeed-portrait').each(function () {
         instagramFeed5.run();
     });
     var instagramFeed6 = new Instafeed({
@@ -725,11 +725,11 @@ $(document).ready(function() {
         accessToken: '8567158531.e3842d2.e29434544808474eb57688333240c08d',
         resolution: 'low_resolution',
         template: '<div class="item col-6 col-sm-4 col-md-2"><figure class="overlay overlay4 rounded"><a href="{{link}}" target="_blank"><img src="{{image}}" /><figcaption class="d-flex"><div class="align-self-center mx-auto"><i class="fa fa-instagram"></i></div></figcaption></figure></div>',
-        after: function() {
+        after: function () {
             $('#instafeed-minimal figure.overlay a').prepend('<span class="bg"></span>');
         }
     });
-    $('#instafeed-minimal').each(function() {
+    $('#instafeed-minimal').each(function () {
         instagramFeed6.run();
     });
     var instagramFeed7 = new Instafeed({
@@ -740,11 +740,11 @@ $(document).ready(function() {
         accessToken: '8496407961.17f53f4.5e0a8ef3ccd84de5ace5caca71882827',
         resolution: 'low_resolution',
         template: '<div class="item col-6 col-md-6 col-lg-4"><figure class="overlay overlay4 rounded"><a href="{{link}}" target="_blank"><img src="{{image}}" /><figcaption class="d-flex"><div class="align-self-center mx-auto"><i class="fa fa-instagram"></i></div></figcaption></figure></div>',
-        after: function() {
+        after: function () {
             $('#instafeed-widget-wedding figure.overlay a').prepend('<span class="bg"></span>');
         }
     });
-    $('#instafeed-widget-wedding').each(function() {
+    $('#instafeed-widget-wedding').each(function () {
         instagramFeed7.run();
     });
     var instagramFeed8 = new Instafeed({
@@ -755,29 +755,29 @@ $(document).ready(function() {
         accessToken: '8496407961.17f53f4.5e0a8ef3ccd84de5ace5caca71882827',
         resolution: 'low_resolution',
         template: '<div class="item col-6 col-md-3"><figure class="overlay overlay4 rounded"><a href="{{link}}" target="_blank"><img src="{{image}}" /><figcaption class="d-flex"><div class="align-self-center mx-auto"><i class="fa fa-instagram"></i></div></figcaption></figure></div>',
-        after: function() {
+        after: function () {
             $('#instafeed-wedding-2 figure.overlay a').prepend('<span class="bg"></span>');
         }
     });
-    $('#instafeed-wedding-2').each(function() {
+    $('#instafeed-wedding-2').each(function () {
         instagramFeed8.run();
     });
     /*-----------------------------------------------------------------------------------*/
     /*	PAGE LOADING
-    /*-----------------------------------------------------------------------------------*/
-	$('.page-loading').delay(350).fadeOut('slow');
-    $('.page-loading .status').fadeOut('slow'); 
+     /*-----------------------------------------------------------------------------------*/
+    $('.page-loading').delay(350).fadeOut('slow');
+    $('.page-loading .status').fadeOut('slow');
     /*-----------------------------------------------------------------------------------*/
     /*	VANILLA
-    /*-----------------------------------------------------------------------------------*/
-    function enableVanillaForm(){
-		var myForm;
-    myForm = new VanillaForm($("form.vanilla-form"));
-	}
-	enableVanillaForm(); 
+     /*-----------------------------------------------------------------------------------*/
+    function enableVanillaForm() {
+        var myForm;
+        myForm = new VanillaForm($("form.vanilla-form"));
+    }
+    enableVanillaForm();
     /*-----------------------------------------------------------------------------------*/
     /*	ONEPAGE HEADER OFFSET
-    /*-----------------------------------------------------------------------------------*/	
+     /*-----------------------------------------------------------------------------------*/
     var header_height = $('.navbar:not(.banner--clone)').outerHeight();
     var shrinked_header_height = 58;
     var firstStyle = {
@@ -790,37 +790,37 @@ $(document).ready(function() {
         'margin-top': '-' + header_height + 'px'
     };
     $('.onepage section:first-of-type').css(secondStyle);
-	/*-----------------------------------------------------------------------------------*/
-    /*	ONEPAGE NAV LINKS
-    /*-----------------------------------------------------------------------------------*/	
-	var empty_a = $('.onepage .navbar ul.navbar-nav a[href="#"]');	
-	empty_a.on('click', function(e) {
-	    e.preventDefault();
-	});
     /*-----------------------------------------------------------------------------------*/
-	/*	ONEPAGE SMOOTH SCROLL
-	/*-----------------------------------------------------------------------------------*/	
-	$(function() {
-	  setTimeout(function() {
-	    if (location.hash) {
-	      window.scrollTo(0, 0);
-	      var target = location.hash.split('#');
-	      smoothScrollTo($('#'+target[1]));
-	    }
-	  }, 1);  
-	  $('a.scroll[href*="#"]:not([href="#"])').on('click', function() {
-	    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-	      smoothScrollTo($(this.hash));
-	      return false;
-	    }
-	  });  
-	  function smoothScrollTo(target) {
-	    var target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-	    if (target.length) {
-	      $('html,body').animate({
-	        scrollTop: target.offset().top
-	      }, 1500, 'easeInOutExpo');
-	    }
-	  }
-	});
+    /*	ONEPAGE NAV LINKS
+     /*-----------------------------------------------------------------------------------*/
+    var empty_a = $('.onepage .navbar ul.navbar-nav a[href="#"]');
+    empty_a.on('click', function (e) {
+        e.preventDefault();
+    });
+    /*-----------------------------------------------------------------------------------*/
+    /*	ONEPAGE SMOOTH SCROLL
+     /*-----------------------------------------------------------------------------------*/
+    $(function () {
+        setTimeout(function () {
+            if (location.hash) {
+                window.scrollTo(0, 0);
+                var target = location.hash.split('#');
+                smoothScrollTo($('#' + target[1]));
+            }
+        }, 1);
+        $('a.scroll[href*="#"]:not([href="#"])').on('click', function () {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                smoothScrollTo($(this.hash));
+                return false;
+            }
+        });
+        function smoothScrollTo(target) {
+            var target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html,body').animate({
+                    scrollTop: target.offset().top
+                }, 1500, 'easeInOutExpo');
+            }
+        }
+    });
 });
