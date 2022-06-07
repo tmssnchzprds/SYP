@@ -1,5 +1,3 @@
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-
 function modal(ope, idSeropel, idCom) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
@@ -162,9 +160,11 @@ function showMessage(success, msg) {
     if (success == 0) {
         document.getElementById('success').innerHTML += msg;
         document.getElementById('success').style.display = "block";
+        setTimeout(hideMessage, 10000);
     } else {
         document.getElementById('failure').innerHTML += msg;
         document.getElementById('failure').style.display = "block";
+        setTimeout(hideMessage, 10000);
     }
 }
 function hideMessage() {

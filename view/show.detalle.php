@@ -81,12 +81,12 @@
                                 <!-- /.post-content -->
                                 <hr />
                                 <div class="meta meta-footer d-flex mb-0">
-                                    <span style="width: 30%"><?= $detalle->getTipo() == 1 ? "Serie" : "Pelicula"; ?></span>
-                                    <span style="width: 30%"> <?= $detalle->getCategoria(); ?> </span>
-                                    <div style="width: 20%;">
-<?php
-if (isset($_SESSION["usuario"])) {
-    ?>
+                                    <span style="width: 20%"><?= $detalle->getTipo() == 1 ? "Serie" : "Pelicula"; ?></span>
+                                    <span style="width: 20%"> <?= $detalle->getCategoria(); ?> </span>
+                                    <?php
+                                    if (isset($_SESSION["usuario"])) {
+                                        ?>
+                                        <div style="width: 30%;">
                                             <form class="comment-form needs-validation botones" id="clasificacion" action="index.php" method="POST" role="form" style="display: block;">
                                                 <input name="mod" type="hidden" value="Puntuacion">
                                                 <input name="ope" type="hidden" value="<?= $puntuacion == false ? "insert" : "update" ?>">
@@ -102,14 +102,17 @@ if (isset($_SESSION["usuario"])) {
                                                         ?>
                                                         <input id="radio<?= $j ?>" type="radio" name="score" value="<?= $j ?>" <?= $puntuacion == false ? "" : ($puntuacion->getScore() == $j ? "selected" : "") ?> onchange="actualizar('clasificacion')">
                                                         <label for="radio<?= $j ?>"><i class="fa fa-2x fa-star" style="padding: 0px; <?= $puntuacion == false ? "" : ($puntuacion->getScore() >= $j ? "color: orange;" : "") ?>"></i></label>
-        <?php
-    }
-    ?>
+                                            <?php
+                                        }
+                                        ?>
                                                 </p>
 
                                             </form>
                                         <?php
                                         } else {
+                                            ?>
+                                           <div style="width: 60%;">
+                                        <?php
                                             for ($j = 1; $j <= 5; ++$j) {
                                                 if ($j > $detalle->getValoracion()) {
                                                     ?>
@@ -121,13 +124,15 @@ if (isset($_SESSION["usuario"])) {
                                                     <?php
                                                 }
                                             }
+                                            ?>
+                                        <?php
                                         }
                                         ?>
-                                    </div>
-                                    <div style="width: 20%;">
+                                            </div>
 <?php
 if (isset($_SESSION["usuario"])) {
     ?>
+                                    <div style="width: 30%;">
                                             <form class="comment-form needs-validation botones" id="estado" action="index.php" method="POST" role="form" style="display: block;">
                                                 <input name="mod" type="hidden" value="Puntuacion">
                                                 <input name="ope" type="hidden" value="<?= $puntuacion == false ? "insert" : "update" ?>">
@@ -150,8 +155,8 @@ if (isset($_SESSION["usuario"])) {
                             <?php } ?>
                                                 </p>
                                             </form>
-<?php } ?>
                                     </div>
+<?php } ?>
                                 </div>
                             </div>
                         </div>

@@ -1,7 +1,6 @@
 <?php
 
 class Database {
-
     // Atributos
     private $dbHost = "localhost";
     private $dbUser = "u325884627_syp";

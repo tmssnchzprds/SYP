@@ -52,7 +52,7 @@ for ($i = 0; $i < count($seropel), $i < count($arrayActual); ++$i) {
                 }
                 foreach ($seropelPagina[$i] as $item) {
                     ?>
-                    <div class="col">
+                    <div class="col mx-auto">
                         <div class="card" style="width: 220px;">
                             <a class="list-link" href="index.php?mod=Seropel&ope=detalle&idSeropel=<?= $item->getIdSeropel(); ?>">
                                 <figure class="card-img-top main mb-30 overlay overlay1 rounded"><img  style="    width: 100%;    aspect-ratio: auto 430 / 613;    height: 50%" src="<?= $item->getCover(); ?>">

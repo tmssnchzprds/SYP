@@ -37,6 +37,7 @@
                                 <i class="fa fa-2x fa-close" style="padding: 0px; color: red;"></i>La contraseña es obligatoria
                             </div>
                         </div>
+                        <a href="#" onclick="$('#myModal').modal('hide'); modal('signin', 0, 0)">Registrarse</a>
                         <!-- Modal Footer -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-orange btn-default" data-dismiss="modal">Cerrar</button>
