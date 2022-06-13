@@ -8,10 +8,13 @@
                 <h6 class="mb-0" style="margin: 10px;">Este proyecto ha sido realizado por Tómas Sánchez Paredes.</h6>
             </div>
             <!--/column -->
-            <div class="col-md-3 text-center">
+            <div class="col-md-2 text-center">
+                <a title="phpdoc" href="documentacion/phpdoc" style="margin: 10px;"><img src="assets/images/phpdocumentor.png" height="100" alt="phpdocumentor" /><h3>Documentacion</h3></a>
+            </div>
+            <div class="col-md-2 text-center">
                 <a title="Manual de Usuario" href="documentacion/manual-usuario.pdf"><img src="assets/images/pdf.png" height="50" alt="Manual de Usuario" /><h3>Manual de Usuario</h3></a>
             </div>
-            <div class="col-md-3 text-center">
+            <div class="col-md-2 text-center">
                 <a title="Manual Tecnico" href="documentacion/manual-tecnico.pdf"><img src="assets/images/pdf.png" height="50" alt="Manual Tecnico" /><h3>Manual Técnico</h3></a>
             </div>
             <!--/column -->

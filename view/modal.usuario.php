@@ -26,13 +26,13 @@
                                     ?>
                                     <tr>
                                         <td style="width:50%">
-                                            <h5><?= $item->getName() ?></h5>
+                                            <h4><?= $item->getName() ?></h4>
                                         </td>
                                         <td colspan="3" style="width:50%"></td>
                                     <tr>
                                     </tr>
                                 <td style="width:50%">
-                                    <h5><?= $item->getEmail() ?></h5>
+                                    <h6><?= $item->getEmail() ?></h6>
                                 </td>
                                 <td style="width:40%">
                                     <input name="idUsu[]" type="hidden" value="<?= $item->getIdUsu() ?>">
@@ -47,11 +47,12 @@
                                     </select>
                                 </td>
                                 <td style="width:5%">
-                                    <i class="fa fa-2x fa-edit" style="padding: 0px; color: orange;" onclick="$('#myModal').modal('hide'); modal('signin', 0,<?= $item->getIdUsu() ?>)"></i>
+                                    <i class="fa fa-2x fa-edit" title="Editar Usuario" style="padding: 0px; color: orange;" onclick="$('#myModal').modal('hide'); modal('signin', 0,<?= $item->getIdUsu() ?>)"></i>
                                 </td>
                                 <td style="width:5%">
-                                    <i class="fa fa-2x fa-trash" style="padding: 0px; color: orange;" onclick="$('#myModal').modal('hide'); modal('eliminarusuario', 0,<?= $item->getIdUsu() ?>)"></i>
-
+                                    <?php if ($item->getType() != 0) { ?>
+                                        <i class="fa fa-2x fa-trash" style="padding: 0px; color: orange;" title="Eliminar Usuario" onclick="$('#myModal').modal('hide'); modal('eliminarusuario', 0,<?= $item->getIdUsu() ?>)"></i>
+                                    <?php } ?>
                                 </td>
                                 </tr>
                                 <tr>

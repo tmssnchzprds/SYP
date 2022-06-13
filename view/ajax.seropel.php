@@ -36,7 +36,7 @@ for ($i = 0; $i < count($seropel), $i < count($arrayActual); ++$i) {
                 if (isset($_SESSION["usuario"])) {
                     if ($_SESSION["usuario"]->type == 2 || $_SESSION["usuario"]->type == 0) {
                         ?>
-                        <a class="col-1 dropdown-item"  href="#" onclick="modal('modificarseropel', 0, 0)"><i class="fa fa-4x fa-plus-circle" style="padding: 0px; color: orange;"></i></a>
+                <a class="col-1 dropdown-item" title="Añadir Serie" href="#" onclick="modal('modificarseropel', 0, 0)"><i class="fa fa-4x fa-plus-circle" style="padding: 0px; color: orange;"></i></a>
         <?php }
     } ?>
             </div>
@@ -45,7 +45,7 @@ for ($i = 0; $i < count($seropel), $i < count($arrayActual); ++$i) {
                 $arrayActualAux[$i] = $arrayActualAux[$i] - 1;
                 if (0 != $esPrimera[$i]) {
                     ?>
-                    <div class="col-md-0"  onclick="paginacion('<?= $ope; ?>', '<?= $buscar; ?>',<?= $idCat; ?>,<?= $tipo; ?>, '<?= implode("-", $arrayActualAux); ?>')">
+                <div class="col-md-0" title="Anterior" onclick="paginacion('<?= $ope; ?>', '<?= $buscar; ?>',<?= $idCat; ?>,<?= $tipo; ?>, '<?= implode("-", $arrayActualAux); ?>')">
                         <i class="fa fa-4x fa-angle-left" style="padding: 0px; color: orange;"></i>
                     </div>
                     <?php
@@ -87,7 +87,7 @@ for ($i = 0; $i < count($seropel), $i < count($arrayActual); ++$i) {
                 $arrayActualAux[$i] = $arrayActualAux[$i] + 2;
                 if (!$esUltima[$i]) {
                     ?>
-                    <div class="col-md-0"  onclick="paginacion('<?= $ope; ?>', '<?= $buscar; ?>',<?= $idCat; ?>,<?= $tipo; ?>, '<?= implode("-", $arrayActualAux); ?>')">
+                <div class="col-md-0" title="Siguiente" onclick="paginacion('<?= $ope; ?>', '<?= $buscar; ?>',<?= $idCat; ?>,<?= $tipo; ?>, '<?= implode("-", $arrayActualAux); ?>')">
                         <i class="fa fa-4x fa-angle-right" style="padding: 0px; color: orange;"></i>
                     </div>
         <?php

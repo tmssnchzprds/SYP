@@ -20,7 +20,7 @@
                             if ($_SESSION["usuario"]->type == 0) {
                                 ?>
                                 <li class="nav-item dropdown"><form class="nav-item"  action="index.php" method="POST" style="margin: 7px;" >
-                                        <input name="mod" type="hidden" value="Episodio">
+                                        <input name="mod" type="hidden" value="Categoria">
                                         <input name="ope" type="hidden" value="insert">
                                         <input type="search" name="name" class="form-control" >
                                         <!-- /.form-group -->
@@ -41,7 +41,7 @@
                             if ($_SESSION["usuario"]->type == 0) {
                                 ?>
                                 <li class="nav-item dropdown"><form class="nav-item"  action="index.php" method="POST" style="margin: 7px;" >
-                                        <input name="mod" type="hidden" value="Episodio">
+                                        <input name="mod" type="hidden" value="Categoria">
                                         <input name="ope" type="hidden" value="insert">
                                         <input type="search" name="name" class="form-control" >
                                         <!-- /.form-group -->

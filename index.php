@@ -2,7 +2,7 @@
 session_start();
 ini_set("display_errors", 1) ;
 ini_set("display_startup_errors", 1) ;
-error_reporting(E_ALL) ;
+error_reporting(0) ;//E_ALL
 if (isset($_GET["mod"]) && isset($_GET["ope"])) {
     $mod = $_GET["mod"];
     $ope = $_GET["ope"];
