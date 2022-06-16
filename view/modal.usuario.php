@@ -36,21 +36,25 @@
                                 </td>
                                 <td style="width:40%">
                                     <input name="idUsu[]" type="hidden" value="<?= $item->getIdUsu() ?>">
-                                    <?php if ($item->getType() == 0) { ?>
-                                        <input name="type[]" type="hidden" value="<?= $item->getType() ?>">                                  
-                                    <?php } ?>
-                                    <select name="type[]" <?= $item->getType() == 0 ? "disabled" : "" ?> class="selectpicker" data-style="btn-warning">
+                                    <?php if ($item->getIdUsu() == $_SESSION["usuario"]->idUsu) { ?>
+                                        <input name="type[]" type="hidden" value="<?= $item->getType() ?>"> 
+                                        <select name="type[]" disabled class="selectpicker" data-style="btn-warning">
+                                           <option value="0" selected >Administrador</option>
+                                        </select>
+                                    <?php } else { ?>
+                                    <select name="type[]" class="selectpicker" data-style="btn-warning">
                                         <option value="1" <?= $item->getType() == 1 ? "selected" : "" ?>>Usuario</option>
                                         <option value="2" <?= $item->getType() == 2 ? "selected" : "" ?>>Editor</option>
                                         <option value="3" <?= $item->getType() == 3 ? "selected" : "" ?>>Moderador</option>
                                         <option value="0" <?= $item->getType() == 0 ? "selected" : "" ?>>Administrador</option>
                                     </select>
+                                    <?php } ?>
                                 </td>
                                 <td style="width:5%">
                                     <i class="fa fa-2x fa-edit" title="Editar Usuario" style="padding: 0px; color: orange;" onclick="$('#myModal').modal('hide'); modal('signin', 0,<?= $item->getIdUsu() ?>)"></i>
                                 </td>
                                 <td style="width:5%">
-                                    <?php if ($item->getType() != 0) { ?>
+                                    <?php if ($item->getIdUsu() != $_SESSION["usuario"]->idUsu) { ?>
                                         <i class="fa fa-2x fa-trash" style="padding: 0px; color: orange;" title="Eliminar Usuario" onclick="$('#myModal').modal('hide'); modal('eliminarusuario', 0,<?= $item->getIdUsu() ?>)"></i>
                                     <?php } ?>
                                 </td>

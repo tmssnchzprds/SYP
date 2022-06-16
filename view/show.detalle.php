@@ -120,8 +120,10 @@
                                                     <p class="clasificado">
                                                         <input id="radio9" type="radio" name="idEst" value="3" <?= $puntuacion == false ? "" : ($puntuacion->getIdEst() == 3 ? "selected" : ""); ?> onchange="actualizar('estado')">
                                                         <label for="radio9" title="Visto" ><i class="fa fa-2x fa-check-circle-o" style="padding: 0px; <?= $puntuacion == false ? "" : ($puntuacion->getIdEst() == 3 ? "color: orange;" : ""); ?>"></i></label>
+                                                        <?php if ($detalle->getTipo() == 1) { ?>
                                                         <input id="radio8" type="radio" name="idEst" value="2" <?= $puntuacion == false ? "" : ($puntuacion->getIdEst() == 2 ? "selected" : ""); ?> onchange="actualizar('estado')">
                                                         <label for="radio8" title="Siguiendo"><i class="fa fa-2x fa-eye" style="padding: 0px; <?= $puntuacion == false ? "" : ($puntuacion->getIdEst() == 2 ? "color: orange;" : ""); ?>"></i></label>
+                                                        <?php } ?>
                                                         <input id="radio7" type="radio" name="idEst" value="1" <?= $puntuacion == false ? "" : ($puntuacion->getIdEst() == 1 ? "selected" : ""); ?> onchange="actualizar('estado')">
                                                         <label for="radio7" title="Pendiente"><i class="fa fa-2x fa-clock-o" style="padding: 0px; <?= $puntuacion == false ? "" : ($puntuacion->getIdEst() == 1 ? "color: orange;" : ""); ?>"></i></label>
                                                         <?php if ($puntuacion != false) { ?>
@@ -135,29 +137,29 @@
                                     <?php
                                     if (isset($_SESSION["usuario"])) {
                                         ?>
-                                        <div class="col">
                                             <?php
                                             if ($_SESSION["usuario"]->type == 2 || $_SESSION["usuario"]->type == 0) {
                                                 ?>
+                                        <div class="col">
                                             <a class="dropdown-item" style="padding: 0px;" href="#" title="Modificar Serie" onclick="modal('modificarseropel',<?php echo $detalle->getIdSeropel(); ?>, 0)"><i class="fa fa-3x fa-edit" style="padding: 0px; color: orange;"></i></a>
-                                            <?php } ?>
                                         </div>
+                                            <?php } ?>
                                     <?php } ?>
                                     <?php
                                     if (isset($_SESSION["usuario"])) {
                                         ?>
-                                        <div class="col">
                                             <?php
                                             if ($_SESSION["usuario"]->type == 2 || $_SESSION["usuario"]->type == 0) {
                                                 ?>
+                                        <div class="col">
                                             <a class="dropdown-item" style="padding: 0px;" href="#" title="Eliminar Serie" onclick="modal('eliminarseropel',<?php echo $detalle->getIdSeropel(); ?>, 0)"><i class="fa fa-3x fa-trash" style="padding: 0px; color: orange;"></i></a>
-                                            <?php } ?>
                                         </div>
+                                            <?php } ?>
                                     <?php } ?>
                                 </div>                                    
                                     <hr />
                                     <div class="row" style="width:100%">
-                                        <figure class=" align-content-center col-6 mb-30 overlay overlay1 rounded"><img  style="    width: 430px;    aspect-ratio: auto 430 / 613;    height: 613px" src="<?= $detalle->getCover(); ?>">
+                                        <figure class=" align-content-center col-6 mb-30 overlay overlay1 rounded"><img alt="Imagen de la serie o pelicula" style="    width: 100%;    aspect-ratio: auto 430 / 613;" src="<?= $detalle->getCover(); ?>">
                                         </figure>
                                         <div class="col-6">
                                             <h2 class="post-title"><?= $detalle->getTitle(); ?></h2>

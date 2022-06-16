@@ -169,7 +169,6 @@ class controllerSeropel implements controllerGenerico {
         if (isset($_SESSION["usuario"])) {
             $logo = "miserie.png";
             if (isset($_GET["estado"])) {
-                $logo = "serie.png";
                 if ($_GET["estado"] == 1 || $_GET["estado"] == 2 || $_GET["estado"] == 3) {
                     if ($_GET["estado"] == 1) {
                         $caption[0] = "Series Pendiente Añadidas Recientemente";
@@ -242,9 +241,9 @@ class controllerSeropel implements controllerGenerico {
             if (isset($_GET["estado"])) {
                 if ($_GET["estado"] == 1 || $_GET["estado"] == 3) {
                     if ($_GET["estado"] == 1) {
-                        $caption[0] = "Peliculas " . $estadoactual->getName() . " Añadidas Recientemente";
+                        $caption[0] = "Peliculas Pendientes Añadidas Recientemente";
                         $seropel[0] = Seropel::milistaactual(2, 1);
-                        $caption[1] = "Peliculas " . $estadoactual->getName() . " Mejor Valoradas";
+                        $caption[1] = "Peliculas Pendientes Mejor Valoradas";
                         $seropel[1] = Seropel::milistamejor(2, 1);
                     } elseif ($_GET["estado"] == 3) {
                         $caption[0] = "Peliculas Vistas Añadidas Recientemente";
