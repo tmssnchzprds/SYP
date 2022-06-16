@@ -217,7 +217,7 @@ class Seropel implements Generico {
      */
     public static function milistaactual($tipo, $estado) {
         $bd = Database::getInstance();
-        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(p.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat JOIN puntuacion p ON s.idSeropel = p.idSeropel WHERE s.tipo=:tipo AND p.idUsu=:idUsu AND p.idEst=:idEstado GROUP BY s.idSeropel ORDER BY s.idSeropel DESC;",
+        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(p.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN puntuacion p ON s.idSeropel = p.idSeropel WHERE s.tipo=:tipo AND p.idUsu=:idUsu AND p.idEst=:idEstado GROUP BY s.idSeropel ORDER BY s.idSeropel DESC;",
                 [":tipo" => $tipo,
                     ":idUsu" => $_SESSION["usuario"]->idUsu,
                     ":idEstado" => $estado]);
@@ -239,7 +239,7 @@ class Seropel implements Generico {
      */
     public static function milistamejor($tipo, $estado) {
         $bd = Database::getInstance();
-        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(p.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat LEFT JOIN puntuacion p ON s.idSeropel = p.idSeropel WHERE AND p.idUsu=:idUsu AND p.idEst=:idEstado AND s.tipo=:tipo GROUP BY s.idSeropel ORDER BY valoracion DESC;",
+        $bd->doQuery("SELECT s.*,ca.name AS categoria, AVG(IFNULL(p.score, 0)) AS valoracion FROM seropel s JOIN categoria ca ON s.idCat = ca.idCat JOIN puntuacion p ON s.idSeropel = p.idSeropel WHERE AND p.idUsu=:idUsu AND p.idEst=:idEstado AND s.tipo=:tipo ORDER BY valoracion DESC;",
                 [":tipo" => $tipo,
                     ":idUsu" => $_SESSION["usuario"]->idUsu,
                     ":idEstado" => $estado]);
