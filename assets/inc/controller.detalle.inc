@@ -25,9 +25,15 @@ if (isset($idSeropel)) {
         $comentarios_title = " No hay Comentarios";
     }
     $episodio = Episodio::getSeropel($idSeropel);
+    /**
+     * Carga la vista detalle
+     */
     require_once "view/show.detalle.php";
 } else {
     $success = 1;
     $msg = "No se ha encontrado la Serie o Pelicula";
+    /**
+     * Controla las listas de Inicio
+     */
     require_once "assets/inc/controller.listatotal.inc";
 }

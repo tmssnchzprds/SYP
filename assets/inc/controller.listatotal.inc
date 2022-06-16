@@ -9,4 +9,7 @@ $seropel[2] = Seropel::listaactual(2);
 $caption[3] = "Peliculas Mejor Valoradas";
 $seropel[3] = Seropel::listamejor(2);
 $categoria = Categoria::getAll();
+/**
+ * Carga la vista seropel
+ */
 require_once "view/show.seropel.php";

@@ -1,9 +1,11 @@
 <?php
-define("PAGINACION", 4);
+//Variables
 $ope = isset($_GET["ope"]) ? $_GET["ope"] : "listaTotal";
 $buscar = isset($_GET["buscar"]) ? $_GET["buscar"] : "";
 $idCat = isset($_GET["idCat"]) ? $_GET["idCat"] : 0;
 $tipo = isset($_GET["tipo"]) ? $_GET["tipo"] : 0;
+//Carga Variables para Paginacion
+define("PAGINACION", 4);
 for ($i = 0; $i < count($seropel); ++$i)
     $paginit[$i] = 1;
 $paginaActual = isset($_GET["pagina"]) ? $_GET["pagina"] : implode("-", $paginit);

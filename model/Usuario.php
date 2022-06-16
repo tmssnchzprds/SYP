@@ -1,8 +1,17 @@
 <?php
 
+/**
+ * Controla la conexión con la Base de Datos
+ */
 require_once "model/Database.php";
+/**
+ * Interfaz de los Beans
+ */
 require_once "model/Generico.php";
 
+/**
+ * Contiene los metodos que realizan las operaciones necesarias en la tabla usuario
+ */
 class Usuario implements Generico {
 
     private $idUsu;
@@ -58,6 +67,9 @@ class Usuario implements Generico {
     }
 
     //CRUD
+    /**
+     * Obtiene todos los registros de la tabla usuario
+     */
     public static function getAll() {
         $bd = Database::getInstance();
         $bd->doQuery("SELECT * FROM usuario;");
@@ -71,6 +83,10 @@ class Usuario implements Generico {
         return $datos;
     }
 
+    /**
+     * Obtiene el registro en la tabla usuario que tiene el id indicado como parametro
+     * @param type $id
+     */
     public static function getId($idUsu) {
         $bd = Database::getInstance();
         $bd->doQuery("SELECT * FROM usuario WHERE idUsu=:idUsu ;",
@@ -79,6 +95,9 @@ class Usuario implements Generico {
         return $bd->getRow("Usuario");
     }
 
+    /**
+     * Inserta un Registro en la tabla usuario
+     */
     public function insert() {
         $bd = Database::getInstance();
         $bd->doQuery("INSERT INTO usuario (name, password, email, type) VALUES (:name, :password, :email, :type);",
@@ -88,6 +107,9 @@ class Usuario implements Generico {
                     ":type" => $this->type]);
     }
 
+    /**
+     * Actualiza un Registro en la tabla usuario
+     */
     public function update() {
         $bd = Database::getInstance();
         $bd->doQuery("UPDATE usuario SET name=:name, password=:password, email=:email, type=:type WHERE idUsu=:idUsu ;",
@@ -98,6 +120,10 @@ class Usuario implements Generico {
                     ":idUsu" => $this->idUsu]);
     }
 
+    /**
+     * Elimina el registro de la tabla usuario que tiene el id indicado como parametro
+     * @param type $id
+     */
     public function delete($idUsu) {
         $bd = Database::getInstance();
         $bd->doQuery("DELETE FROM usuario WHERE idUsu=:idUsu ;",

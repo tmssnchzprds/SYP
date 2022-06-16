@@ -1,6 +1,10 @@
 <?php
 
+/**
+ * Controla la conexión con la Base de Datos
+ */
 class Database {
+
     // Atributos
     private $dbHost = "localhost";
     private $dbUser = "u325884627_syp";
@@ -12,18 +16,24 @@ class Database {
     //
     private static $instancia = null;
 
-    // Constructor
+    /**
+     *  Constructor
+     */
     public function __construct() {
         $this->connect();
     }
 
-    //
+    /**
+     * 
+     */
     private function __clone() {
         
     }
 
-    //
-    // Obtener Instancia
+    /**
+     * Obtener Instancia
+     * @return type
+     */
     public static function getInstance() {
         if (is_null(self::$instancia)) {
             self::$instancia = new Database();
@@ -31,9 +41,9 @@ class Database {
         return self::$instancia;
     }
 
-//
-    // Conectar a BBDD
-
+    /**
+     *  Conectar a BBDD
+     */
     public function connect() {
         try {
             //$options=[PDO::ATTR_ERRMODE=>FDO::ERRMODE_EXCEPTION];
@@ -45,8 +55,12 @@ class Database {
         }
     }
 
-    //
-    // Realizar consulta a la BBDD
+    /**
+     *  Realizar consulta a la BBDD
+     * @param type $sql
+     * @param type $params
+     * @return boolean
+     */
     public function doQuery($sql, $params = []) {
         self::$prp = self::$pdo->prepare($sql);
 
@@ -59,16 +73,21 @@ class Database {
         }
     }
 
-    //
-    // Obtener nueva entrada de la BBDD de la clase dada (Por defecto será la StdClass si no se especifica otra)
+    /**
+     *  Obtener nueva entrada de la BBDD de la clase dada (Por defecto será la StdClass si no se especifica otra)
+     * @param type $class
+     * @return type
+     */
     public function getRow($class = "StdClass") {
         if (self::$prp) {
             return self::$prp->fetchObject($class);
         }
     }
 
-    //
-    // Obtener el ID dé la última entrada de la BBDD
+    /**
+     *  Obtener el ID dé la última entrada de la BBDD
+     * @return type
+     */
     public function getLastId() {
         return self::$pdo->lastInsertId();
     }

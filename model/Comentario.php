@@ -1,8 +1,17 @@
 <?php
 
+/**
+ * Controla la conexión con la Base de Datos
+ */
 require_once "model/Database.php";
+/**
+ * Interfaz de los Beans
+ */
 require_once "model/Generico.php";
 
+/**
+ * Contiene los metodos que realizan las operaciones necesarias en la tabla comentario
+ */
 class Comentario implements Generico {
 
     private $idCom;
@@ -76,6 +85,9 @@ class Comentario implements Generico {
     }
 
     //CRUD
+    /**
+     * Obtiene todos los registros de la tabla comentario
+     */
     public static function getAll() {
         $bd = Database::getInstance();
         $bd->doQuery("SELECT * FROM comentario;");
@@ -89,6 +101,10 @@ class Comentario implements Generico {
         return $datos;
     }
 
+    /**
+     * Obtiene el registro en la tabla comentario que tiene el id indicado como parametro
+     * @param type $id
+     */
     public static function getId($idCom) {
         $bd = Database::getInstance();
         $bd->doQuery("SELECT * FROM comentario WHERE idCom=:idCom ;",
@@ -97,6 +113,9 @@ class Comentario implements Generico {
         return $bd->getRow("Comentario");
     }
 
+    /**
+     * Inserta un Registro en la tabla comentario
+     */
     public function insert() {
         $bd = Database::getInstance();
         $bd->doQuery("INSERT INTO comentario (idUsu, idSeropel, season, episode, commentary) VALUES (:idUsu, :idSeropel, :season, :episode, :commentary);",
@@ -107,6 +126,9 @@ class Comentario implements Generico {
                     ":commentary" => $this->commentary]);
     }
 
+    /**
+     * Actualiza un Registro en la tabla comentario
+     */
     public function update() {
         $bd = Database::getInstance();
         $bd->doQuery("UPDATE comentario SET idUsu=:idUsu, idSeropel=:idSeropel, season=:season, episode=:episode, commentary=:commentary WHERE idCom=:idCom ;",
@@ -118,6 +140,10 @@ class Comentario implements Generico {
                     ":idCom" => $this->idCom]);
     }
 
+    /**
+     * Elimina el registro de la tabla comentario que tiene el id indicado como parametro
+     * @param type $id
+     */
     public function delete($idCom) {
         $bd = Database::getInstance();
         $bd->doQuery("DELETE FROM comentario WHERE idCom=:idCom ;",
@@ -125,6 +151,11 @@ class Comentario implements Generico {
     }
 
     //CONSULTAS
+    /**
+     * Obtiene los registros en la tabla comentario y el nombre de usuario asociado que tiene el idSeropel indicado como parametro
+     * @param type $idSeropel
+     * @return array
+     */
     public static function comentarioSeropel($idSeropel) {
         $bd = Database::getInstance();
         $bd->doQuery("SELECT c.*, u.name as usuario FROM comentario c JOIN usuario u ON u.idUsu = c.idUsu  WHERE c.idSeropel=:idSeropel ;",
@@ -139,6 +170,12 @@ class Comentario implements Generico {
         return $datos;
     }
 
+    /**
+     * Obtiene los registros en la tabla comentario y el nombre de usuario asociado que tiene el idSeropel indicado como parametro y la season indicada como parametro
+     * @param type $idSeropel
+     * @param type $season
+     * @return array
+     */
     public static function comentarioTemporada($idSeropel, $season) {
         $bd = Database::getInstance();
         $bd->doQuery("SELECT c.*, u.name as usuario FROM comentario c JOIN usuario u ON u.idUsu = c.idUsu  WHERE c.idSeropel=:idSeropel AND c.season=:season ;",
@@ -154,6 +191,13 @@ class Comentario implements Generico {
         return $datos;
     }
 
+    /**
+     * Obtiene los registros en la tabla comentario y el nombre de usuario asociado que tiene el idSeropel indicado como parametro, la season indicada como parametro y el episode indicado como parametro
+     * @param type $idSeropel
+     * @param type $season
+     * @param type $episode
+     * @return array
+     */
     public static function comentarioEpisodio($idSeropel, $season, $episode) {
         $bd = Database::getInstance();
         $bd->doQuery("SELECT c.*, u.name as usuario FROM comentario c JOIN usuario u ON u.idUsu = c.idUsu  WHERE c.idSeropel=:idSeropel AND c.season=:season AND c.episode=:episode ;",

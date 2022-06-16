@@ -1,20 +1,35 @@
 <?php
 
+/**
+ * Interfaz de los controladores, Beans, y control de la Sesion
+ */
 require_once "assets/inc/controller.init.inc";
 
+/**
+ * Controla las operaciones relaccionadas con la clase Seropel
+ */
 class controllerSeropel implements controllerGenerico {
 
     private $sesion;
 
+    /**
+     * Constructor crea una nueva sesion
+     */
     public function __construct() {
         $this->sesion = new Sesion();
     }
 
     //CRUD
+    /**
+     * Controla la obtencion de todos los registros de la tabla seropel
+     */
     public static function getAll() {
         $seropel = Seropel::getAll();
     }
 
+    /**
+     * Controla la obtencion del registro de la tabla seropel que tiene el id que llega en una variable
+     */
     public static function getId() {
         if (isset($_GET["idSeropel"])) {
             $seropel = Seropel::getId($_GET["idSeropel"]);
@@ -25,6 +40,9 @@ class controllerSeropel implements controllerGenerico {
         }
     }
 
+    /**
+     * Controla la insercion de un Registro en la tabla reropel
+     */
     public function insert() {
         if (isset($_POST["idCat"]) && ($_POST["tipo"]) && ($_POST["title"]) && ($_POST["description"]) && ($_POST["cover"]) && ($_POST["date"])) {
             $seropel = new Seropel();
@@ -42,9 +60,15 @@ class controllerSeropel implements controllerGenerico {
             $msg = "No se ha podido crear el registro se ha producido un error";
         }
         $seropel = [];
+        /**
+         * Controla las listas de Inicio
+         */
         require_once "assets/inc/controller.listatotal.inc";
     }
 
+    /**
+     * Controla la actualizacion de un Registro en la tabla seropel
+     */
     public function update() {
         if (isset($_POST["idSeropel"])) {
             $seropel = Seropel::getId($_POST["idSeropel"]);
@@ -66,10 +90,16 @@ class controllerSeropel implements controllerGenerico {
         } else {
             $success = 1;
             $msg = "No se ha podido actualizar el registro se ha producido un error";
+            /**
+             * Controla las listas de Inicio
+             */
             require_once "assets/inc/controller.listatotal.inc";
         }
     }
 
+    /**
+     * Controla la eliminacion del registro de la tabla seropel que tiene el id que llega en una variable
+     */
     public function delete() {
         if (isset($_POST["idSeropel"])) {
             Seropel::delete($_POST["idSeropel"]);
@@ -79,13 +109,22 @@ class controllerSeropel implements controllerGenerico {
             $success = 1;
             $msg = "No se ha podido eliminar el registro se ha producido un error";
         }
+        /**
+         * Controla las listas de Inicio
+         */
         require_once "assets/inc/controller.listatotal.inc";
     }
 
+    /**
+     * Controla las listas de Inicio
+     */
     public static function listaTotal() {
         require_once "assets/inc/controller.listatotal.inc";
     }
 
+    /**
+     * Controla las listas por tipo (serie o pelicula)
+     */
     public static function lista() {
         if (isset($_GET["tipo"])) {
             if ($_GET["tipo"] == 1 || $_GET["tipo"] == 2) {
@@ -115,15 +154,24 @@ class controllerSeropel implements controllerGenerico {
             } else {
                 $success = 1;
                 $msg = "No se ha encontrado el Tipo";
+                /**
+                 * Controla las listas de Inicio
+                 */
                 require_once "assets/inc/controller.listatotal.inc";
             }
         } else {
             $success = 1;
             $msg = "No se ha encontrado el Tipo";
+            /**
+             * Controla las listas de Inicio
+             */
             require_once "assets/inc/controller.listatotal.inc";
         }
     }
 
+    /**
+     * Controla las listas del Usuario
+     */
     public static function milista() {
         if (isset($_SESSION["usuario"])) {
             $logo = "milista.png";
@@ -160,10 +208,16 @@ class controllerSeropel implements controllerGenerico {
         } else {
             $success = 1;
             $msg = "No se ha encontrado el Usuario";
+            /**
+             * Controla las listas de Inicio
+             */
             require_once "assets/inc/controller.listatotal.inc";
         }
     }
 
+    /**
+     * Controla las listas de series del Usuario y las filtra por el estado, pasado en una variable
+     */
     public static function milistaser() {
         $categoria = Categoria::getAll();
         if (isset($_SESSION["usuario"])) {
@@ -230,10 +284,16 @@ class controllerSeropel implements controllerGenerico {
         } else {
             $success = 1;
             $msg = "No se ha encontrado el Usuario";
+            /**
+             * Controla las listas de Inicio
+             */
             require_once "assets/inc/controller.listatotal.inc";
         }
     }
 
+    /**
+     * Controla las listas de peliculas del Usuario y las filtra por el estado, pasado en una variable
+     */
     public static function milistapel() {
         $categoria = Categoria::getAll();
         if (isset($_SESSION["usuario"])) {
@@ -287,10 +347,16 @@ class controllerSeropel implements controllerGenerico {
         } else {
             $success = 1;
             $msg = "No se ha encontrado el Usuario";
+            /**
+             * Controla las listas de Inicio
+             */
             require_once "assets/inc/controller.listatotal.inc";
         }
     }
 
+    /**
+     * Controla las listas y las filtra por la categoria, pasado en una variable
+     */
     public static function categoria() {
         if (isset($_GET["idCat"]) && isset($_GET["tipo"])) {
             $categoria = Categoria::getAll();
@@ -321,15 +387,24 @@ class controllerSeropel implements controllerGenerico {
             } else {
                 $success = 1;
                 $msg = "No se ha encontrado la Categoria o el Tipo";
+                /**
+                 * Controla las listas de Inicio
+                 */
                 require_once "assets/inc/controller.listatotal.inc";
             }
         } else {
             $success = 1;
             $msg = "No se ha encontrado la Categoria o el Tipo";
+            /**
+             * Controla las listas de Inicio
+             */
             require_once "assets/inc/controller.listatotal.inc";
         }
     }
 
+    /**
+     * Controla las listas y las filtra total o parcialmente por el titulo, pasado en una variable
+     */
     public static function buscar() {
         if (isset($_GET["buscar"])) {
             $categoria = Categoria::getAll();
@@ -349,14 +424,23 @@ class controllerSeropel implements controllerGenerico {
                 $success = 1;
                 $msg = "No se han encontrado resultados para la busqueda: " . $_GET["buscar"];
             }
+            /**
+             * Muestra la vista seropel
+             */
             require_once "view/show.seropel.php";
         } else {
             $success = 1;
             $msg = "No se ha encontrado la Busqueda";
+            /**
+             * Controla las listas de Inicio
+             */
             require_once "assets/inc/controller.listatotal.inc";
         }
     }
 
+    /**
+     * Controla la obtencion de datos asociados a una serie o pelicula por su identificador, pasado en una variable
+     */
     public static function detalle() {
         require_once "assets/inc/controller.detalle.inc";
     }

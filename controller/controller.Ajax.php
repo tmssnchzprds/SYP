@@ -1,15 +1,27 @@
 <?php
 
+/**
+ * Interfaz de los controladores, Beans, y control de la Sesion
+ */
 require_once "assets/inc/controller.init.inc";
 
+/**
+ * Controla las operaciones mediante Ajax
+ */
 class controllerAjax {
 
     private $sesion;
 
+    /**
+     * Constructor crea una nueva sesion
+     */
     public function __construct() {
         $this->sesion = new Sesion();
     }
 
+    /**
+     * Controla las listas de inicio y los carga por ajax
+     */
     public static function listaTotal() {
         $caption[0] = "Series Añadidas Recientemente";
         $seropel[0] = Seropel::listaactual(1);
@@ -20,9 +32,15 @@ class controllerAjax {
         $caption[3] = "Peliculas Mejor Valoradas";
         $seropel[3] = Seropel::listamejor(2);
         $categoria = Categoria::getAll();
+        /**
+         * Carga la vista por ajax seropel
+         */
         require_once "view/ajax.seropel.php";
     }
 
+    /**
+     * Controla las listas por tipo (serie o pelicula) y los carga por ajax
+     */
     public static function lista() {
         if (isset($_GET["tipo"])) {
             if ($_GET["tipo"] == 1 || $_GET["tipo"] == 2) {
@@ -48,19 +66,31 @@ class controllerAjax {
                     $success = 1;
                     $msg = "No se han encontrado resultados para la busqueda";
                 }
+                /**
+                 * Carga la vista por ajax seropel
+                 */
                 require_once "view/ajax.seropel.php";
             } else {
                 $success = 1;
                 $msg = "No se ha encontrado el Tipo";
+                /**
+                 * Carga la vista por ajax seropel
+                 */
                 require_once "view/ajax.seropel.php";
             }
         } else {
             $success = 1;
             $msg = "No se ha encontrado el Tipo";
+            /**
+             * Carga la vista por ajax seropel
+             */
             require_once "view/ajax.seropel.php";
         }
     }
 
+    /**
+     * Controla las listas del Usuario y los carga por ajax
+     */
     public static function milista() {
         if (isset($_SESSION["usuario"])) {
             $categoria = Categoria::getAll();
@@ -92,14 +122,23 @@ class controllerAjax {
                 $success = 1;
                 $msg = "No se han encontrado resultados para la busqueda";
             }
+            /**
+             * Carga la vista por ajax seropel
+             */
             require_once "view/ajax.seropel.php";
         } else {
             $success = 1;
             $msg = "No se ha encontrado el Usuario";
+            /**
+             * Carga la vista por ajax seropel
+             */
             require_once "view/ajax.seropel.php";
         }
     }
 
+    /**
+     * Controla las listas de series del Usuario y las filtra por el estado, pasado en una variable, y los carga por ajax
+     */
     public static function milistaser() {
         $categoria = Categoria::getAll();
         if (isset($_SESSION["usuario"])) {
@@ -151,14 +190,23 @@ class controllerAjax {
                 $caption[5] = "Series Vistas Mejor Valoradas";
                 $seropel[5] = Seropel::milistamejor(1, 3);
             }
+            /**
+             * Carga la vista por ajax seropel
+             */
             require_once "view/ajax.seropel.php";
         } else {
             $success = 1;
             $msg = "No se ha encontrado el Usuario";
+            /**
+             * Carga la vista por ajax seropel
+             */
             require_once "view/ajax.seropel.php";
         }
     }
 
+    /**
+     * Controla las listas de peliculas del Usuario y las filtra por el estado, pasado en una variable, y los carga por ajax
+     */
     public static function milistapel() {
         $categoria = Categoria::getAll();
         if (isset($_SESSION["usuario"])) {
@@ -198,14 +246,23 @@ class controllerAjax {
                 $caption[3] = "Peliculas Vistas Mejor Valoradas";
                 $seropel[3] = Seropel::milistamejor(2, 3);
             }
+            /**
+             * Carga la vista por ajax seropel
+             */
             require_once "view/ajax.seropel.php";
         } else {
             $success = 1;
             $msg = "No se ha encontrado el Usuario";
+            /**
+             * Carga la vista por ajax seropel
+             */
             require_once "view/ajax.seropel.php";
         }
     }
 
+    /**
+     * Filtra las listas por categoria, pasado en una variable, y los carga por ajax
+     */
     public static function categoria() {
         if (isset($_GET["idCat"]) && isset($_GET["tipo"])) {
             $categoria = Categoria::getAll();
@@ -232,19 +289,31 @@ class controllerAjax {
                     $success = 1;
                     $msg = "No se han encontrado resultados para la busqueda";
                 }
+                /**
+                 * Carga la vista por ajax seropel
+                 */
                 require_once "view/ajax.seropel.php";
             } else {
                 $success = 1;
                 $msg = "No se ha encontrado la Categoria o el Tipo";
+                /**
+                 * Carga la vista por ajax seropel
+                 */
                 require_once "view/ajax.seropel.php";
             }
         } else {
             $success = 1;
             $msg = "No se ha encontrado la Categoria o el Tipo";
+            /**
+             * Carga la vista por ajax seropel
+             */
             require_once "view/ajax.seropel.php";
         }
     }
 
+    /**
+     * Filtra las listas total o parcialmente por el titulo, pasado en una variable, y los carga por ajax
+     */
     public static function buscar() {
         if (isset($_GET["buscar"])) {
             $categoria = Categoria::getAll();
@@ -264,14 +333,23 @@ class controllerAjax {
                 $success = 1;
                 $msg = "No se han encontrado resultados para la busqueda: " . $_GET["buscar"];
             }
+            /**
+             * Carga la vista por ajax seropel
+             */
             require_once "view/ajax.seropel.php";
         } else {
             $success = 1;
             $msg = "No se ha encontrado la Busqueda";
+            /**
+             * Carga la vista por ajax seropel
+             */
             require_once "view/ajax.seropel.php";
         }
     }
 
+    /**
+     * Carga todos los comentarios por ajax
+     */
     public static function comentario() {
         if (isset($_GET["idSeropel"])) {
             $episodio = Episodio::getSeropel($_GET["idSeropel"]);
@@ -282,14 +360,23 @@ class controllerAjax {
             } else {
                 $comentarios_title = " No hay Comentarios";
             }
+            /**
+             * Carga la vista por ajax comentario
+             */
             require_once "view/ajax.comentario.php";
         } else {
             $success = 1;
             $msg = "No se ha encontrado los Comentarios";
+            /**
+             * Carga la vista por ajax comentario
+             */
             require_once "view/ajax.comentario.php";
         }
     }
 
+    /**
+     * Filtra los comentarios por temporada y los carga por ajax
+     */
     public static function comentariotemporada() {
         if (isset($_GET["idSeropel"]) && isset($_GET["season"])) {
             $episodio = Episodio::getSeropel($_GET["idSeropel"]);
@@ -300,14 +387,23 @@ class controllerAjax {
             } else {
                 $comentarios_title = " No Hay Comentarios en la Temporada " . $_GET["season"];
             }
+            /**
+             * Carga la vista por ajax comentario
+             */
             require_once "view/ajax.comentario.php";
         } else {
             $success = 1;
             $msg = "No se ha encontrado los Comentarios";
+            /**
+             * Carga la vista por ajax comentario
+             */
             require_once "view/ajax.comentario.php";
         }
     }
 
+    /**
+     * Filtra los comentarios por episodio y los carga por ajax
+     */
     public static function comentarioepisodio() {
         if (isset($_GET["idSeropel"]) && isset($_GET["season"]) && isset($_GET["episode"])) {
             $episodio = Episodio::getSeropel($_GET["idSeropel"]);
@@ -318,18 +414,30 @@ class controllerAjax {
             } else {
                 $comentarios_title = "No Hay Comentarios en la Temporada " . $_GET["season"] . " Episodio " . $_GET["episode"];
             }
+            /**
+             * Carga la vista por ajax comentario
+             */
             require_once "view/ajax.comentario.php";
         } else {
             $success = 1;
             $msg = "No se ha encontrado los Comentarios";
+            /**
+             * Carga la vista por ajax comentario
+             */
             require_once "view/ajax.comentario.php";
         }
     }
 
+    /**
+     * Carga el modal por ajax login
+     */
     public static function login() {
         require_once "view/modal.login.php";
     }
 
+    /**
+     * Carga el modal por ajax signin
+     */
     public static function signin() {
         if (isset($_SESSION["usuario"])) {
             if (isset($_GET["idCom"])) {
@@ -341,6 +449,9 @@ class controllerAjax {
         require_once "view/modal.signin.php";
     }
 
+    /**
+     * Carga el modal por ajax eliminarusuario
+     */
     public static function eliminarusuario() {
         if (isset($_GET["idCom"])) {
             $idUsu = $_GET["idCom"];
@@ -350,11 +461,17 @@ class controllerAjax {
         require_once "view/modal.eliminarusuario.php";
     }
 
+    /**
+     * Carga el modal por ajax usuario
+     */
     public static function usuario() {
         $usuario = Usuario::getAll();
         require_once "view/modal.usuario.php";
     }
 
+    /**
+     * Carga el modal por ajax modificarseropel
+     */
     public static function modificarseropel() {
         if (isset($_GET["idSeropel"])) {
             $detalle = Seropel::detalle($_GET["idSeropel"]);
@@ -365,6 +482,9 @@ class controllerAjax {
         require_once "view/modal.modificarseropel.php";
     }
 
+    /**
+     * Carga el modal por ajax eliminarseropel
+     */
     public static function eliminarseropel() {
         if (isset($_GET["idSeropel"])) {
             $detalle = Seropel::detalle($_GET["idSeropel"]);
@@ -374,6 +494,9 @@ class controllerAjax {
         require_once "view/modal.eliminarseropel.php";
     }
 
+    /**
+     * Carga el modal por ajax modificarcom
+     */
     public static function modificarcom() {
         if (isset($_GET["idCom"])) {
             $comentario = Comentario::getId($_GET["idCom"]);
@@ -393,6 +516,9 @@ class controllerAjax {
         require_once "view/modal.modificarcom.php";
     }
 
+    /**
+     * Carga el modal por ajax eliminarcom
+     */
     public static function eliminarcom() {
         if (isset($_GET["idCom"])) {
             $idCom = $_GET["idCom"];
@@ -407,6 +533,9 @@ class controllerAjax {
         require_once "view/modal.eliminarcom.php";
     }
 
+    /**
+     * Carga el modal por ajax eliminarepi
+     */
     public static function eliminarepi() {
         if (isset($_GET["idCom"])) {
             $e = $_GET["idCom"];

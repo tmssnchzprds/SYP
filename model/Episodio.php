@@ -1,8 +1,17 @@
 <?php
 
+/**
+ * Controla la conexión con la Base de Datos
+ */
 require_once "model/Database.php";
+/**
+ * Interfaz de los Beans
+ */
 require_once "model/Generico.php";
 
+/**
+ * Contiene los metodos que realizan las operaciones necesarias en la tabla episodio
+ */
 class Episodio implements Generico {
 
     private $idEpi;
@@ -49,6 +58,9 @@ class Episodio implements Generico {
     }
 
     //CRUD
+    /**
+     * Obtiene todos los registros de la tabla episodio
+     */
     public static function getAll() {
         $bd = Database::getInstance();
         $bd->doQuery("SELECT * FROM episodio;");
@@ -62,6 +74,10 @@ class Episodio implements Generico {
         return $datos;
     }
 
+    /**
+     * Obtiene el registro en la tabla episodio que tiene el id indicado como parametro
+     * @param type $id
+     */
     public static function getId($idEpi) {
         $bd = Database::getInstance();
         $bd->doQuery("SELECT * FROM episodio WHERE idEpi=:idEpi ;",
@@ -70,6 +86,9 @@ class Episodio implements Generico {
         return $bd->getRow("Episodio");
     }
 
+    /**
+     * Inserta un Registro en la tabla episodio
+     */
     public function insert() {
         $bd = Database::getInstance();
         $bd->doQuery("INSERT INTO episodio (idSeropel, season, episode) VALUES (:idSeropel, :season, :episode);",
@@ -78,6 +97,9 @@ class Episodio implements Generico {
                     ":episode" => $this->episode]);
     }
 
+    /**
+     * Actualiza un Registro en la tabla episodio
+     */
     public function update() {
         $bd = Database::getInstance();
         $bd->doQuery("UPDATE episodio SET idSeropel=:idSeropel, season=:season, episode=:episode WHERE idEpi=:idEpi ;",
@@ -87,6 +109,10 @@ class Episodio implements Generico {
                     ":idEpi" => $this->idEpi]);
     }
 
+    /**
+     * Elimina el registro de la tabla episodio que tiene el id indicado como parametro
+     * @param type $id
+     */
     public function delete($idEpi) {
         $bd = Database::getInstance();
         $bd->doQuery("DELETE FROM episodio WHERE idEpi=:idEpi ;",
@@ -94,7 +120,11 @@ class Episodio implements Generico {
     }
 
     //CONSULTAS
-
+    /**
+     * Obtiene los registros en la tabla episodio que tiene el idSeropel indicado como parametro
+     * @param type $idSeropel
+     * @return array
+     */
     public static function getSeropel($idSeropel) {
         $bd = Database::getInstance();
         $bd->doQuery("SELECT * FROM episodio WHERE idSeropel=:idSeropel ORDER BY season, episode;",
@@ -109,6 +139,12 @@ class Episodio implements Generico {
         return $datos;
     }
 
+    /**
+     * Obtiene el registro en la tabla episodio que tiene el idSeropel indicado como parametro y season indicado como parametro
+     * @param type $idSeropel
+     * @param type $season
+     * @return type
+     */
     public static function getbySeason($idSeropel, $season) {
         $bd = Database::getInstance();
         $bd->doQuery("SELECT * FROM episodio WHERE idSeropel=:idSeropel AND season=:season ;",

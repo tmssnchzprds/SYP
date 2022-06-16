@@ -3,107 +3,107 @@ Search.appendIndex(
                 {
             "fqsen": "\\controllerAjax",
             "name": "controllerAjax",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020operaciones\u0020mediante\u0020Ajax",
             "url": "classes/controllerAjax.html"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor\u0020crea\u0020una\u0020nueva\u0020sesion",
             "url": "classes/controllerAjax.html#method___construct"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003AlistaTotal\u0028\u0029",
             "name": "listaTotal",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020listas\u0020de\u0020inicio\u0020y\u0020los\u0020carga\u0020por\u0020ajax",
             "url": "classes/controllerAjax.html#method_listaTotal"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Alista\u0028\u0029",
             "name": "lista",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020listas\u0020por\u0020tipo\u0020\u0028serie\u0020o\u0020pelicula\u0029\u0020y\u0020los\u0020carga\u0020por\u0020ajax",
             "url": "classes/controllerAjax.html#method_lista"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Amilista\u0028\u0029",
             "name": "milista",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020listas\u0020del\u0020Usuario\u0020y\u0020los\u0020carga\u0020por\u0020ajax",
             "url": "classes/controllerAjax.html#method_milista"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Amilistaser\u0028\u0029",
             "name": "milistaser",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020listas\u0020de\u0020series\u0020del\u0020Usuario\u0020y\u0020las\u0020filtra\u0020por\u0020el\u0020estado,\u0020pasado\u0020en\u0020una\u0020variable,\u0020y\u0020los\u0020carga\u0020por\u0020ajax",
             "url": "classes/controllerAjax.html#method_milistaser"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Amilistapel\u0028\u0029",
             "name": "milistapel",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020listas\u0020de\u0020peliculas\u0020del\u0020Usuario\u0020y\u0020las\u0020filtra\u0020por\u0020el\u0020estado,\u0020pasado\u0020en\u0020una\u0020variable,\u0020y\u0020los\u0020carga\u0020por\u0020ajax",
             "url": "classes/controllerAjax.html#method_milistapel"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Acategoria\u0028\u0029",
             "name": "categoria",
-            "summary": "",
+            "summary": "Filtra\u0020las\u0020listas\u0020por\u0020categoria,\u0020pasado\u0020en\u0020una\u0020variable,\u0020y\u0020los\u0020carga\u0020por\u0020ajax",
             "url": "classes/controllerAjax.html#method_categoria"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Abuscar\u0028\u0029",
             "name": "buscar",
-            "summary": "",
+            "summary": "Filtra\u0020las\u0020listas\u0020total\u0020o\u0020parcialmente\u0020por\u0020el\u0020titulo,\u0020pasado\u0020en\u0020una\u0020variable,\u0020y\u0020los\u0020carga\u0020por\u0020ajax",
             "url": "classes/controllerAjax.html#method_buscar"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Acomentario\u0028\u0029",
             "name": "comentario",
-            "summary": "",
+            "summary": "Carga\u0020todos\u0020los\u0020comentarios\u0020por\u0020ajax",
             "url": "classes/controllerAjax.html#method_comentario"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Acomentariotemporada\u0028\u0029",
             "name": "comentariotemporada",
-            "summary": "",
+            "summary": "Filtra\u0020los\u0020comentarios\u0020por\u0020temporada\u0020y\u0020los\u0020carga\u0020por\u0020ajax",
             "url": "classes/controllerAjax.html#method_comentariotemporada"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Acomentarioepisodio\u0028\u0029",
             "name": "comentarioepisodio",
-            "summary": "",
+            "summary": "Filtra\u0020los\u0020comentarios\u0020por\u0020episodio\u0020y\u0020los\u0020carga\u0020por\u0020ajax",
             "url": "classes/controllerAjax.html#method_comentarioepisodio"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Alogin\u0028\u0029",
             "name": "login",
-            "summary": "",
+            "summary": "Carga\u0020el\u0020modal\u0020por\u0020ajax\u0020login",
             "url": "classes/controllerAjax.html#method_login"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Asignin\u0028\u0029",
             "name": "signin",
-            "summary": "",
+            "summary": "Carga\u0020el\u0020modal\u0020por\u0020ajax\u0020signin",
             "url": "classes/controllerAjax.html#method_signin"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Aeliminarusuario\u0028\u0029",
             "name": "eliminarusuario",
-            "summary": "",
+            "summary": "Carga\u0020el\u0020modal\u0020por\u0020ajax\u0020eliminarusuario",
             "url": "classes/controllerAjax.html#method_eliminarusuario"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Ausuario\u0028\u0029",
             "name": "usuario",
-            "summary": "",
+            "summary": "Carga\u0020el\u0020modal\u0020por\u0020ajax\u0020usuario",
             "url": "classes/controllerAjax.html#method_usuario"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Amodificarseropel\u0028\u0029",
             "name": "modificarseropel",
-            "summary": "",
+            "summary": "Carga\u0020el\u0020modal\u0020por\u0020ajax\u0020modificarseropel",
             "url": "classes/controllerAjax.html#method_modificarseropel"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Aeliminarseropel\u0028\u0029",
             "name": "eliminarseropel",
-            "summary": "",
+            "summary": "Carga\u0020el\u0020modal\u0020por\u0020ajax\u0020eliminarseropel",
             "url": "classes/controllerAjax.html#method_eliminarseropel"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Amodificarcom\u0028\u0029",
             "name": "modificarcom",
-            "summary": "",
+            "summary": "Carga\u0020el\u0020modal\u0020por\u0020ajax\u0020modificarcom",
             "url": "classes/controllerAjax.html#method_modificarcom"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Aeliminarcom\u0028\u0029",
             "name": "eliminarcom",
-            "summary": "",
+            "summary": "Carga\u0020el\u0020modal\u0020por\u0020ajax\u0020eliminarcom",
             "url": "classes/controllerAjax.html#method_eliminarcom"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003Aeliminarepi\u0028\u0029",
             "name": "eliminarepi",
-            "summary": "",
+            "summary": "Carga\u0020el\u0020modal\u0020por\u0020ajax\u0020eliminarepi",
             "url": "classes/controllerAjax.html#method_eliminarepi"
         },                {
             "fqsen": "\\controllerAjax\u003A\u003A\u0024sesion",
@@ -113,37 +113,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\controllerCategoria",
             "name": "controllerCategoria",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020operaciones\u0020relaccionadas\u0020con\u0020la\u0020clase\u0020Categoria",
             "url": "classes/controllerCategoria.html"
         },                {
             "fqsen": "\\controllerCategoria\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor\u0020crea\u0020una\u0020nueva\u0020sesion",
             "url": "classes/controllerCategoria.html#method___construct"
         },                {
             "fqsen": "\\controllerCategoria\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020de\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020tabla\u0020categoria",
             "url": "classes/controllerCategoria.html#method_getAll"
         },                {
             "fqsen": "\\controllerCategoria\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020del\u0020registro\u0020de\u0020la\u0020tabla\u0020categoria\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerCategoria.html#method_getId"
         },                {
             "fqsen": "\\controllerCategoria\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020insercion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020categoria",
             "url": "classes/controllerCategoria.html#method_insert"
         },                {
             "fqsen": "\\controllerCategoria\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020actualizacion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020categoria",
             "url": "classes/controllerCategoria.html#method_update"
         },                {
             "fqsen": "\\controllerCategoria\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020eliminacion\u0020del\u0020registro\u0020de\u0020la\u0020tabla\u0020categoria\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerCategoria.html#method_delete"
         },                {
             "fqsen": "\\controllerCategoria\u003A\u003A\u0024sesion",
@@ -153,37 +153,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\controllerComentario",
             "name": "controllerComentario",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020operaciones\u0020relaccionadas\u0020con\u0020la\u0020clase\u0020Comentario",
             "url": "classes/controllerComentario.html"
         },                {
             "fqsen": "\\controllerComentario\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor\u0020crea\u0020una\u0020nueva\u0020sesion",
             "url": "classes/controllerComentario.html#method___construct"
         },                {
             "fqsen": "\\controllerComentario\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020de\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020tabla\u0020comentario",
             "url": "classes/controllerComentario.html#method_getAll"
         },                {
             "fqsen": "\\controllerComentario\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020del\u0020registro\u0020de\u0020la\u0020tabla\u0020comentario\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerComentario.html#method_getId"
         },                {
             "fqsen": "\\controllerComentario\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020insercion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020comentario",
             "url": "classes/controllerComentario.html#method_insert"
         },                {
             "fqsen": "\\controllerComentario\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020actualizacion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020comentario",
             "url": "classes/controllerComentario.html#method_update"
         },                {
             "fqsen": "\\controllerComentario\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020eliminacion\u0020del\u0020registro\u0020de\u0020la\u0020tabla\u0020comentario\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerComentario.html#method_delete"
         },                {
             "fqsen": "\\controllerComentario\u003A\u003A\u0024sesion",
@@ -193,37 +193,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\controllerEpisodio",
             "name": "controllerEpisodio",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020operaciones\u0020relaccionadas\u0020con\u0020la\u0020clase\u0020Episodio",
             "url": "classes/controllerEpisodio.html"
         },                {
             "fqsen": "\\controllerEpisodio\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor\u0020crea\u0020una\u0020nueva\u0020sesion",
             "url": "classes/controllerEpisodio.html#method___construct"
         },                {
             "fqsen": "\\controllerEpisodio\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020de\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020tabla\u0020episodio",
             "url": "classes/controllerEpisodio.html#method_getAll"
         },                {
             "fqsen": "\\controllerEpisodio\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020del\u0020registro\u0020de\u0020la\u0020tabla\u0020episodio\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerEpisodio.html#method_getId"
         },                {
             "fqsen": "\\controllerEpisodio\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020insercion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020episodio",
             "url": "classes/controllerEpisodio.html#method_insert"
         },                {
             "fqsen": "\\controllerEpisodio\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020actualizacion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020episodio",
             "url": "classes/controllerEpisodio.html#method_update"
         },                {
             "fqsen": "\\controllerEpisodio\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020eliminacion\u0020del\u0020registro\u0020de\u0020la\u0020tabla\u0020episodio\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerEpisodio.html#method_delete"
         },                {
             "fqsen": "\\controllerEpisodio\u003A\u003A\u0024sesion",
@@ -233,67 +233,67 @@ Search.appendIndex(
         },                {
             "fqsen": "\\controllerGenerico",
             "name": "controllerGenerico",
-            "summary": "",
+            "summary": "Interfaz\u0020de\u0020los\u0020controladores",
             "url": "classes/controllerGenerico.html"
         },                {
             "fqsen": "\\controllerGenerico\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020de\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020BBDD",
             "url": "classes/controllerGenerico.html#method_getAll"
         },                {
             "fqsen": "\\controllerGenerico\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020del\u0020registro\u0020de\u0020la\u0020BBDD\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerGenerico.html#method_getId"
         },                {
             "fqsen": "\\controllerGenerico\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020insercion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020BBDD",
             "url": "classes/controllerGenerico.html#method_insert"
         },                {
             "fqsen": "\\controllerGenerico\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020actualizacion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020BBDD",
             "url": "classes/controllerGenerico.html#method_update"
         },                {
             "fqsen": "\\controllerGenerico\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020eliminacion\u0020del\u0020registro\u0020de\u0020la\u0020BBDD\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerGenerico.html#method_delete"
         },                {
             "fqsen": "\\controllerPuntuacion",
             "name": "controllerPuntuacion",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020operaciones\u0020relaccionadas\u0020con\u0020la\u0020clase\u0020Puntuacion",
             "url": "classes/controllerPuntuacion.html"
         },                {
             "fqsen": "\\controllerPuntuacion\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor\u0020crea\u0020una\u0020nueva\u0020sesion",
             "url": "classes/controllerPuntuacion.html#method___construct"
         },                {
             "fqsen": "\\controllerPuntuacion\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020de\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020tabla\u0020puntuacion",
             "url": "classes/controllerPuntuacion.html#method_getAll"
         },                {
             "fqsen": "\\controllerPuntuacion\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020del\u0020registro\u0020de\u0020la\u0020tabla\u0020puntuacion\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerPuntuacion.html#method_getId"
         },                {
             "fqsen": "\\controllerPuntuacion\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020insercion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020puntuacion",
             "url": "classes/controllerPuntuacion.html#method_insert"
         },                {
             "fqsen": "\\controllerPuntuacion\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020actualizacion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020puntuacion",
             "url": "classes/controllerPuntuacion.html#method_update"
         },                {
             "fqsen": "\\controllerPuntuacion\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020eliminacion\u0020del\u0020registro\u0020de\u0020la\u0020tabla\u0020puntuacion\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerPuntuacion.html#method_delete"
         },                {
             "fqsen": "\\controllerPuntuacion\u003A\u003A\u0024sesion",
@@ -303,77 +303,77 @@ Search.appendIndex(
         },                {
             "fqsen": "\\controllerSeropel",
             "name": "controllerSeropel",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020operaciones\u0020relaccionadas\u0020con\u0020la\u0020clase\u0020Seropel",
             "url": "classes/controllerSeropel.html"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor\u0020crea\u0020una\u0020nueva\u0020sesion",
             "url": "classes/controllerSeropel.html#method___construct"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020de\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020tabla\u0020seropel",
             "url": "classes/controllerSeropel.html#method_getAll"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020del\u0020registro\u0020de\u0020la\u0020tabla\u0020seropel\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerSeropel.html#method_getId"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020insercion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020reropel",
             "url": "classes/controllerSeropel.html#method_insert"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020actualizacion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020seropel",
             "url": "classes/controllerSeropel.html#method_update"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020eliminacion\u0020del\u0020registro\u0020de\u0020la\u0020tabla\u0020seropel\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerSeropel.html#method_delete"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003AlistaTotal\u0028\u0029",
             "name": "listaTotal",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020listas\u0020de\u0020Inicio",
             "url": "classes/controllerSeropel.html#method_listaTotal"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003Alista\u0028\u0029",
             "name": "lista",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020listas\u0020por\u0020tipo\u0020\u0028serie\u0020o\u0020pelicula\u0029",
             "url": "classes/controllerSeropel.html#method_lista"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003Amilista\u0028\u0029",
             "name": "milista",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020listas\u0020del\u0020Usuario",
             "url": "classes/controllerSeropel.html#method_milista"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003Amilistaser\u0028\u0029",
             "name": "milistaser",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020listas\u0020de\u0020series\u0020del\u0020Usuario\u0020y\u0020las\u0020filtra\u0020por\u0020el\u0020estado,\u0020pasado\u0020en\u0020una\u0020variable",
             "url": "classes/controllerSeropel.html#method_milistaser"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003Amilistapel\u0028\u0029",
             "name": "milistapel",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020listas\u0020de\u0020peliculas\u0020del\u0020Usuario\u0020y\u0020las\u0020filtra\u0020por\u0020el\u0020estado,\u0020pasado\u0020en\u0020una\u0020variable",
             "url": "classes/controllerSeropel.html#method_milistapel"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003Acategoria\u0028\u0029",
             "name": "categoria",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020listas\u0020y\u0020las\u0020filtra\u0020por\u0020la\u0020categoria,\u0020pasado\u0020en\u0020una\u0020variable",
             "url": "classes/controllerSeropel.html#method_categoria"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003Abuscar\u0028\u0029",
             "name": "buscar",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020listas\u0020y\u0020las\u0020filtra\u0020total\u0020o\u0020parcialmente\u0020por\u0020el\u0020titulo,\u0020pasado\u0020en\u0020una\u0020variable",
             "url": "classes/controllerSeropel.html#method_buscar"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003Adetalle\u0028\u0029",
             "name": "detalle",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020de\u0020datos\u0020asociados\u0020a\u0020una\u0020serie\u0020o\u0020pelicula\u0020por\u0020su\u0020identificador,\u0020pasado\u0020en\u0020una\u0020variable",
             "url": "classes/controllerSeropel.html#method_detalle"
         },                {
             "fqsen": "\\controllerSeropel\u003A\u003A\u0024sesion",
@@ -383,52 +383,52 @@ Search.appendIndex(
         },                {
             "fqsen": "\\controllerUsuario",
             "name": "controllerUsuario",
-            "summary": "",
+            "summary": "Controla\u0020las\u0020operaciones\u0020relaccionadas\u0020con\u0020la\u0020clase\u0020Usuario",
             "url": "classes/controllerUsuario.html"
         },                {
             "fqsen": "\\controllerUsuario\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor\u0020crea\u0020una\u0020nueva\u0020sesion",
             "url": "classes/controllerUsuario.html#method___construct"
         },                {
             "fqsen": "\\controllerUsuario\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020de\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020tabla\u0020usuario",
             "url": "classes/controllerUsuario.html#method_getAll"
         },                {
             "fqsen": "\\controllerUsuario\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020obtencion\u0020del\u0020registro\u0020de\u0020la\u0020tabla\u0020usuario\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerUsuario.html#method_getId"
         },                {
             "fqsen": "\\controllerUsuario\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020insercion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020usuario",
             "url": "classes/controllerUsuario.html#method_insert"
         },                {
             "fqsen": "\\controllerUsuario\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020actualizacion\u0020de\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020usuario",
             "url": "classes/controllerUsuario.html#method_update"
         },                {
             "fqsen": "\\controllerUsuario\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020eliminacion\u0020del\u0020registro\u0020de\u0020la\u0020tabla\u0020usuario\u0020que\u0020tiene\u0020el\u0020id\u0020que\u0020llega\u0020en\u0020una\u0020variable",
             "url": "classes/controllerUsuario.html#method_delete"
         },                {
             "fqsen": "\\controllerUsuario\u003A\u003Asignin\u0028\u0029",
             "name": "signin",
-            "summary": "",
+            "summary": "Controla\u0020el\u0020logueo\u0020en\u0020la\u0020aplicacion",
             "url": "classes/controllerUsuario.html#method_signin"
         },                {
             "fqsen": "\\controllerUsuario\u003A\u003Alogout\u0028\u0029",
             "name": "logout",
-            "summary": "",
+            "summary": "Cierra\u0020la\u0020sesion\u0020abierta",
             "url": "classes/controllerUsuario.html#method_logout"
         },                {
             "fqsen": "\\controllerUsuario\u003A\u003Aupdatetype\u0028\u0029",
             "name": "updatetype",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020actualizacion\u0020del\u0020tipo\u0020de\u0020todos\u0020los\u0020Registros\u0020en\u0020la\u0020tabla\u0020usuario",
             "url": "classes/controllerUsuario.html#method_updatetype"
         },                {
             "fqsen": "\\controllerUsuario\u003A\u003A\u0024sesion",
@@ -438,7 +438,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Categoria",
             "name": "Categoria",
-            "summary": "",
+            "summary": "Contiene\u0020los\u0020metodos\u0020que\u0020realizan\u0020las\u0020operaciones\u0020necesarias\u0020en\u0020la\u0020tabla\u0020categoria",
             "url": "classes/Categoria.html"
         },                {
             "fqsen": "\\Categoria\u003A\u003A__construct\u0028\u0029",
@@ -468,27 +468,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Categoria\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Obtiene\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020tabla\u0020categoria",
             "url": "classes/Categoria.html#method_getAll"
         },                {
             "fqsen": "\\Categoria\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Obtiene\u0020el\u0020registro\u0020en\u0020la\u0020tabla\u0020categoria\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Categoria.html#method_getId"
         },                {
             "fqsen": "\\Categoria\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Inserta\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020categoria",
             "url": "classes/Categoria.html#method_insert"
         },                {
             "fqsen": "\\Categoria\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Actualiza\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020categoria",
             "url": "classes/Categoria.html#method_update"
         },                {
             "fqsen": "\\Categoria\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Elimina\u0020el\u0020registro\u0020de\u0020la\u0020tabla\u0020categoria\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Categoria.html#method_delete"
         },                {
             "fqsen": "\\Categoria\u003A\u003A\u0024idCat",
@@ -503,7 +503,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Comentario",
             "name": "Comentario",
-            "summary": "",
+            "summary": "Contiene\u0020los\u0020metodos\u0020que\u0020realizan\u0020las\u0020operaciones\u0020necesarias\u0020en\u0020la\u0020tabla\u0020comentario",
             "url": "classes/Comentario.html"
         },                {
             "fqsen": "\\Comentario\u003A\u003A__construct\u0028\u0029",
@@ -583,42 +583,42 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Comentario\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Obtiene\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020tabla\u0020comentario",
             "url": "classes/Comentario.html#method_getAll"
         },                {
             "fqsen": "\\Comentario\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Obtiene\u0020el\u0020registro\u0020en\u0020la\u0020tabla\u0020comentario\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Comentario.html#method_getId"
         },                {
             "fqsen": "\\Comentario\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Inserta\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020comentario",
             "url": "classes/Comentario.html#method_insert"
         },                {
             "fqsen": "\\Comentario\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Actualiza\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020comentario",
             "url": "classes/Comentario.html#method_update"
         },                {
             "fqsen": "\\Comentario\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Elimina\u0020el\u0020registro\u0020de\u0020la\u0020tabla\u0020comentario\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Comentario.html#method_delete"
         },                {
             "fqsen": "\\Comentario\u003A\u003AcomentarioSeropel\u0028\u0029",
             "name": "comentarioSeropel",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020comentario\u0020y\u0020el\u0020nombre\u0020de\u0020usuario\u0020asociado\u0020que\u0020tiene\u0020el\u0020idSeropel\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Comentario.html#method_comentarioSeropel"
         },                {
             "fqsen": "\\Comentario\u003A\u003AcomentarioTemporada\u0028\u0029",
             "name": "comentarioTemporada",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020comentario\u0020y\u0020el\u0020nombre\u0020de\u0020usuario\u0020asociado\u0020que\u0020tiene\u0020el\u0020idSeropel\u0020indicado\u0020como\u0020parametro\u0020y\u0020la\u0020season\u0020indicada\u0020como\u0020parametro",
             "url": "classes/Comentario.html#method_comentarioTemporada"
         },                {
             "fqsen": "\\Comentario\u003A\u003AcomentarioEpisodio\u0028\u0029",
             "name": "comentarioEpisodio",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020comentario\u0020y\u0020el\u0020nombre\u0020de\u0020usuario\u0020asociado\u0020que\u0020tiene\u0020el\u0020idSeropel\u0020indicado\u0020como\u0020parametro,\u0020la\u0020season\u0020indicada\u0020como\u0020parametro\u0020y\u0020el\u0020episode\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Comentario.html#method_comentarioEpisodio"
         },                {
             "fqsen": "\\Comentario\u003A\u003A\u0024idCom",
@@ -658,12 +658,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Database",
             "name": "Database",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020conexi\u00F3n\u0020con\u0020la\u0020Base\u0020de\u0020Datos",
             "url": "classes/Database.html"
         },                {
             "fqsen": "\\Database\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Constructor",
             "url": "classes/Database.html#method___construct"
         },                {
             "fqsen": "\\Database\u003A\u003A__clone\u0028\u0029",
@@ -673,27 +673,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Database\u003A\u003AgetInstance\u0028\u0029",
             "name": "getInstance",
-            "summary": "",
+            "summary": "Obtener\u0020Instancia",
             "url": "classes/Database.html#method_getInstance"
         },                {
             "fqsen": "\\Database\u003A\u003Aconnect\u0028\u0029",
             "name": "connect",
-            "summary": "",
+            "summary": "Conectar\u0020a\u0020BBDD",
             "url": "classes/Database.html#method_connect"
         },                {
             "fqsen": "\\Database\u003A\u003AdoQuery\u0028\u0029",
             "name": "doQuery",
-            "summary": "",
+            "summary": "Realizar\u0020consulta\u0020a\u0020la\u0020BBDD",
             "url": "classes/Database.html#method_doQuery"
         },                {
             "fqsen": "\\Database\u003A\u003AgetRow\u0028\u0029",
             "name": "getRow",
-            "summary": "",
+            "summary": "Obtener\u0020nueva\u0020entrada\u0020de\u0020la\u0020BBDD\u0020de\u0020la\u0020clase\u0020dada\u0020\u0028Por\u0020defecto\u0020ser\u00E1\u0020la\u0020StdClass\u0020si\u0020no\u0020se\u0020especifica\u0020otra\u0029",
             "url": "classes/Database.html#method_getRow"
         },                {
             "fqsen": "\\Database\u003A\u003AgetLastId\u0028\u0029",
             "name": "getLastId",
-            "summary": "",
+            "summary": "Obtener\u0020el\u0020ID\u0020d\u00E9\u0020la\u0020\u00FAltima\u0020entrada\u0020de\u0020la\u0020BBDD",
             "url": "classes/Database.html#method_getLastId"
         },                {
             "fqsen": "\\Database\u003A\u003A\u0024dbHost",
@@ -733,7 +733,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Episodio",
             "name": "Episodio",
-            "summary": "",
+            "summary": "Contiene\u0020los\u0020metodos\u0020que\u0020realizan\u0020las\u0020operaciones\u0020necesarias\u0020en\u0020la\u0020tabla\u0020episodio",
             "url": "classes/Episodio.html"
         },                {
             "fqsen": "\\Episodio\u003A\u003A__construct\u0028\u0029",
@@ -783,37 +783,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Episodio\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Obtiene\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020tabla\u0020episodio",
             "url": "classes/Episodio.html#method_getAll"
         },                {
             "fqsen": "\\Episodio\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Obtiene\u0020el\u0020registro\u0020en\u0020la\u0020tabla\u0020episodio\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Episodio.html#method_getId"
         },                {
             "fqsen": "\\Episodio\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Inserta\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020episodio",
             "url": "classes/Episodio.html#method_insert"
         },                {
             "fqsen": "\\Episodio\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Actualiza\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020episodio",
             "url": "classes/Episodio.html#method_update"
         },                {
             "fqsen": "\\Episodio\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Elimina\u0020el\u0020registro\u0020de\u0020la\u0020tabla\u0020episodio\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Episodio.html#method_delete"
         },                {
             "fqsen": "\\Episodio\u003A\u003AgetSeropel\u0028\u0029",
             "name": "getSeropel",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020episodio\u0020que\u0020tiene\u0020el\u0020idSeropel\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Episodio.html#method_getSeropel"
         },                {
             "fqsen": "\\Episodio\u003A\u003AgetbySeason\u0028\u0029",
             "name": "getbySeason",
-            "summary": "",
+            "summary": "Obtiene\u0020el\u0020registro\u0020en\u0020la\u0020tabla\u0020episodio\u0020que\u0020tiene\u0020el\u0020idSeropel\u0020indicado\u0020como\u0020parametro\u0020y\u0020season\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Episodio.html#method_getbySeason"
         },                {
             "fqsen": "\\Episodio\u003A\u003A\u0024idEpi",
@@ -838,37 +838,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Generico",
             "name": "Generico",
-            "summary": "",
+            "summary": "Interfaz\u0020de\u0020los\u0020Beans",
             "url": "classes/Generico.html"
         },                {
             "fqsen": "\\Generico\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Obtiene\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020BBDD",
             "url": "classes/Generico.html#method_getAll"
         },                {
             "fqsen": "\\Generico\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Obtiene\u0020el\u0020registro\u0020de\u0020la\u0020BBDD\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Generico.html#method_getId"
         },                {
             "fqsen": "\\Generico\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Inserta\u0020un\u0020Registro\u0020en\u0020la\u0020BBDD",
             "url": "classes/Generico.html#method_insert"
         },                {
             "fqsen": "\\Generico\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Actualiza\u0020un\u0020Registro\u0020en\u0020la\u0020BBDD",
             "url": "classes/Generico.html#method_update"
         },                {
             "fqsen": "\\Generico\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Elimina\u0020el\u0020registro\u0020de\u0020la\u0020BBDD\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Generico.html#method_delete"
         },                {
             "fqsen": "\\Puntuacion",
             "name": "Puntuacion",
-            "summary": "",
+            "summary": "Contiene\u0020los\u0020metodos\u0020que\u0020realizan\u0020las\u0020operaciones\u0020necesarias\u0020en\u0020la\u0020tabla\u0020puntuacion",
             "url": "classes/Puntuacion.html"
         },                {
             "fqsen": "\\Puntuacion\u003A\u003A__construct\u0028\u0029",
@@ -948,42 +948,42 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Puntuacion\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Obtiene\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020tabla\u0020puntuacion",
             "url": "classes/Puntuacion.html#method_getAll"
         },                {
             "fqsen": "\\Puntuacion\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Obtiene\u0020el\u0020registro\u0020en\u0020la\u0020tabla\u0020puntuacion\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Puntuacion.html#method_getId"
         },                {
             "fqsen": "\\Puntuacion\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Inserta\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020puntuacion",
             "url": "classes/Puntuacion.html#method_insert"
         },                {
             "fqsen": "\\Puntuacion\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Actualiza\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020puntuacion",
             "url": "classes/Puntuacion.html#method_update"
         },                {
             "fqsen": "\\Puntuacion\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Elimina\u0020el\u0020registro\u0020de\u0020la\u0020tabla\u0020puntuacion\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Puntuacion.html#method_delete"
         },                {
             "fqsen": "\\Puntuacion\u003A\u003AgetPuntuacion\u0028\u0029",
             "name": "getPuntuacion",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020puntuacion\u0020cuyo\u0020idSeropel\u0020coincida\u0020con\u0020el\u0020parametro\u0020idSeropel\u0020y\u0020idUsu\u0020coincida\u0020con\u0020el\u0020parametro\u0020idUsu",
             "url": "classes/Puntuacion.html#method_getPuntuacion"
         },                {
             "fqsen": "\\Puntuacion\u003A\u003AgetPuntuacions\u0028\u0029",
             "name": "getPuntuacions",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020puntuacion\u0020cuyo\u0020idSeropel\u0020coincida\u0020con\u0020el\u0020parametro\u0020idSeropel,\u0020idUsu\u0020coincida\u0020con\u0020el\u0020parametro\u0020idUsu\u0020y\u0020season\u0020coincida\u0020con\u0020el\u0020parametro\u0020season",
             "url": "classes/Puntuacion.html#method_getPuntuacions"
         },                {
             "fqsen": "\\Puntuacion\u003A\u003AgetPuntuacione\u0028\u0029",
             "name": "getPuntuacione",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020puntuacion\u0020cuyo\u0020idSeropel\u0020coincida\u0020con\u0020el\u0020parametro\u0020idSeropel,\u0020idUsu\u0020coincida\u0020con\u0020el\u0020parametro\u0020idUsu,\u0020season\u0020coincida\u0020con\u0020el\u0020parametro\u0020season\u0020y\u0020episode\u0020coincida\u0020con\u0020el\u0020parametro\u0020episode",
             "url": "classes/Puntuacion.html#method_getPuntuacione"
         },                {
             "fqsen": "\\Puntuacion\u003A\u003A\u0024idScore",
@@ -1023,7 +1023,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Seropel",
             "name": "Seropel",
-            "summary": "",
+            "summary": "Contiene\u0020los\u0020metodos\u0020que\u0020realizan\u0020las\u0020operaciones\u0020necesarias\u0020en\u0020la\u0020tabla\u0020seropel",
             "url": "classes/Seropel.html"
         },                {
             "fqsen": "\\Seropel\u003A\u003A__construct\u0028\u0029",
@@ -1123,72 +1123,72 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Seropel\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Obtiene\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020tabla\u0020seropel",
             "url": "classes/Seropel.html#method_getAll"
         },                {
             "fqsen": "\\Seropel\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Obtiene\u0020el\u0020registro\u0020en\u0020la\u0020tabla\u0020seropel\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Seropel.html#method_getId"
         },                {
             "fqsen": "\\Seropel\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Inserta\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020seropel",
             "url": "classes/Seropel.html#method_insert"
         },                {
             "fqsen": "\\Seropel\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Actualiza\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020seropel",
             "url": "classes/Seropel.html#method_update"
         },                {
             "fqsen": "\\Seropel\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Elimina\u0020el\u0020registro\u0020de\u0020la\u0020tabla\u0020seropel\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Seropel.html#method_delete"
         },                {
             "fqsen": "\\Seropel\u003A\u003Alistaactual\u0028\u0029",
             "name": "listaactual",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020seropel\u0020cuyo\u0020tipo\u0020\u0028serie\u0020o\u0020pelicula\u0029\u0020coincida\u0020con\u0020el\u0020parametro\u0020tipo,\u0020el\u0020mombre\u0020de\u0020la\u0020categoria\u0020y\u0020la\u0020media\u0020de\u0020la\u0020valoracion\u0020ordenados\u0020por\u0020inserci\u00F3n\u0020en\u0020la\u0020BBDD\u0020\u0028idSeropel\u0029",
             "url": "classes/Seropel.html#method_listaactual"
         },                {
             "fqsen": "\\Seropel\u003A\u003Alistamejor\u0028\u0029",
             "name": "listamejor",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020seropel\u0020cuyo\u0020tipo\u0020\u0028serie\u0020o\u0020pelicula\u0029\u0020coincida\u0020con\u0020el\u0020parametro\u0020tipo,\u0020el\u0020mombre\u0020de\u0020la\u0020categoria\u0020y\u0020la\u0020media\u0020de\u0020la\u0020valoracion\u0020ordenado\u0020por\u0020valoracion",
             "url": "classes/Seropel.html#method_listamejor"
         },                {
             "fqsen": "\\Seropel\u003A\u003Amilistaactual\u0028\u0029",
             "name": "milistaactual",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020seropel\u0020cuyo\u0020tipo\u0020\u0028serie\u0020o\u0020pelicula\u0029\u0020coincida\u0020con\u0020el\u0020parametro\u0020tipo\u0020que\u0020tengan\u0020en\u0020la\u0020tabla\u0020puntuacion\u0020el\u0020estado\u0020que\u0020indica\u0020el\u0020parametro\u0020estado\u0020y\u0020pertenezcan\u0020al\u0020usuario\u0020que\u0020tiene\u0020iniciada\u0020la\u0020sesi\u00F3n,\u0020el\u0020mombre\u0020de\u0020la\u0020categoria\u0020y\u0020la\u0020media\u0020de\u0020la\u0020valoracion\u0020ordenados\u0020por\u0020inserci\u00F3n\u0020en\u0020la\u0020BBDD\u0020\u0028idSeropel\u0029",
             "url": "classes/Seropel.html#method_milistaactual"
         },                {
             "fqsen": "\\Seropel\u003A\u003Amilistamejor\u0028\u0029",
             "name": "milistamejor",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020seropel\u0020cuyo\u0020tipo\u0020\u0028serie\u0020o\u0020pelicula\u0029\u0020coincida\u0020con\u0020el\u0020parametro\u0020tipo\u0020que\u0020tengan\u0020en\u0020la\u0020tabla\u0020puntuacion\u0020el\u0020estado\u0020que\u0020indica\u0020el\u0020parametro\u0020estado\u0020y\u0020pertenezcan\u0020al\u0020usuario\u0020que\u0020tiene\u0020iniciada\u0020la\u0020sesi\u00F3n,\u0020el\u0020mombre\u0020de\u0020la\u0020categoria\u0020y\u0020la\u0020media\u0020de\u0020la\u0020valoracion\u0020ordenado\u0020por\u0020valoracion",
             "url": "classes/Seropel.html#method_milistamejor"
         },                {
             "fqsen": "\\Seropel\u003A\u003Acategoriaactual\u0028\u0029",
             "name": "categoriaactual",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020seropel\u0020cuya\u0020categoria\u0020coincida\u0020con\u0020el\u0020parametro\u0020idCat\u0020y\u0020cuyo\u0020tipo\u0020\u0028serie\u0020o\u0020pelicula\u0029\u0020coincida\u0020con\u0020el\u0020parametro\u0020tipo,\u0020el\u0020mombre\u0020de\u0020la\u0020categoria\u0020y\u0020la\u0020media\u0020de\u0020la\u0020valoracion\u0020ordenados\u0020por\u0020inserci\u00F3n\u0020en\u0020la\u0020BBDD\u0020\u0028idSeropel\u0029",
             "url": "classes/Seropel.html#method_categoriaactual"
         },                {
             "fqsen": "\\Seropel\u003A\u003Acategoriamejor\u0028\u0029",
             "name": "categoriamejor",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020seropel\u0020cuya\u0020\u0020categoria\u0020coincida\u0020con\u0020el\u0020parametro\u0020idCat\u0020y\u0020cuyo\u0020tipo\u0020\u0028serie\u0020o\u0020pelicula\u0029\u0020coincida\u0020con\u0020el\u0020parametro\u0020tipo,\u0020el\u0020mombre\u0020de\u0020la\u0020categoria\u0020y\u0020la\u0020media\u0020de\u0020la\u0020valoracion\u0020ordenado\u0020por\u0020valoracion",
             "url": "classes/Seropel.html#method_categoriamejor"
         },                {
             "fqsen": "\\Seropel\u003A\u003Abuscaractual\u0028\u0029",
             "name": "buscaractual",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020seropel\u0020cuyo\u0020titulo\u0020coincida\u0020total\u0020o\u0020parcialmente\u0020con\u0020el\u0020parametro\u0020buscar,\u0020el\u0020mombre\u0020de\u0020la\u0020categoria\u0020y\u0020la\u0020media\u0020de\u0020la\u0020valoracion\u0020ordenados\u0020por\u0020inserci\u00F3n\u0020en\u0020la\u0020BBDD\u0020\u0028idSeropel\u0029",
             "url": "classes/Seropel.html#method_buscaractual"
         },                {
             "fqsen": "\\Seropel\u003A\u003Abuscarmejor\u0028\u0029",
             "name": "buscarmejor",
-            "summary": "",
+            "summary": "Obtiene\u0020los\u0020registros\u0020en\u0020la\u0020tabla\u0020seropel\u0020cuyo\u0020titulo\u0020coincida\u0020total\u0020o\u0020parcialmente\u0020con\u0020el\u0020parametro\u0020buscar,\u0020el\u0020mombre\u0020de\u0020la\u0020categoria\u0020y\u0020la\u0020media\u0020de\u0020la\u0020valoracion\u0020ordenado\u0020por\u0020valoracion",
             "url": "classes/Seropel.html#method_buscarmejor"
         },                {
             "fqsen": "\\Seropel\u003A\u003Adetalle\u0028\u0029",
             "name": "detalle",
-            "summary": "",
+            "summary": "Obtiene\u0020el\u0020registro\u0020en\u0020la\u0020tabla\u0020seropel\u0020que\u0020tiene\u0020el\u0020idSeropel\u0020indicado\u0020como\u0020parametro,\u0020el\u0020mombre\u0020de\u0020la\u0020categoria\u0020y\u0020la\u0020media\u0020de\u0020la\u0020valoracion",
             "url": "classes/Seropel.html#method_detalle"
         },                {
             "fqsen": "\\Seropel\u003A\u003A\u0024idSeropel",
@@ -1238,32 +1238,32 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Sesion",
             "name": "Sesion",
-            "summary": "",
+            "summary": "Controla\u0020la\u0020Sesi\u00F3n",
             "url": "classes/Sesion.html"
         },                {
             "fqsen": "\\Sesion\u003A\u003Ainit\u0028\u0029",
             "name": "init",
-            "summary": "",
+            "summary": "Inicia\u0020la\u0020Sesi\u00F3n",
             "url": "classes/Sesion.html#method_init"
         },                {
             "fqsen": "\\Sesion\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "",
+            "summary": "Obtiene\u0020la\u0020Sesi\u00F3n",
             "url": "classes/Sesion.html#method_get"
         },                {
             "fqsen": "\\Sesion\u003A\u003Aclose\u0028\u0029",
             "name": "close",
-            "summary": "",
+            "summary": "Cierra\u0020la\u0020Sesi\u00F3n",
             "url": "classes/Sesion.html#method_close"
         },                {
             "fqsen": "\\Sesion\u003A\u003AgetStatus\u0028\u0029",
             "name": "getStatus",
-            "summary": "",
+            "summary": "Obtiene\u0020el\u0020estado\u0020de\u0020la\u0020Sesi\u00F3n",
             "url": "classes/Sesion.html#method_getStatus"
         },                {
             "fqsen": "\\Usuario",
             "name": "Usuario",
-            "summary": "",
+            "summary": "Contiene\u0020los\u0020metodos\u0020que\u0020realizan\u0020las\u0020operaciones\u0020necesarias\u0020en\u0020la\u0020tabla\u0020usuario",
             "url": "classes/Usuario.html"
         },                {
             "fqsen": "\\Usuario\u003A\u003A__construct\u0028\u0029",
@@ -1323,27 +1323,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Usuario\u003A\u003AgetAll\u0028\u0029",
             "name": "getAll",
-            "summary": "",
+            "summary": "Obtiene\u0020todos\u0020los\u0020registros\u0020de\u0020la\u0020tabla\u0020usuario",
             "url": "classes/Usuario.html#method_getAll"
         },                {
             "fqsen": "\\Usuario\u003A\u003AgetId\u0028\u0029",
             "name": "getId",
-            "summary": "",
+            "summary": "Obtiene\u0020el\u0020registro\u0020en\u0020la\u0020tabla\u0020usuario\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Usuario.html#method_getId"
         },                {
             "fqsen": "\\Usuario\u003A\u003Ainsert\u0028\u0029",
             "name": "insert",
-            "summary": "",
+            "summary": "Inserta\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020usuario",
             "url": "classes/Usuario.html#method_insert"
         },                {
             "fqsen": "\\Usuario\u003A\u003Aupdate\u0028\u0029",
             "name": "update",
-            "summary": "",
+            "summary": "Actualiza\u0020un\u0020Registro\u0020en\u0020la\u0020tabla\u0020usuario",
             "url": "classes/Usuario.html#method_update"
         },                {
             "fqsen": "\\Usuario\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
-            "summary": "",
+            "summary": "Elimina\u0020el\u0020registro\u0020de\u0020la\u0020tabla\u0020usuario\u0020que\u0020tiene\u0020el\u0020id\u0020indicado\u0020como\u0020parametro",
             "url": "classes/Usuario.html#method_delete"
         },                {
             "fqsen": "\\Usuario\u003A\u003A\u0024idUsu",
